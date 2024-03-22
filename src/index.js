@@ -1,5 +1,5 @@
 // Tworzymy zmienną przechowującą URL, z którego chcemy pobrać dane
-const url = 'https://eodhd.com/api/real-time/AAL.war?api_token=65fe0a1382dc25.48851936&fmt=json';
+const url = 'https://eodhd.com/api/real-time/ETFBM40TR.war?api_token=65fe0a1382dc25.48851936&fmt=json';
 
 // Wywołujemy fetch na podanym URL
 fetch(url)
