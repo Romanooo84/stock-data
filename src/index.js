@@ -6,11 +6,12 @@ const exchange = 'WAR';
 const ticker = 'ETFBM40TR';
 const index = ticker.concat('.',exchange)
 
-
+// pobranie danych o giełdach
 exchangeList(token)
  .then(exchangeData => console.log(exchangeData))
   .catch(error => console.error(error));
 
+// pobranie danych dziennych
 dailyStockData(index, token) 
   .then(dailyData => console.log(dailyData))
   .catch(error => console.error(error));
