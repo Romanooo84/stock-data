@@ -29,7 +29,7 @@ export function historicalStockData(stockIndex,apiKey) {
 export function dailyStockData(stockIndex,apiKey) {
   // url dla danych codziennych
   const url = `https://eodhd.com/api/real-time/${stockIndex}?api_token=${apiKey}&fmt=json`;
-
+  console.log('start')
   // Wywołujemy fetch na podanym URL
   return fetch(url)
     .then(response => {
