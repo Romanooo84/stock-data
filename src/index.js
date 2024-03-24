@@ -28,4 +28,6 @@ historicalStockData(index, token)
       chartData.xAxis.push(historicalData[i].date);
     }
     lineChart(chartData.xAxis, chartData.yAxis)
+    chart.canvas.parentNode.style.height = '1280px';
+    chart.canvas.parentNode.style.width = '1280px';
   })
