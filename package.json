@@ -5,7 +5,7 @@
   "homepage": "https://github.com/Romanooo84/stock-data.git",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /stock-data.git/"
+    "build": "parcel build src/*.html --public-url /stock-data/"
   },
   "repository": {
     "type": "git",
