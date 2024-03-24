@@ -27,7 +27,12 @@ historicalStockData(index, token)
       chartData.yAxis.push(historicalData[i].close);
       chartData.xAxis.push(historicalData[i].date);
     }
-    lineChart(chartData.xAxis, chartData.yAxis)
-    chart.canvas.parentNode.style.height = '1280px';
-    chart.canvas.parentNode.style.width = '1280px';
+    lineChart(chartData.xAxis, chartData.yAxis, ticker)
+    //chart.canvas.parentNode.style.height = '1280px';
+    //chart.canvas.parentNode.style.width = '1280px';
+    return { yAxis: chartData.yAxis, xAxis: chartData.xAxis }
+  })
+  .then(data => {
+    console.log("Wartość yAxis:", data.yAxis);
+    console.log("Wartość xAxis:", data.xAxis);
   })
