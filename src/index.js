@@ -28,10 +28,6 @@ historicalStockData(index, token)
     //chart.canvas.parentNode.style.width = '1280px';
     return { yAxis: chartData.yAxis, xAxis: chartData.xAxis }
   })
-  .then(data => {
-    console.log("Wartość yAxis:", data.yAxis);
-    console.log("Wartość xAxis:", data.xAxis);
-  })
   .then(() => dailyStockData(index, token))
   .then(data => console.log(data))
   .catch(error => console.error(error));
