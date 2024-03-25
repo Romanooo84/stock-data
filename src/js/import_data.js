@@ -42,6 +42,7 @@ export function dailyStockData(stockIndex,apiKey) {
     .then(data => {
       // Tutaj możesz pracować na danych, np. wyświetlić je w konsoli
       let dailyData = data;
+      console.log('Dane codzienne:',dailyData)
       return dailyData;
     })
     .catch(error => {
