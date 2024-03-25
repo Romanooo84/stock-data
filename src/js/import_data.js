@@ -14,8 +14,6 @@ export function historicalStockData(stockIndex,apiKey) {
       return response.json();
     })
     .then(data => {
-      // Tutaj możesz pracować na danych, np. wyświetlić je w konsoli
-      //console.log(data);
       let historicalData = data;
       return historicalData
     })
@@ -40,7 +38,6 @@ export function dailyStockData(stockIndex,apiKey) {
       return response.json();
     })
     .then(data => {
-      // Tutaj możesz pracować na danych, np. wyświetlić je w konsoli
       let dailyData = data;
       return dailyData;
     })
@@ -53,6 +50,28 @@ export function dailyStockData(stockIndex,apiKey) {
 //pobieranie listy obsługiwanych giełd
 export function exchangeList(apiKey) {
   const url = `https://eodhd.com/api/exchanges-list/?api_token=${apiKey}&fmt=json`
+   // Wywołujemy fetch na podanym URL
+  return fetch(url)
+    .then(response => {
+      // Sprawdzamy, czy odpowiedź jest poprawna
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      // Parsujemy odpowiedź jako JSON i zwracamy ją
+      return response.json();
+    })
+    .then(data => {
+      let exchangeData = data;
+      return exchangeData;
+    })
+    .catch(error => {
+      // W przypadku błędu, np. problemu z siecią, wyświetlamy komunikat o błędzie
+      console.error('There was a problem with your fetch operation:', error);
+    });
+}
+
+export function interdayData(apiKey) {
+  const url = `https://eodhd.com/api/intraday/?api_token=${apiKey}&interval=5m&fmt=json`
   console.log(url)
    // Wywołujemy fetch na podanym URL
   return fetch(url)
@@ -65,13 +84,15 @@ export function exchangeList(apiKey) {
       return response.json();
     })
     .then(data => {
-      // Tutaj możesz pracować na danych, np. wyświetlić je w konsoli
-      let exchangeData = data;
-      return exchangeData;
+      let interdayData = data;
+      console.log(interdayData)
+      return interdayData;
     })
     .catch(error => {
       // W przypadku błędu, np. problemu z siecią, wyświetlamy komunikat o błędzie
       console.error('There was a problem with your fetch operation:', error);
     });
 }
+
+
 
