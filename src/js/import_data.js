@@ -70,9 +70,9 @@ export function exchangeList(apiKey) {
     });
 }
 
+// pobieranie danych historycznych z interwałem 5m
 export function interdayData(stockIndex, apiKey) {
-  const url = `https://eodhd.com/api/intraday/${stockIndex}?api_token=${apiKey}&interval=5m&fmt=json`
-  console.log(url)
+  const url = `https://eodhd.com/api/intraday/${stockIndex}?interval=5m&api_token=${apiKey}&fmt=json`
    // Wywołujemy fetch na podanym URL
   return fetch(url)
     .then(response => {
@@ -85,13 +85,14 @@ export function interdayData(stockIndex, apiKey) {
     })
     .then(data => {
       let interdayData = data;
-      console.log(interdayData)
       return interdayData;
     })
     .catch(error => {
       // W przypadku błędu, np. problemu z siecią, wyświetlamy komunikat o błędzie
       console.error('There was a problem with your fetch operation:', error);
     });
+  
+  
 }
 
 
