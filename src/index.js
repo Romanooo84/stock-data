@@ -7,10 +7,10 @@ const ticker = 'ETFBM40TR';
 const index = ticker.concat('.',exchange)
 
 // pobranie danych o giełdach
-/*exchangeList(token)
+exchangeList(token)
  .then(exchangeData => console.log(exchangeData))
-  .catch(error => console.error(error));
-*/
+ .catch(error => console.error(error));
+
 
 //wyświetlenie wykresu danych historycznych
 historicalStockData(index, token)
