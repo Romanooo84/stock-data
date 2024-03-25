@@ -11,6 +11,8 @@ exchangeList(token)
  .then(exchangeData => console.log(exchangeData))
  .catch(error => console.error(error));
 
+ //pobieranie danych dziennych
+ interdayData(token)
 
 //wyświetlenie wykresu danych historycznych
 historicalStockData(index, token)
