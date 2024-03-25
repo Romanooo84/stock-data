@@ -53,6 +53,7 @@ export function dailyStockData(stockIndex,apiKey) {
 //pobieranie listy obsługiwanych giełd
 export function exchangeList(apiKey) {
   const url = `https://eodhd.com/api/exchanges-list/?api_token=${apiKey}&fmt=json`
+  console.log(url)
    // Wywołujemy fetch na podanym URL
   return fetch(url)
     .then(response => {
