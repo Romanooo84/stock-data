@@ -70,8 +70,8 @@ export function exchangeList(apiKey) {
     });
 }
 
-export function interdayData(apiKey) {
-  const url = `https://eodhd.com/api/intraday/?api_token=${apiKey}&interval=5m&fmt=json`
+export function interdayData(stockIndex, apiKey) {
+  const url = `https://eodhd.com/api/intraday/${stockIndex}?api_token=${apiKey}&interval=5m&fmt=json`
   console.log(url)
    // Wywołujemy fetch na podanym URL
   return fetch(url)
