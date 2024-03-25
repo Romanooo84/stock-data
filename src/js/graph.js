@@ -1,5 +1,5 @@
 
-export function lineChart(xAxis, yAxis) {
+export function lineChart(xAxis, yAxis, ticker) {
   const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {
@@ -7,7 +7,7 @@ export function lineChart(xAxis, yAxis) {
     data: {
       labels: xAxis,
       datasets: [{
-        label: '# of Votes',
+        label: ticker,
         data: yAxis,
         borderWidth: 1
       }]
