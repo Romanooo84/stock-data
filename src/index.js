@@ -1,5 +1,5 @@
-import { lineChart } from "./js/graph";
-import { historicalStockData, dailyStockData, exchangeList } from "./js/import_data";
+import { lineChart } from "./js/graph.js";
+import { historicalStockData, dailyStockData, exchangeList } from "./js/import_data.js";
 
 const token = '65fe0a1382dc25.48851936';
 const exchange = 'WAR';
