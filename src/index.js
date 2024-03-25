@@ -33,6 +33,6 @@ historicalStockData(index, token)
     console.log("Wartość xAxis:", data.xAxis);
   })
   .then(dailyStockData(index, token))
-  .then(dailyData => console.log('Dane codzienne:',dailyData))
+  .then(dailyData => console.log(dailyData))
   .catch(error => console.error(error));
 
