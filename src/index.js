@@ -1,18 +1,20 @@
 import { lineChart, dataGraph, updateChart, removeData } from "./js/graph.js";
 import { historicalStockData, dailyStockData, exchangeList, interdayData } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
+import './js/select.js'
 
 const token = '65fd2d716aebf2.80647901';
-const exchange = 'WAR';
-const ticker = 'ETFBW20LV';
+const exchange = 'US';
+const ticker = 'AAPL';
 const index = ticker.concat('.', exchange)
 ctx = document.getElementById('myChart');
 let chartData
 
 // pobranie danych o giełdach
-exchangeList(token)
+/*exchangeList(token)
  .then(exchangeData => console.log(exchangeData))
  .catch(error => console.error(error));
+*/
 
  //pobieranie danych historycznych z interwałem
 interdayData(index, token)
@@ -35,6 +37,7 @@ historicalStockData(index, token)
   .then(()=> {
     dailyStockData(index, token)
       .then(dailyData => {
+        console.log(dailyData)
         dataGraph(dailyData, chartData)
         particularData('currentData', ticker, dailyData.change_p)
         lineChart(chartData.xAxis, chartData.yAxis, ticker)
