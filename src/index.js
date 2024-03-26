@@ -51,4 +51,4 @@ const timerId = setInterval(() => {
         particularData('currentData', ticker, dailyData.change_p)
     console.log('updated')
       })
-}, 50000);
+}, 60000);
