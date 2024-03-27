@@ -16,21 +16,7 @@ for (let i = 0; i < exchangeListJson.length; i++){
 
 new SlimSelect({
   select: '#select',
+  {'placeholder': true, 'text': 'Select the stock exchange'}
   data: selectLabels
-    /*{
-      label: 'Animals',
-      options: [
-        {text: 'Cat'},
-        {text: 'Dog'},
-        {text: 'Bird'}
-      ]
-    },
-    {
-      label: 'Animals',
-      options: [
-        {text: 'Cat'},
-        {text: 'Dog'},
-        {text: 'Bird'}
-      ]
-    }*/
+  
       })
