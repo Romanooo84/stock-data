@@ -27,8 +27,8 @@ historicalStockData(index, token)
     chartData = {
       yAxis: [],
       xAxis: []
-      console.log(historicalData)
     };
+     console.log(historicalData)
     // wstawienie danych do listy danych osi x i y
     for (let i = 0; i < historicalData.length; i++) {
       chartData.yAxis.push(historicalData[i].close);
