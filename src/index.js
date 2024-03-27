@@ -7,7 +7,7 @@ const token = '65fd2d716aebf2.80647901';
 const exchange = 'US';
 const ticker = 'AAPL';
 const index = ticker.concat('.', exchange)
-ctx = document.getElementById('myChart');
+let ctx = document.getElementById('myChart');
 let chartData
 
 // pobranie danych o giełdach
