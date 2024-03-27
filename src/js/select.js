@@ -6,6 +6,7 @@ console.log(exchangeListJson[0].Code)
 let selectLabels = []
 
 for (let i = 0; i < exchangeListJson.length; i++){
+  console.log(`https://eodhd.com/api/exchange-symbol-list/${exchangeListJson[i].Code}?api_token=65fd2d716aebf2.80647901&fmt=json`)
   fetch(`https://eodhd.com/api/exchange-symbol-list/${exchangeListJson[i].Code}?api_token=65fd2d716aebf2.80647901&fmt=json`)
     .then(data => data.json())
     .then(data=> JSON.stringify(data))
