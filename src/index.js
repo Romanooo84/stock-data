@@ -9,6 +9,7 @@ const ticker = 'AAPL';
 const index = ticker.concat('.', exchange)
 let ctx = document.getElementById('myChart');
 let chartData
+let newDataChart
 
 // pobranie danych o giełdach
 /*exchangeList(token)
@@ -40,7 +41,7 @@ historicalStockData(index, token)
         console.log(dailyData)
         dataGraph(dailyData, chartData)
         particularData('currentData', ticker, dailyData.change_p)
-        lineChart(chartData.xAxis, chartData.yAxis, ticker)
+        newDataChart=lineChart(chartData.xAxis, chartData.yAxis, ticker)
       })
   })
 
@@ -54,6 +55,7 @@ const timerId = setInterval(() => {
     dataGraph(dailyData, chartData)
     particularData('currentData', ticker, dailyData.change_p)
   })
+  
   newDataChart.options.animation = false;
   newDataChart.update()
 
