@@ -2,7 +2,7 @@
 export function lineChart(xAxis, yAxis, ticker) {
   const ctx = document.getElementById('myChart');
 
-  newDataChart = new Chart(ctx, {
+  let newDataChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: xAxis,
