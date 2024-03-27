@@ -20,10 +20,11 @@ let select2=new SlimSelect({
 
 selectEx.addEventListener('change', function (event) {
   event.preventDefault()
-  console.log(select2Options)
   let selectedEx=selectEx.options[selectEx.selectedIndex].value
   for (let i = 0; i < exchangeListJson.length;i++)
     if (exchangeListJson[i].Name === selectedEx) {
+      select2Options = []
+      select2.setData(select2Options)
       exchangeCode = exchangeListJson[i].Code
       fetch(`https://eodhd.com/api/exchange-symbol-list/${exchangeCode}?api_token=65fd2d716aebf2.80647901&fmt=json`)
         .then(data => data.json())
