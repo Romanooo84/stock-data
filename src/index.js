@@ -7,7 +7,7 @@ const token = '65fd2d716aebf2.80647901';
 const exchange = 'US';
 const ticker = 'AAPL';
 const index = ticker.concat('.', exchange)
-let ctx = document.getElementById('myChart');
+let select = document.getElementById('select');
 let chartData
 let newDataChart
 
@@ -28,7 +28,6 @@ historicalStockData(index, token)
       yAxis: [],
       xAxis: []
     };
-     console.log(historicalData)
     // wstawienie danych do listy danych osi x i y
     for (let i = 0; i < historicalData.length; i++) {
       chartData.yAxis.push(historicalData[i].close);
@@ -39,7 +38,6 @@ historicalStockData(index, token)
   .then(()=> {
     dailyStockData(index, token)
       .then(dailyData => {
-        console.log(dailyData)
         dataGraph(dailyData, chartData)
         particularData('currentData', ticker, dailyData.change_p)
         newDataChart=lineChart(chartData.xAxis, chartData.yAxis, ticker)
@@ -47,8 +45,10 @@ historicalStockData(index, token)
   })
 
 let button = document.querySelector('.button')
-console.log(button)
-button.addEventListener('click', function () { console.log(chartData) })
+button.addEventListener('click', function (event) {
+  event.preventDefault()
+  console.log(chartData)
+})
   
 const timerId = setInterval(() => { 
   dailyStockData(index, token)
@@ -62,4 +62,9 @@ const timerId = setInterval(() => {
 
 }, 10000);
 
-  
+/*select.addEventListener('change', function (event) {
+  event.preventDefault()
+  console.log(select.options[select.selectedIndex].value)
+})*/
+
+

@@ -1,21 +1,23 @@
 
 import { exchangeListJson } from "./exchange_list.js";
 
-console.log(exchangeListJson[0].Code)
-
-let selectLabels = [{'placeholder': true, 'text': 'Select the stock exchange'}]
+let select1Options = [{ 'placeholder': true, 'text': 'Select the stock exchange' }]
+let select2Options = []
 
 for (let i = 0; i < exchangeListJson.length; i++){
-  console.log(`https://eodhd.com/api/exchange-symbol-list/${exchangeListJson[i].Code}?api_token=65fd2d716aebf2.80647901&fmt=json`)
- selectLabels.push({text:`${exchangeListJson[i].Name}`})
+  select1Options.push({ text: `${exchangeListJson[i].Name}` })
 }
 
+let select1=new SlimSelect({
+  select: '#select1',
+  data: select1Options
+})
 
+let select2=new SlimSelect({
+  select: '#select2',
+  data: select2Options
+})
 
+return {select1, select2}
 
-
-new SlimSelect({
-  select: '#select',
-  data: selectLabels
-  
-      })
+      
