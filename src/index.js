@@ -1,13 +1,13 @@
 import { lineChart, dataGraph, updateChart, removeData } from "./js/graph.js";
 import { historicalStockData, dailyStockData, exchangeList, interdayData } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
+import { exchangeListJson } from "./js/exchange_list.js";
 import './js/select.js'
 
 const token = '65fd2d716aebf2.80647901';
 const exchange = 'US';
 const ticker = 'AAPL';
 const index = ticker.concat('.', exchange)
-let select = document.getElementById('select');
 let chartData
 let newDataChart
 
@@ -62,9 +62,6 @@ const timerId = setInterval(() => {
 
 }, 10000);
 
-/*select.addEventListener('change', function (event) {
-  event.preventDefault()
-  console.log(select.options[select.selectedIndex].value)
-})*/
+
 
 
