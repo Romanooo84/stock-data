@@ -90,4 +90,4 @@ export function createGraph(historicalStockData, dailyStockData, index, token, t
           return chartData;
         });
     })
-  
+}
