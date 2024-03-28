@@ -1,7 +1,7 @@
 import { exchangeListJson } from "./exchange_list.js";
 export let selectEx = document.getElementById('select1');
-let select1Options = [{ 'placeholder': true, 'text': 'Select the stock exchange' }]
-let select2Options = []
+export let select1Options = [{ 'placeholder': true, 'text': 'Select the stock exchange' }]
+export let select2Options = []
 
 for (let i = 0; i < exchangeListJson.length; i++){
   select1Options.push({ text: `${exchangeListJson[i].Name}` })
