@@ -1,11 +1,11 @@
-import { lineChart, dataGraph, updateChart, removeData, createGraph, newDataChart } from "./js/graph.js";
+import { lineChart, dataGraph, updateChart, removeData, createGraph } from "./js/graph.js";
 import { historicalStockData, dailyStockData, exchangeList, interdayData } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
 import { selectEx, select2 } from "./js/select.js";
 import './js/select.js'
 
-const token = '65fd2d716aebf2.80647901';
+const token = '65fd2d716aebf2.80647901'
 const exchange = 'US';
 const ticker = 'AAPL';
 const index = ticker.concat('.', exchange)
