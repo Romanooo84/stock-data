@@ -19,7 +19,7 @@ let newDataChart
 */
 
  //pobieranie danych historycznych z interwałem
-interdayData(index, token)
+//interdayData(index, token)
 
 //wyświetlenie wykresu danych historycznych
 historicalStockData(index, token)
