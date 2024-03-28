@@ -10,6 +10,7 @@ const token = '65fd2d716aebf2.80647901';
 const exchange = 'V';
 const ticker = 'AAA-P';
 const index = ticker.concat('.', exchange)
+let tickerList
 
 // pobranie danych o giełdach
 /*exchangeList(token)
@@ -51,19 +52,22 @@ selectEx.addEventListener('change', function (event) {
         fetch(`https://eodhd.com/api/exchange-symbol-list/${exchange}?api_token=65fd2d716aebf2.80647901&fmt=json`)
           .then(data => data.json())
           .then(data => {
+            tickerList=data
             for (let i = 0; i < data.length; i++) {
               select2Options.push({ text: `${data[i].Name}` })
             }
-            return (select2Options)
+            select2.setData(select2Options)
+            return (tickerList)
           })
-          .then(select2Options => select2.setData(select2Options)) 
   }
 })
 
-selectTicker.addEventListener('change', function (event) {
-  event.preventDefault()
-  if (selectTicker.options[selectTicker.selectedIndex] != undefined) {
-    let selectedTicker = selectTicker.options[selectTicker.selectedIndex].value
-    console.log(selectedTicker)
-  }
-})
+selectTicker.addEventListener('change', (event) => {
+  event.preventDefault();
+  
+    if (selectTicker.options[selectTicker.selectedIndex] != undefined) {
+      let selectedTicker = selectTicker.options[selectTicker.selectedIndex].value;
+      console.log(selectedTicker)
+      console.log(tickerList)
+    }
+  })
