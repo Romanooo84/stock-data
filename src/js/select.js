@@ -1,5 +1,6 @@
 import { exchangeListJson } from "./exchange_list.js";
 export let selectEx = document.getElementById('select1');
+export let selectTicker= document.getElementById('select2');
 export let select1Options = [{ 'placeholder': true, 'text': 'Select the stock exchange' }]
 export let select2Options = [{ 'placeholder': true, 'text': 'First select the stock exchange' }]
 

@@ -2,7 +2,7 @@ import { lineChart, dataGraph, updateChart, removeData, createGraph } from "./js
 import { historicalStockData, dailyStockData, exchangeList, interdayData } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
-import { selectEx, select2 } from "./js/select.js";
+import { selectEx, select2, selectTicker} from "./js/select.js";
 import './js/select.js'
 import {us} from './js/exchange_tickers/us.js'
 
@@ -47,8 +47,8 @@ selectEx.addEventListener('change', function (event) {
     if (exchangeListJson[i].Name === selectedEx) {
       let select2Options = []
       select2.setData(select2Options)
-      let exchangeCode = exchangeListJson[i].Code
-        fetch(`https://eodhd.com/api/exchange-symbol-list/${exchangeCode}?api_token=65fd2d716aebf2.80647901&fmt=json`)
+      let exchange = exchangeListJson[i].Code
+        fetch(`https://eodhd.com/api/exchange-symbol-list/${exchange}?api_token=65fd2d716aebf2.80647901&fmt=json`)
           .then(data => data.json())
           .then(data => {
             for (let i = 0; i < data.length; i++) {
@@ -56,7 +56,14 @@ selectEx.addEventListener('change', function (event) {
             }
             return (select2Options)
           })
-          .then(select2Options => select2.setData(select2Options))
-      
+          .then(select2Options => select2.setData(select2Options)) 
+  }
+})
+
+selectTicker.addEventListener('change', function (event) {
+  event.preventDefault()
+  if (selectTicker.options[selectTicker.selectedIndex] != undefined) {
+    let selectedTicker = selectTicker.options[selectTicker.selectedIndex].value
+    console.log(selectedTicker)
   }
 })
