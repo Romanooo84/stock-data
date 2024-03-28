@@ -47,7 +47,7 @@ historicalStockData(index, token)
   })
 }
 
-function createGraph()
+createGraph()
 
 let button = document.querySelector('.button')
 button.addEventListener('click', function (event) {
