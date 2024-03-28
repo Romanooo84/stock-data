@@ -1,4 +1,4 @@
-import { lineChart, dataGraph, updateChart, removeData, createGraph } from "./js/graph.js";
+import { lineChart, dataGraph, updateChart, removeData, createGraph, newDataChart } from "./js/graph.js";
 import { historicalStockData, dailyStockData, exchangeList, interdayData } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
