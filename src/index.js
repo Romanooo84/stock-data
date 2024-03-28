@@ -1,16 +1,16 @@
-import { lineChart, dataGraph, updateChart, removeData, createGraph } from "./js/graph.js";
+import { lineChart, dataGraph, updateChart, removeData } from "./js/graph.js";
 import { historicalStockData, dailyStockData, exchangeList, interdayData } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
 import { selectEx, select2 } from "./js/select.js";
 import './js/select.js'
 
-const token = '65fd2d716aebf2.80647901'
+const token = '65fd2d716aebf2.80647901';
 const exchange = 'US';
 const ticker = 'AAPL';
-const index = ticker.concat('.', exchange);
-let newDataChart;
-let chartData;
+const index = ticker.concat('.', exchange)
+let chartData
+let newDataChart
 
 // pobranie danych o giełdach
 /*exchangeList(token)
@@ -21,6 +21,31 @@ let chartData;
  //pobieranie danych historycznych z interwałem
 //interdayData(index, token)
 
+function createGraph(){
+//wyświetlenie wykresu danych historycznych
+historicalStockData(index, token)
+  .then(historicalData => {
+    // zainicjowanie listy danych dla osi x i y
+    chartData = {
+      yAxis: [],
+      xAxis: []
+    };
+    // wstawienie danych do listy danych osi x i y
+    for (let i = 0; i < historicalData.length; i++) {
+      chartData.yAxis.push(historicalData[i].close);
+      chartData.xAxis.push(historicalData[i].date);
+    }
+    return { chartData }
+  })
+  .then(()=> {
+    dailyStockData(index, token)
+      .then(dailyData => {
+        dataGraph(dailyData, chartData)
+        particularData('currentData', ticker, dailyData.change_p)
+        newDataChart=lineChart(chartData.xAxis, chartData.yAxis, ticker)
+      })
+  })
+}
 
 createGraph()
 
@@ -61,37 +86,3 @@ selectEx.addEventListener('change', function (event) {
         .then(select2Options=>select2.setData(select2Options))
   }
 })
-
-function createGraph(){
-  // Pobranie danych historycznych
-  return historicalStockData(index, token)
-    .then(historicalData => {
-      // Inicjalizacja danych wykresu
-      const chartData = {
-        yAxis: [],
-        xAxis: []
-      };
-      // Wypełnienie danych wykresu
-      for (let i = 0; i < historicalData.length; i++) {
-        chartData.yAxis.push(historicalData[i].close);
-        chartData.xAxis.push(historicalData[i].date);
-      }
-      // Pobranie danych dziennych
-      return dailyStockData(index, token)
-        .then(dailyData => {
-          // Wywołanie funkcji generującej wykres
-          lineChart(chartData.xAxis, chartData.yAxis, ticker);
-          // Wywołanie funkcji przetwarzającej konkretne dane
-          particularData('currentData', ticker, dailyData.change_p);
-          // Przekazanie danych wykresu do funkcji dataGraph
-          dataGraph(dailyData, chartData);
-          // Zwrócenie danych wykresu
-          return chartData;
-        });
-    })
-}
-
-
-
-
-

@@ -60,34 +60,3 @@ export function dataGraph(dailyData, historicalData) {
     historicalData.yAxis.push(dailyData.close)
   }
 }
-
-//Tworzenie wykresu
-
-export function createGraph(historicalStockData, dailyStockData, index, token, ticker){
-  // Pobranie danych historycznych
-  return historicalStockData(index, token)
-    .then(historicalData => {
-      // Inicjalizacja danych wykresu
-      const chartData = {
-        yAxis: [],
-        xAxis: []
-      };
-      // Wypełnienie danych wykresu
-      for (let i = 0; i < historicalData.length; i++) {
-        chartData.yAxis.push(historicalData[i].close);
-        chartData.xAxis.push(historicalData[i].date);
-      }
-      // Pobranie danych dziennych
-      return dailyStockData(index, token)
-        .then(dailyData => {
-          // Wywołanie funkcji generującej wykres
-          lineChart(chartData.xAxis, chartData.yAxis, ticker);
-          // Wywołanie funkcji przetwarzającej konkretne dane
-          particularData('currentData', ticker, dailyData.change_p);
-          // Przekazanie danych wykresu do funkcji dataGraph
-          dataGraph(dailyData, chartData);
-          // Zwrócenie danych wykresu
-          return chartData;
-        });
-    })
-}
