@@ -1,3 +1,5 @@
+import { historicalStockData, dailyStockData, exchangeList, interdayData } from "./import_data.js";
+import { particularData } from "./particular_data.js";
 
 export function lineChart(xAxis, yAxis, ticker) {
   const ctx = document.getElementById('myChart');
@@ -56,7 +58,32 @@ export function dataGraph(dailyData, historicalData) {
   }
   else if (currentDate === lastAxisDate) {
     historicalData.yAxis.pop()
-    console.log(dailyData.close)
     historicalData.yAxis.push(dailyData.close)
   }
+}
+
+export function createGraph(index, token, ticker){
+//wyświetlenie wykresu danych historycznych
+historicalStockData(index, token)
+  .then(historicalData => {
+    // zainicjowanie listy danych dla osi x i y
+    chartData = {
+      yAxis: [],
+      xAxis: []
+    };
+    // wstawienie danych do listy danych osi x i y
+    for (let i = 0; i < historicalData.length; i++) {
+      chartData.yAxis.push(historicalData[i].close);
+      chartData.xAxis.push(historicalData[i].date);
+    }
+    return chartData 
+  })
+  .then(()=> {
+    dailyStockData(index, token)
+      .then(dailyData => {
+        dataGraph(dailyData, chartData)
+        particularData('currentData', ticker, dailyData.change_p)
+      })
+      .then(()=>newDataChart=lineChart(chartData.xAxis, chartData.yAxis, ticker))
+  })
 }
