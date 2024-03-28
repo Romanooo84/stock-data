@@ -63,7 +63,7 @@ export function dataGraph(dailyData, historicalData) {
 
 //Tworzenie wykresu
 
-export function createGraph(historicalStockData){
+export function createGraph(historicalStockData, index, token){
   //wyświetlenie wykresu danych historycznych
   historicalStockData(index, token)
     .then(historicalData => {
