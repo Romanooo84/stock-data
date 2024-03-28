@@ -70,7 +70,7 @@ selectEx.addEventListener('change', function (event) {
     if (exchangeListJson[i].Name === selectedEx) {
       let select2Options = []
       select2.setData(select2Options)
-      exchangeCode = exchangeListJson[i].Code
+      let exchangeCode = exchangeListJson[i].Code
       fetch(`https://eodhd.com/api/exchange-symbol-list/${exchangeCode}?api_token=65fd2d716aebf2.80647901&fmt=json`)
         .then(data => data.json())
         .then(data => {
