@@ -31,13 +31,13 @@ button.addEventListener('click', function (event) {
 })
   
 
-  const timerId = setInterval(() => { 
+const timerId = setInterval(() => { 
   dailyStockData(index, token)
     .then(dailyData => {
       dataGraph(dailyData, chartData)
       particularData('currentData', ticker, dailyData.change_p)     
     })
-}, 20000);
+}, 60000);
 
 
 selectEx.addEventListener('change', function (event) {
