@@ -78,7 +78,7 @@ historicalStockData(index, token)
     }
     return chartData 
   })
-  .then(()=> {
+  .then((chartData)=> {
     dailyStockData(index, token)
       .then(dailyData => {
         dataGraph(dailyData, chartData)
