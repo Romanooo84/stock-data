@@ -22,7 +22,7 @@ let newDataChart
 //interdayData(index, token)
 
 
-createGraph()
+createGraph(historicalStockData, dailyStockData, index, token, ticker)
 
 let button = document.querySelector('.button')
 button.addEventListener('click', function (event) {
@@ -61,6 +61,8 @@ selectEx.addEventListener('change', function (event) {
         .then(select2Options=>select2.setData(select2Options))
   }
 })
+
+
 
 
 
