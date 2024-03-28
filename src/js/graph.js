@@ -67,7 +67,7 @@ export function createGraph(index, token, ticker){
 historicalStockData(index, token)
   .then(historicalData => {
     // zainicjowanie listy danych dla osi x i y
-    chartData = {
+    let chartData = {
       yAxis: [],
       xAxis: []
     };
