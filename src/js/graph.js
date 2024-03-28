@@ -60,3 +60,32 @@ export function dataGraph(dailyData, historicalData) {
     historicalData.yAxis.push(dailyData.close)
   }
 }
+
+//Tworzenie wykresu
+
+function createGraph(){
+  //wyświetlenie wykresu danych historycznych
+  historicalStockData(index, token)
+    .then(historicalData => {
+      // zainicjowanie listy danych dla osi x i y
+      chartData = {
+        yAxis: [],
+        xAxis: []
+      };
+      // wstawienie danych do listy danych osi x i y
+      for (let i = 0; i < historicalData.length; i++) {
+        chartData.yAxis.push(historicalData[i].close);
+        chartData.xAxis.push(historicalData[i].date);
+      }
+      return { chartData }
+    })
+    .then(()=> {
+      dailyStockData(index, token)
+        .then(dailyData => {
+          dataGraph(dailyData, chartData)
+          particularData('currentData', ticker, dailyData.change_p)
+          newDataChart=lineChart(chartData.xAxis, chartData.yAxis, ticker)
+        })
+    })
+  }
+  
