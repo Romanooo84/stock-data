@@ -8,8 +8,9 @@ import './js/select.js'
 const token = '65fd2d716aebf2.80647901'
 const exchange = 'US';
 const ticker = 'AAPL';
-const index = ticker.concat('.', exchange)
-let chartData
+const index = ticker.concat('.', exchange);
+let newDataChart;
+let chartData;
 
 // pobranie danych o giełdach
 /*exchangeList(token)
