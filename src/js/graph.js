@@ -63,29 +63,31 @@ export function dataGraph(dailyData, historicalData) {
 
 //Tworzenie wykresu
 
-export function createGraph(historicalStockData, index, token){
-  //wyświetlenie wykresu danych historycznych
-  historicalStockData(index, token)
+export function createGraph(historicalStockData, dailyStockData, index, token, ticker){
+  // Pobranie danych historycznych
+  return historicalStockData(index, token)
     .then(historicalData => {
-      // zainicjowanie listy danych dla osi x i y
-      chartData = {
+      // Inicjalizacja danych wykresu
+      const chartData = {
         yAxis: [],
         xAxis: []
       };
-      // wstawienie danych do listy danych osi x i y
+      // Wypełnienie danych wykresu
       for (let i = 0; i < historicalData.length; i++) {
         chartData.yAxis.push(historicalData[i].close);
         chartData.xAxis.push(historicalData[i].date);
       }
-      return { chartData }
-    })
-    .then(()=> {
-      dailyStockData(index, token)
+      // Pobranie danych dziennych
+      return dailyStockData(index, token)
         .then(dailyData => {
-          dataGraph(dailyData, chartData)
-          particularData('currentData', ticker, dailyData.change_p)
-          newDataChart=lineChart(chartData.xAxis, chartData.yAxis, ticker)
-        })
+          // Wywołanie funkcji generującej wykres
+          lineChart(chartData.xAxis, chartData.yAxis, ticker);
+          // Wywołanie funkcji przetwarzającej konkretne dane
+          particularData('currentData', ticker, dailyData.change_p);
+          // Przekazanie danych wykresu do funkcji dataGraph
+          dataGraph(dailyData, chartData);
+          // Zwrócenie danych wykresu
+          return chartData;
+        });
     })
-  }
   
