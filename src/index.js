@@ -21,6 +21,7 @@ let newDataChart
  //pobieranie danych historycznych z interwałem
 //interdayData(index, token)
 
+function createGraph(){
 //wyświetlenie wykresu danych historycznych
 historicalStockData(index, token)
   .then(historicalData => {
@@ -44,6 +45,9 @@ historicalStockData(index, token)
         newDataChart=lineChart(chartData.xAxis, chartData.yAxis, ticker)
       })
   })
+}
+
+function createGraph()
 
 let button = document.querySelector('.button')
 button.addEventListener('click', function (event) {
