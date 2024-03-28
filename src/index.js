@@ -2,7 +2,7 @@ import { lineChart, dataGraph, updateChart, removeData } from "./js/graph.js";
 import { historicalStockData, dailyStockData, exchangeList, interdayData } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
-import { selectEx, select2 } from "./js/select.js";
+import { selectEx, select2, select2Options } from "./js/select.js";
 import './js/select.js'
 
 const token = '65fd2d716aebf2.80647901';
