@@ -21,7 +21,7 @@ let chartData
 //interdayData(index, token)
 
 
-createGraph(historicalStockData, dailyStockData, index, token, ticker)
+createGraph()
 
 let button = document.querySelector('.button')
 button.addEventListener('click', function (event) {
@@ -61,6 +61,34 @@ selectEx.addEventListener('change', function (event) {
   }
 })
 
+function createGraph(){
+  // Pobranie danych historycznych
+  return historicalStockData(index, token)
+    .then(historicalData => {
+      // Inicjalizacja danych wykresu
+      const chartData = {
+        yAxis: [],
+        xAxis: []
+      };
+      // Wypełnienie danych wykresu
+      for (let i = 0; i < historicalData.length; i++) {
+        chartData.yAxis.push(historicalData[i].close);
+        chartData.xAxis.push(historicalData[i].date);
+      }
+      // Pobranie danych dziennych
+      return dailyStockData(index, token)
+        .then(dailyData => {
+          // Wywołanie funkcji generującej wykres
+          lineChart(chartData.xAxis, chartData.yAxis, ticker);
+          // Wywołanie funkcji przetwarzającej konkretne dane
+          particularData('currentData', ticker, dailyData.change_p);
+          // Przekazanie danych wykresu do funkcji dataGraph
+          dataGraph(dailyData, chartData);
+          // Zwrócenie danych wykresu
+          return chartData;
+        });
+    })
+}
 
 
 
