@@ -10,7 +10,6 @@ const exchange = 'US';
 const ticker = 'AAPL';
 const index = ticker.concat('.', exchange)
 let chartData
-let newDataChart
 
 // pobranie danych o giełdach
 /*exchangeList(token)
