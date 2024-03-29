@@ -32,16 +32,6 @@ button.addEventListener('click', function (event) {
 })
   
 
-const timerId = setInterval((chartData) => { 
-  console.log(chartData)
-  dailyStockData(index, token)
-    .then((dailyData, chartData) => {
-      dataGraph(dailyData, chartData)
-      particularData('currentData', ticker, dailyData.change_p)     
-    })
-}, 60000);
-
-
 selectEx.addEventListener('change', function (event) {
   event.preventDefault()
   let selectedEx=selectEx.options[selectEx.selectedIndex].value

@@ -86,4 +86,15 @@ historicalStockData(index, token)
       })
       .then((newDataChart)=>newDataChart=lineChart(chartData.xAxis, chartData.yAxis, ticker))
   })
+  const timerId = setInterval(() => {
+    dailyStockData(index, token)
+      .then(dailyData => {
+        dataGraph(dailyData, chartData);
+        particularData('currentData', ticker, dailyData.change_p);
+      })
+      .catch(error => {
+        console.error('Error in setInterval:', error);
+        clearInterval(timerId); // zatrzymaj interval w przypadku błędu
+      });
+  }, 60000);
 }
