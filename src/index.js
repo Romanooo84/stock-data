@@ -32,7 +32,7 @@ button.addEventListener('click', function (event) {
 })
   
 
-const timerId = setInterval(() => { 
+const timerId = setInterval((chartData) => { 
   dailyStockData(index, token)
     .then((dailyData, chartData) => {
       dataGraph(dailyData, chartData)
