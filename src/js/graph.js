@@ -94,7 +94,6 @@ export function createGraph(index, token, ticker) {
         .then(() => {
           // Uruchomienie interwału dla codziennych danych giełdowych
           const timerId = setInterval(() => {
-            console.log('start')
             dailyStockData(index, token)
               .then(dailyData => {
                 // Wyświetlenie danych graficznych
