@@ -1,4 +1,4 @@
-import { lineChart, dataGraph, updateChart, removeData, createGraph } from "./js/graph.js";
+import { lineChart, dataGraph, updateChart, removeData, createGraph,graphDelete} from "./js/graph.js";
 import { historicalStockData, dailyStockData, exchangeList, interdayData } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
@@ -7,10 +7,12 @@ import './js/select.js'
 import {us} from './js/exchange_tickers/us.js'
 
 const token = '65fd2d716aebf2.80647901';
-const exchange = 'WAR';
-const ticker = 'ACP';
-const index = ticker.concat('.', exchange)
+let exchange = 'WAR';
+let ticker = 'ACP';
+let index = ticker.concat('.', exchange)
 let tickerList
+let wykres
+
 
 // pobranie danych o giełdach
 /*exchangeList(token)
@@ -24,11 +26,20 @@ let tickerList
 
 
 createGraph(index, token, ticker)
+  .then(newDataChart => {
+  wykres = newDataChart
+  return wykres})
  
 
 let button = document.querySelector('.button')
-button.addEventListener('click', function (event) {
+button.addEventListener('click', function (event,) {
   event.preventDefault()
+  console.log(wykres)
+  graphDelete(wykres)
+  createGraph(index, token, ticker)
+  .then(newDataChart => {
+  wykres = newDataChart
+  return wykres})
 })
   
 
@@ -55,10 +66,18 @@ selectEx.addEventListener('change', function (event) {
 
 selectTicker.addEventListener('change', (event) => {
   event.preventDefault();
-  
     if (selectTicker.options[selectTicker.selectedIndex] != undefined) {
       let selectedTicker = selectTicker.options[selectTicker.selectedIndex].value;
-      console.log(selectedTicker)
-      console.log(tickerList)
+      console.log(tickerList[0].Name)
+      for (let i = 0; i <= tickerList.length;  i++){
+        if (selectedTicker != tickerList[i].Name) {
+        }
+        else {
+          ticker=tickerList[i].Code
+          exchange = tickerList[i].Exchange
+          index = ticker.concat('.', exchange)
+          console.log(index)
+        }
+      }
     }
   })
