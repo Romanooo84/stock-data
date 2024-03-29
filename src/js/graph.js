@@ -105,7 +105,7 @@ export function createGraph(index, token, ticker) {
                 console.error('Error in setInterval:', error);
                 clearInterval(timerId); // Zatrzymaj interwał w przypadku błędu
               });
-          }, 1000);
+          }, 60000);
         })
         .catch(error => {
           console.error('Error in createGraph:', error);
