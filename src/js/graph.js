@@ -81,7 +81,7 @@ historicalStockData(index, token)
   .then((chartData, newDataChart)=> {
     dailyStockData(index, token)
       .then(dailyData => {
-        dataGraph(dailyData)
+        dataGraph(dailyData, chartData)
         particularData('currentData', ticker, dailyData.change_p)
       })
       .then((newDataChart)=>newDataChart=lineChart(chartData.xAxis, chartData.yAxis, ticker))
