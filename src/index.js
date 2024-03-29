@@ -8,7 +8,7 @@ import {us} from './js/exchange_tickers/us.js'
 
 const token = '65fd2d716aebf2.80647901';
 const exchange = 'WAR';
-const ticker = 'ALE';
+const ticker = 'ACP';
 const index = ticker.concat('.', exchange)
 let tickerList
 
