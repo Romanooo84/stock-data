@@ -5,7 +5,7 @@ export let select1Options = [{ 'placeholder': true, 'text': 'Select the stock ex
 export let select2Options = [{ 'placeholder': true, 'text': 'First select the stock exchange' }]
 
 for (let i = 0; i < exchangeListJson.length; i++){
-  select1Options.push({ text: `${exchangeListJson[i].Exchange}` })
+  select1Options.push({ text: `${exchangeListJson[i].Name}` })
 }
 
 let select1=new SlimSelect({
