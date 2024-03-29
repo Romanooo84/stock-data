@@ -54,7 +54,7 @@ selectEx.addEventListener('change', function (event) {
           .then(data => {
             tickerList=data
             for (let i = 0; i < data.length; i++) {
-              select2Options.push({ text: `${data[i].Name}` })
+              select2Options.push({ text: `${data[i].Exchange}` })
             }
             select2.setData(select2Options)
             return (tickerList)
