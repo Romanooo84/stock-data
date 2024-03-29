@@ -62,39 +62,56 @@ export function dataGraph(dailyData, historicalData) {
   }
 }
 
-export function createGraph(index, token, ticker){
-//wyświetlenie wykresu danych historycznych
-historicalStockData(index, token)
-  .then(historicalData => {
-    // zainicjowanie listy danych dla osi x i y
-    let chartData = {
-      yAxis: [],
-      xAxis: []
-    };
-    // wstawienie danych do listy danych osi x i y
-    for (let i = 0; i < historicalData.length; i++) {
-      chartData.yAxis.push(historicalData[i].close);
-      chartData.xAxis.push(historicalData[i].date);
-    }
-    return chartData 
-  })
-  .then((chartData, newDataChart)=> {
-    dailyStockData(index, token)
-      .then(dailyData => {
-        dataGraph(dailyData, chartData)
-        particularData('currentData', ticker, dailyData.change_p)
-      })
-      .then((newDataChart)=>newDataChart=lineChart(chartData.xAxis, chartData.yAxis, ticker))
-  })
-  const timerId = setInterval(() => {
-    dailyStockData(index, token)
-      .then(dailyData => {
-        dataGraph(dailyData, chartData);
-        particularData('currentData', ticker, dailyData.change_p);
-      })
-      .catch(error => {
-        console.error('Error in setInterval:', error);
-        clearInterval(timerId); // zatrzymaj interval w przypadku błędu
-      });
-  }, 60000);
+export function createGraph(index, token, ticker) {
+  // Wyświetlenie wykresu danych historycznych
+  historicalStockData(index, token)
+    .then(historicalData => {
+      // Zainicjowanie listy danych dla osi x i y
+      let chartData = {
+        yAxis: [],
+        xAxis: []
+      };
+      // Wstawienie danych do listy danych osi x i y
+      for (let i = 0; i < historicalData.length; i++) {
+        chartData.yAxis.push(historicalData[i].close);
+        chartData.xAxis.push(historicalData[i].date);
+      }
+      return chartData;
+    })
+    .then(chartData => {
+      // Pobranie codziennych danych giełdowych
+      dailyStockData(index, token)
+        .then(dailyData => {
+          // Wyświetlenie danych graficznych
+          dataGraph(dailyData, chartData);
+          // Wyświetlenie szczególnych danych
+          particularData('currentData', ticker, dailyData.change_p);
+        })
+        .then(() => {
+          // Utworzenie wykresu liniowego
+          return lineChart(chartData.xAxis, chartData.yAxis, ticker);
+        })
+        .then(() => {
+          // Uruchomienie interwału dla codziennych danych giełdowych
+          const timerId = setInterval(() => {
+            dailyStockData(index, token)
+              .then(dailyData => {
+                // Wyświetlenie danych graficznych
+                dataGraph(dailyData, chartData);
+                // Wyświetlenie szczególnych danych
+                particularData('currentData', ticker, dailyData.change_p);
+              })
+              .catch(error => {
+                console.error('Error in setInterval:', error);
+                clearInterval(timerId); // Zatrzymaj interwał w przypadku błędu
+              });
+          }, 60000);
+        })
+        .catch(error => {
+          console.error('Error in createGraph:', error);
+        });
+    })
+    .catch(error => {
+      console.error('Error in createGraph:', error);
+    });
 }
