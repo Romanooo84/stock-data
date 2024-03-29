@@ -34,7 +34,7 @@ button.addEventListener('click', function (event) {
 
 const timerId = setInterval(() => { 
   dailyStockData(index, token)
-    .then(dailyData => {
+    .then((dailyData, chartData) => {
       dataGraph(dailyData, chartData)
       particularData('currentData', ticker, dailyData.change_p)     
     })
