@@ -1,10 +1,9 @@
-import { lineChart, dataGraph, updateChart, removeData, createGraph ,graphDelete, createAxis} from "./js/graph.js";
-import { historicalStockData, dailyStockData, exchangeList, interdayData, createDate } from "./js/import_data.js";
+import { lineChart, createAxis} from "./js/graph.js";
+import { historicalStockData, dailyStockData, createDate } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
 import { selectEx, select2, selectTicker} from "./js/select.js";
 import './js/select.js'
-import {us} from './js/exchange_tickers/us.js'
 
 let dailyData
 let historicalData
