@@ -11,6 +11,7 @@ let historicalData
 let newDataChart
 let chartData
 let endDate
+let tickerList
 
 const token = '65fd2d716aebf2.80647901';
 let exchange = 'WAR';
