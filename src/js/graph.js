@@ -5,7 +5,7 @@ import { particularData } from "./particular_data.js";
 export function lineChart(xAxis, yAxis, ticker) {
   const ctx = document.getElementById('myChart');
 
-  newDataChart = new Chart(ctx, {
+  let newDataChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: xAxis,
@@ -47,7 +47,7 @@ export function graphDelete(newDataChart) {
 
 export function createAxis(historicalData, dailyData) {
    // Zainicjowanie listy danych dla osi x i y
-      chartData = {
+      let chartData = {
         yAxis: [],
         xAxis: []
       };
