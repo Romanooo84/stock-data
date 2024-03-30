@@ -1,4 +1,4 @@
-import { lineChart, createAxis} from "./js/graph.js";
+import { lineChart, createAxis, createGraph, newDataChart} from "./js/graph.js";
 import { historicalStockData, dailyStockData, createDate } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
@@ -23,23 +23,7 @@ let startDate = new Date(today.getTime() - (days * 24 * 60 * 60 * 1000));
 endDate = createDate(today)
 startDate = createDate(startDate)
 
-historicalStockData(index, token, startDate, endDate)
-  .then(data => {
-    historicalData = data;
-    return dailyStockData(index, token);
-  })
-  .then(data => {
-    dailyData = data;
-    return particularData("currentData", index, dailyData)
-  })
-  .then(() => { return createAxis(historicalData, dailyData) })
-  .then(data => {
-    chartData = data
-    return lineChart(chartData.xAxis, chartData.yAxis, ticker)
-  })
-  .then(data => {
-    newDataChart=data
-  })
+createGraph(index, token, startDate, endDate, ticker) 
 
 
 let button = document.querySelector('.button')
