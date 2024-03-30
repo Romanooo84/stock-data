@@ -2,7 +2,7 @@ import { lineChart, createAxis} from "./js/graph.js";
 import { historicalStockData, dailyStockData, createDate } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
-import { selectEx, select2, selectTicker} from "./js/select.js";
+import { selectEx, select2, selectTicker, exchangeSymbols} from "./js/select.js";
 import './js/select.js'
 
 let dailyData
@@ -17,7 +17,7 @@ let exchange = 'WAR';
 let ticker = 'ACP';
 let index = ticker.concat('.', exchange)
 let today = new Date();
-let days = 360 
+let days = 30 
 let startDate = new Date(today.getTime() - (days * 24 * 60 * 60 * 1000));
 
 endDate = createDate(today)
@@ -68,39 +68,56 @@ button.addEventListener('click', function (event,) {
 
 selectEx.addEventListener('change', function (event) {
   event.preventDefault()
-  let selectedEx=selectEx.options[selectEx.selectedIndex].value
-  for (let i = 0; i < exchangeListJson.length; i++)
-    if (exchangeListJson[i].Name === selectedEx) {
-      let select2Options = []
-      select2.setData(select2Options)
-      let exchange = exchangeListJson[i].Code
+  let select2Options = []
+  let selectedEx = selectEx.options[selectEx.selectedIndex].value
+  if (!selectedEx.includes('Usa Stock:')) {
+    for (let i = 0; i < exchangeListJson.length; i++) {
+      if (exchangeListJson[i].Name === selectedEx) {
+        let exchange = exchangeListJson[i].Code
         fetch(`https://eodhd.com/api/exchange-symbol-list/${exchange}?api_token=65fd2d716aebf2.80647901&fmt=json`)
           .then(data => data.json())
           .then(data => {
-            tickerList=data
+            tickerList = data
             for (let i = 0; i < data.length; i++) {
               select2Options.push({ text: `${data[i].Name}` })
             }
             select2.setData(select2Options)
-            return (tickerList)
+            console.log(tickerList)
           })
+      }
+    }
   }
-})
+  else {
+    for (let i = 0; i < exchangeSymbols.length; i++) {
+      if (selectedEx.includes(exchangeSymbols[i].Exchange)) {
+            select2Options.push({ text: `${exchangeSymbols[i].Name}` })
+      }
+    }
+    tickerList = exchangeSymbols
+    console.log(tickerList)
+    select2.setData(select2Options)
+  }
+  })
 
-selectTicker.addEventListener('change', (event) => {
+  selectTicker.addEventListener('change', (event) => {
   event.preventDefault();
     if (selectTicker.options[selectTicker.selectedIndex] != undefined) {
       let selectedTicker = selectTicker.options[selectTicker.selectedIndex].value;
-      console.log(tickerList[0].Name)
       for (let i = 0; i < tickerList.length;  i++){
         if (selectedTicker != tickerList[i].Name) {
         }
         else {
-          ticker=tickerList[i].Code
-          exchange = tickerList[i].Exchange
+          ticker = tickerList[i].Code
+          if (tickerList[i].Country === 'USA') {
+            exchange = 'US'
+          }
+          else {
+            exchange = tickerList[i].Exchange
+          }
           index = ticker.concat('.', exchange)
-          console.log(index)
+
         }
       }
     }
   })
+

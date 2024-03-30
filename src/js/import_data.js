@@ -2,6 +2,7 @@
 export function historicalStockData(stockIndex,apiKey, startDate, endDate) {
   // url dla danych historycznych
   const url = `https://eodhd.com/api/eod/${stockIndex}?from=${startDate}&to=${endDate}&period=d&api_token=${apiKey}&fmt=json`;
+  console.log(`https://eodhd.com/api/eod/${stockIndex}?from=${startDate}&to=${endDate}&period=d&api_token=${apiKey}&fmt=json`)
 
   // Wywołujemy fetch na podanym URL
   return fetch(url)
@@ -15,7 +16,6 @@ export function historicalStockData(stockIndex,apiKey, startDate, endDate) {
     })
     .then(data => {
       let historicalData = data;
-      console.log(historicalData)
       return historicalData
     })
     .catch(error => {
@@ -63,6 +63,28 @@ export function exchangeList(apiKey) {
     .then(data => {
       let exchangeData = data;
       return exchangeData;
+    })
+    .catch(error => {
+      // W przypadku błędu, np. problemu z siecią, wyświetlamy komunikat o błędzie
+      console.error('There was a problem with your fetch operation:', error);
+    });
+}
+
+export function exchangeSymbolList(exchange,apiKey) {
+  const url = `https://eodhd.com/api/exchange-symbol-list/${exchange}?api_token=${apiKey}&fmt=json`
+   // Wywołujemy fetch na podanym URL
+  return fetch(url)
+    .then(response => {
+      // Sprawdzamy, czy odpowiedź jest poprawna
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      // Parsujemy odpowiedź jako JSON i zwracamy ją
+      return response.json();
+    })
+    .then(data => {
+      let exchangeSymbols = data;
+      return exchangeSymbols;
     })
     .catch(error => {
       // W przypadku błędu, np. problemu z siecią, wyświetlamy komunikat o błędzie
