@@ -14,7 +14,7 @@ export function historicalStockData(stockIndex,apiKey, startDate, endDate) {
       return response.json();
     })
     .then(data => {
-      historicalData = data;
+      let historicalData = data;
       console.log(historicalData)
       return historicalData
     })
