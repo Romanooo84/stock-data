@@ -5,7 +5,7 @@ import { particularData } from "./particular_data.js";
 export function lineChart(xAxis, yAxis, ticker) {
   const ctx = document.getElementById('myChart');
 
-  let newDataChart = new Chart(ctx, {
+  newDataChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: xAxis,
@@ -45,7 +45,24 @@ export function graphDelete(newDataChart) {
 
 // pobranie danych do wykresu
 
+export function createAxis(historicalData, dailyData) {
+   // Zainicjowanie listy danych dla osi x i y
+      chartData = {
+        yAxis: [],
+        xAxis: []
+      };
+      // Wstawienie danych do listy danych osi x i y
+      for (let i = 0; i < historicalData.length; i++) {
+            chartData.yAxis.push(historicalData[i].close);
+            chartData.xAxis.push(historicalData[i].date);
+        }
+      chartData.yAxis.push(dailyData.close);
+      chartData.xAxis.push(dailyData.date);
+      return chartData;
+    }
+
 export function dataGraph(dailyData, historicalData) {
+ 
   //przetworzenie bieżacej daty z unix na normalną
   let currentDateUnix = dailyData.timestamp // pobranie daty
   let currentDate = new Date(currentDateUnix * 1000) //przerobienie daty
@@ -65,6 +82,8 @@ export function dataGraph(dailyData, historicalData) {
     historicalData.yAxis.pop()
     historicalData.yAxis.push(dailyData.close)
   }
+  console.log(historicalData)
+  return historicalData
 }
 
 export function createGraph(index, token, ticker) {
@@ -88,18 +107,24 @@ export function createGraph(index, token, ticker) {
       return dailyStockData(index, token)
         .then(dailyData => {
           // Wyświetlenie danych graficznych
-          dataGraph(dailyData, chartData);
+          historicalData = dataGraph(dailyData, chartData)
           // Wyświetlenie szczególnych danych
           particularData('currentData', ticker, dailyData.change_p);
           // Utworzenie wykresu liniowego
-          return lineChart(chartData.xAxis, chartData.yAxis, ticker);
-        });
+          lineChart(chartData.xAxis, chartData.yAxis, ticker)
+          return { chartData: chartData, newDataChart: newDataChart }
+        })
     })
-    .then(newDataChart => {
+   .then(newDataChart => {
+   // Wyświetlenie newDataChart
+      return newDataChart; // Zwrócenie newDataChart na zewnątrz funkcji
+    })
+    .then(chartData => {
       // Uruchomienie interwału dla codziennych danych giełdowych
       const timerId = setInterval(() => {
         dailyStockData(index, token)
           .then(dailyData => {
+            
             // Wyświetlenie danych graficznych
             dataGraph(dailyData, chartData);
             // Wyświetlenie szczególnych danych
@@ -109,10 +134,9 @@ export function createGraph(index, token, ticker) {
             console.error('Error in setInterval:', error);
             clearInterval(timerId); // Zatrzymaj interwał w przypadku błędu
           });
-      }, 60000);
-
-      return newDataChart;
+      }, 1000);
     })
+    .then(newDataChart =>{return newDataChart})
     .catch(error => {
       console.error('Error in createGraph:', error);
     });

@@ -1,7 +1,7 @@
  //pobieranie danych historycznych
-export function historicalStockData(stockIndex,apiKey) {
+export function historicalStockData(stockIndex,apiKey, startDate, endDate) {
   // url dla danych historycznych
-  const url = `https://eodhd.com/api/eod/${stockIndex}?period=d&api_token=${apiKey}&fmt=json`;
+  const url = `https://eodhd.com/api/eod/${stockIndex}?from=${startDate}&to=${endDate}&period=d&api_token=${apiKey}&fmt=json`;
 
   // Wywołujemy fetch na podanym URL
   return fetch(url)
@@ -14,7 +14,8 @@ export function historicalStockData(stockIndex,apiKey) {
       return response.json();
     })
     .then(data => {
-      let historicalData = data;
+      historicalData = data;
+      console.log(historicalData)
       return historicalData
     })
     .catch(error => {
@@ -38,8 +39,7 @@ export function dailyStockData(stockIndex,apiKey) {
       return response.json();
     })
     .then(data => {
-      let dailyData = data;
-      return dailyData;
+      return data;
     })
     .catch(error => {
       // W przypadku błędu, np. problemu z siecią, wyświetlamy komunikat o błędzie
@@ -91,8 +91,14 @@ export function interdayData(stockIndex, apiKey) {
       // W przypadku błędu, np. problemu z siecią, wyświetlamy komunikat o błędzie
       console.error('There was a problem with your fetch operation:', error);
     });
-  
-  
+}
+
+export function createDate(date) {
+  const year = date.getFullYear();
+  const month = ('0' + (date.getMonth() + 1)).slice(-2); // Dodanie 1, bo getMonth() zwraca miesiące od 0 do 11, oraz formatowanie do dwóch cyfr
+  const day = ('0' + date.getDate()).slice(-2); // Formatowanie do dwóch cyfr
+  date = `${year}-${month}-${day}`;
+  return date
 }
 
 

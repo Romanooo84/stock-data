@@ -1,45 +1,68 @@
-import { lineChart, dataGraph, updateChart, removeData, createGraph,graphDelete} from "./js/graph.js";
-import { historicalStockData, dailyStockData, exchangeList, interdayData } from "./js/import_data.js";
+import { lineChart, dataGraph, updateChart, removeData, createGraph ,graphDelete, createAxis} from "./js/graph.js";
+import { historicalStockData, dailyStockData, exchangeList, interdayData, createDate } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
 import { selectEx, select2, selectTicker} from "./js/select.js";
 import './js/select.js'
 import {us} from './js/exchange_tickers/us.js'
 
+let dailyData
+let historicalData
+let newDataChart
+let chartData
+let endDate
+
 const token = '65fd2d716aebf2.80647901';
 let exchange = 'WAR';
 let ticker = 'ACP';
 let index = ticker.concat('.', exchange)
-let tickerList
-let wykres
+let today = new Date();
+let days = 360 
+let startDate = new Date(today.getTime() - (days * 24 * 60 * 60 * 1000));
 
+endDate = createDate(today)
+startDate = createDate(startDate)
 
-// pobranie danych o giełdach
-/*exchangeList(token)
- .then(exchangeData => console.log(exchangeData))
- .catch(error => console.error(error));
-*/
+historicalStockData(index, token, startDate, endDate)
+  .then(data => {
+    historicalData = data;
+    return dailyStockData(index, token);
+  })
+  .then(data => {
+    dailyData = data;
+    return particularData("currentData", index, dailyData)
+  })
+  .then(() => { return createAxis(historicalData, dailyData) })
+  .then(data => {
+    chartData = data
+    return lineChart(chartData.xAxis, chartData.yAxis, ticker)
+  })
+  .then(data => {
+    newDataChart=data
+  })
 
- //pobieranie danych historycznych z interwałem
-//interdayData(index, token)
-
-
-
-createGraph(index, token, ticker)
-  .then(newDataChart => {
-  wykres = newDataChart
-  return wykres})
- 
 
 let button = document.querySelector('.button')
 button.addEventListener('click', function (event,) {
   event.preventDefault()
-  console.log(wykres)
-  graphDelete(wykres)
-  createGraph(index, token, ticker)
-  .then(newDataChart => {
-  wykres = newDataChart
-  return wykres})
+  historicalStockData(index, token, startDate, endDate)
+  .then(data => {
+    historicalData = data;
+    return dailyStockData(index, token);
+  })
+  .then(data => {
+    dailyData = data;
+    return particularData("currentData", index, dailyData)
+  })
+  .then(() => { return createAxis(historicalData, dailyData) })
+  .then(data => {
+    chartData = data
+    newDataChart.destroy()
+    return lineChart(chartData.xAxis, chartData.yAxis, ticker)
+  })
+  .then(data => {
+    newDataChart=data
+  })
 })
   
 
@@ -69,7 +92,7 @@ selectTicker.addEventListener('change', (event) => {
     if (selectTicker.options[selectTicker.selectedIndex] != undefined) {
       let selectedTicker = selectTicker.options[selectTicker.selectedIndex].value;
       console.log(tickerList[0].Name)
-      for (let i = 0; i <= tickerList.length;  i++){
+      for (let i = 0; i < tickerList.length;  i++){
         if (selectedTicker != tickerList[i].Name) {
         }
         else {
