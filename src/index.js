@@ -7,7 +7,7 @@ import './js/select.js'
 
 let dailyData
 let historicalData
-let newDataChart
+
 let chartData
 let endDate
 let tickerList
