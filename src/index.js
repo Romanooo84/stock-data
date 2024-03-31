@@ -17,7 +17,7 @@ let exchange = 'WAR';
 let ticker = 'ACP';
 let index = ticker.concat('.', exchange)
 let today = new Date();
-let days = 30 
+let days = 90
 let startDate = new Date(today.getTime() - (days * 24 * 60 * 60 * 1000));
 
 endDate = createDate(today)
