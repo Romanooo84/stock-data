@@ -9,7 +9,7 @@ import './js/date-time'
 
 let dailyData
 let historicalData
-let newDataChart
+
 let chartData
 let endDate
 let tickerList
