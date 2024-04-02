@@ -4,9 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stock market data</title>
+    <script src="
+    https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js
+    "></script>
+    <script src="
+    https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.11/index.global.min.js
+    "></script>
     <script src="https://unpkg.com/slim-select@latest/dist/slimselect.min.js"></script>
     <link href="https://unpkg.com/slim-select@latest/dist/slimselect.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./sass/index.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="./sass/index.css" />  
   </head>
   <body>
     <div>
@@ -19,10 +26,11 @@
         </div>
       </div>
       <button class='button' type="button">create a new chart</button>
+    <input type="text" id="datepicker" placeholder="Select Date">
       <div id="currentData"></div>
       <canvas id="myChart"></canvas>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="./index.js"></script>
   </body>
