@@ -1,5 +1,6 @@
 import { historicalStockData, dailyStockData, exchangeList, interdayData } from "./import_data.js";
 import { particularData } from "./particular_data.js";
+
 export let newDataChart
 
 export function lineChart(xAxis, yAxis, ticker) {
