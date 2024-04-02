@@ -8,3 +8,20 @@ body{
 canvas{
     width: 1200px;
 }
+
+.flatpickr-day:nth-child(7n+1),
+.flatpickr-day:nth-child(7n+7) {
+    color: red;
+}
+
+.flatpickr-calendar .flatpickr-day.prevMonthDay{
+    color: rgba(57, 57, 57, 0.3);
+}
+
+.flatpickr-day.flatpickr-disabled {
+    color: rgba(57, 57, 57, 0.1)
+}
+
+.flatpickr-day.nextMonthDay{
+    color: rgba(57, 57, 57, 0.1)
+}
