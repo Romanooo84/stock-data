@@ -1,5 +1,5 @@
 import { lineChart, createAxis, createGraph } from "./js/graph.js";
-import { createDate } from "./js/import_data.js";
+import { historicalStockData, dailyStockData, createDate } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
 import { selectEx, select2, selectTicker, exchangeSymbols } from "./js/select.js";
