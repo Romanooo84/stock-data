@@ -9,6 +9,14 @@ canvas{
     width: 1200px;
 }
 
+.flatpickr-days:not(.flatpickr-day){
+    background-color: #89b4f9;
+}
+
+.flatpickr-day{
+    opacity: 1;
+}
+
 .flatpickr-day:nth-child(7n+1),
 .flatpickr-day:nth-child(7n+7) {
     color: red;
