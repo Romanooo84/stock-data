@@ -14,7 +14,7 @@ export function lineChart(xAxis, yAxis, ticker) {
         label: ticker,
         data: yAxis,
         borderWidth: 1,
-        pointRadius: 1,
+        pointRadius: 0,
       }]
     },
     options: {

@@ -41,7 +41,8 @@ export function dailyStockData(stockIndex,apiKey) {
       let realTimeDay= new Date(data.timestamp * 1000);
       realTimeDay = createDate(realTimeDay)
       close = data.close
-      return { realTimeDay, close };
+      change_p = data.change_p
+      return { realTimeDay, close, change_p };
     })
     .catch(error => {
       // W przypadku błędu, np. problemu z siecią, wyświetlamy komunikat o błędzie

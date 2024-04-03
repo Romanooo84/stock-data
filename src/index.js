@@ -71,7 +71,6 @@ button.addEventListener('click', function (event,) {
 const regressionButton = document.querySelector('.regression-button');
 regressionButton.addEventListener('click', function (event) {
   event.preventDefault()
-  console.log('start')
   linearRegression (chartData.yAxis)
 })
   
