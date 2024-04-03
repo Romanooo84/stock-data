@@ -3,7 +3,6 @@ export function historicalStockData(stockIndex,apiKey, startDate, endDate) {
   // url dla danych historycznych
   const url = `https://eodhd.com/api/eod/${stockIndex}?from=${startDate}&to=${endDate}&period=d&api_token=${apiKey}&fmt=json`;
   console.log(`https://eodhd.com/api/eod/${stockIndex}?from=${startDate}&to=${endDate}&period=d&api_token=${apiKey}&fmt=json`)
-
   // Wywołujemy fetch na podanym URL
   return fetch(url)
     .then(response => {
@@ -39,7 +38,10 @@ export function dailyStockData(stockIndex,apiKey) {
       return response.json();
     })
     .then(data => {
-      return data;
+      let realTimeDay= new Date(data.timestamp * 1000);
+      realTimeDay = createDate(realTimeDay)
+      close = data.close
+      return { realTimeDay, close };
     })
     .catch(error => {
       // W przypadku błędu, np. problemu z siecią, wyświetlamy komunikat o błędzie

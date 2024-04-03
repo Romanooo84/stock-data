@@ -2,7 +2,8 @@ import { lineChart, createAxis} from "./js/graph.js";
 import { historicalStockData, dailyStockData, createDate } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
-import { selectEx, select2, selectTicker, exchangeSymbols} from "./js/select.js";
+import { selectEx, select2, selectTicker, exchangeSymbols } from "./js/select.js";
+import { linearRegression } from "./js/math.js";
 import './js/select.js'
 import './js/date-time'
 import { selectedDate } from "./js/date-time";
@@ -16,7 +17,7 @@ let tickerList
 
 const token = '65fd2d716aebf2.80647901';
 let exchange = 'WAR';
-let ticker = 'ACP';
+let ticker = 'ALE';
 let index = ticker.concat('.', exchange)
 let today = new Date();
 let days = 30 
@@ -40,7 +41,7 @@ historicalStockData(index, token, startDate, endDate)
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
   })
   .then(data => {
-    newDataChart=data
+    newDataChart = data
   })
 
 
@@ -65,6 +66,13 @@ button.addEventListener('click', function (event,) {
   .then(data => {
     newDataChart=data
   })
+})
+
+const regressionButton = document.querySelector('.regression-button');
+regressionButton.addEventListener('click', function (event) {
+  event.preventDefault()
+  console.log('start')
+  linearRegression (chartData.yAxis)
 })
   
 

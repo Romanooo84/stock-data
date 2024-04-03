@@ -1,4 +1,4 @@
-import { historicalStockData, dailyStockData, exchangeList, interdayData } from "./import_data.js";
+import { historicalStockData, dailyStockData, createDate, interdayData } from "./import_data.js";
 import { particularData } from "./particular_data.js";
 
 export let newDataChart
@@ -51,14 +51,17 @@ export function createAxis(historicalData, dailyData) {
       let chartData = {
         yAxis: [],
         xAxis: []
-      };
+  };
       // Wstawienie danych do listy danych osi x i y
       for (let i = 0; i < historicalData.length; i++) {
             chartData.yAxis.push(historicalData[i].close);
             chartData.xAxis.push(historicalData[i].date);
-        }
-      chartData.yAxis.push(dailyData.close);
-      chartData.xAxis.push(dailyData.date);
+  }
+  if (historicalData[historicalData.length-1].date != dailyData.realTimeDay) {
+    chartData.yAxis.push(dailyData.close);
+    chartData.xAxis.push(dailyData.realTimeDay);
+  }
+  else{console.log('brak aktualnych danych')}
       return chartData;
     }
 
