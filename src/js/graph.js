@@ -86,3 +86,15 @@ export function createGraph(index, token, startDate, endDate, ticker) {
   
 }
 
+export function hideChart() {
+  console.log(newDataChart.data.datasets[1].borderWidth)
+  newDataChart.data.datasets[1].borderWidth = 0
+  newDataChart.update()
+}
+
+export function showChart() {
+  console.log(newDataChart.data.datasets[1].borderWidth)
+  newDataChart.data.datasets[1].borderWidth = 2
+  newDataChart.update()
+}
+

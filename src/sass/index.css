@@ -33,3 +33,39 @@ canvas{
 .flatpickr-day.nextMonthDay{
     color: rgba(57, 57, 57, 0.1)
 }
+
+.tickers-div{
+    display: flex;
+}
+
+@media screen and (max-width: 420px) {
+    .main-div{
+        max-width: 350px;
+        margin: auto 20px;
+    }
+    .tickers-div{
+        flex-direction: column;
+        align-items: center;
+        max-width: 350px;
+        padding-bottom: 15px;
+    }
+
+    .select1{
+        width: 320px;
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+     .select2{
+        width: 320px;
+        font-size: 20px;  
+    }
+
+    .buttons-div{
+        max-width: 350px;
+        gap: 20px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}

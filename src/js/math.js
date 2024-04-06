@@ -6,9 +6,11 @@ export function linearRegression(yAxis) {
         let regressionPoints = [i + 1, yAxis[i]]
         regressionData.push(regressionPoints)
     }
+    console.log(regressionData)
     const result = regression.linear(regressionData);
     const factorA = result.equation[0];
     const factorB = result.equation[1];
+    console.log(`y=${factorA}x+${factorB}`)
     let functionPattern=`y=${factorA}x+${factorB}`
     let regYAxis = []
     for (let i = 0; i < yAxis.length; i++){

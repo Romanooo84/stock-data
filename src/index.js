@@ -1,4 +1,4 @@
-import { lineChart, createAxis} from "./js/graph.js";
+import { lineChart, createAxis, hideChart, showChart} from "./js/graph.js";
 import { historicalStockData, dailyStockData, createDate } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
@@ -26,6 +26,15 @@ let startDate = new Date(today.getTime() - (days * 24 * 60 * 60 * 1000));
 endDate = createDate(today)
 startDate = createDate(startDate)
 
+let dateInput = document.querySelector("#datepicker")
+dateInput.addEventListener("input", (event) => {
+  event.preventDefault()
+  if (selectedDate != undefined) {
+    button.disabled=false
+  }
+})
+
+
 historicalStockData(index, token, startDate, endDate)
   .then(data => {
     historicalData = data;
@@ -41,11 +50,19 @@ historicalStockData(index, token, startDate, endDate)
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
   })
   .then(data => {
+    linearRegression (chartData.yAxis)
     newDataChart = data
+    /* if (dateInput.textContent = '') {
+        button.disabled=true
+    }*/
+    console.log(selectedDate)
   })
 
 
+
+
 let button = document.querySelector('.button')
+button.disabled=true
 button.addEventListener('click', function (event,) {
   event.preventDefault()
   historicalStockData(index, token, selectedDate, endDate)
@@ -63,15 +80,31 @@ button.addEventListener('click', function (event,) {
     newDataChart.destroy()
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
   })
-  .then(data => {
-    newDataChart=data
+    .then(data => {
+      linearRegression(chartData.yAxis)
+      if (regressionButton.textContent === 'show regression line')
+        {hideChart()}
+      newDataChart = data
+       /*if (dateInput.textContent = '') {
+        button.disabled=true
+      }*/
+      console.log(selectedDate)
   })
 })
 
 const regressionButton = document.querySelector('.regression-button');
 regressionButton.addEventListener('click', function (event) {
   event.preventDefault()
-  linearRegression (chartData.yAxis)
+  if (regressionButton.textContent === 'hide regression line') {
+    hideChart()
+    regressionButton.textContent = 'show regression line'
+  }
+  else if (regressionButton.textContent === 'show regression line') {
+    showChart()
+    regressionButton.textContent = 'hide regression line'
+  }
+  
+  console.log(regressionButton.textContent)
 })
   
 
