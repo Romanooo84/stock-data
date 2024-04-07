@@ -26,13 +26,13 @@ let startDate = new Date(today.getTime() - (days * 24 * 60 * 60 * 1000));
 endDate = createDate(today)
 startDate = createDate(startDate)
 
-let dateInput = document.querySelector("#datepicker")
+/*let dateInput = document.querySelector("#datepicker")
 dateInput.addEventListener("input", (event) => {
   event.preventDefault()
   if (selectedDate != undefined) {
     button.disabled=false
   }
-})
+})*/
 
 
 historicalStockData(index, token, startDate, endDate)
@@ -61,7 +61,7 @@ historicalStockData(index, token, startDate, endDate)
 
 
 
-let button = document.querySelector('.button')
+export let button = document.querySelector('.button')
 button.disabled=true
 button.addEventListener('click', function (event,) {
   event.preventDefault()
