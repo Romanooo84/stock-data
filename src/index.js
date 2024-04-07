@@ -27,7 +27,7 @@ endDate = createDate(today)
 startDate = createDate(startDate)
 
 let dateInput = document.querySelector("#datepicker")
-dateInput.addEventListener("blur", (event) => {
+dateInput.addEventListener("focus", (event) => {
   event.preventDefault()
   if (selectedDate != undefined) {
     button.disabled=false
