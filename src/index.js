@@ -3,7 +3,7 @@ import { historicalStockData, dailyStockData, createDate } from "./js/import_dat
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
 import { selectEx, select2, selectTicker, exchangeSymbols } from "./js/select.js";
-import { linearRegression } from "./js/math.js";
+import { linearRegression, parRegression, parRegression1 } from "./js/math.js";
 import './js/select.js'
 import './js/date-time'
 import { selectedDate } from "./js/date-time";
@@ -42,12 +42,10 @@ historicalStockData(index, token, startDate, endDate)
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
   })
   .then(data => {
-    linearRegression (chartData.yAxis)
+    linearRegression(chartData.yAxis)
+    parRegression(chartData.yAxis)
+    parRegression1(chartData.yAxis)
     newDataChart = data
-    /* if (dateInput.textContent = '') {
-        button.disabled=true
-    }*/
-    console.log(selectedDate)
   })
 
 
@@ -74,26 +72,24 @@ button.addEventListener('click', function (event,) {
   })
     .then(data => {
       linearRegression(chartData.yAxis)
-      if (regressionButton.textContent === 'show regression line')
+      parRegression(chartData.yAxis)
+      parRegression1(chartData.yAxis)
+      if (regressionButton.textContent === 'show regression lines')
         {hideChart()}
       newDataChart = data
-       /*if (dateInput.textContent = '') {
-        button.disabled=true
-      }*/
-      console.log(selectedDate)
   })
 })
 
 const regressionButton = document.querySelector('.regression-button');
 regressionButton.addEventListener('click', function (event) {
   event.preventDefault()
-  if (regressionButton.textContent === 'hide regression line') {
+  if (regressionButton.textContent === 'hide regression lines') {
     hideChart()
-    regressionButton.textContent = 'show regression line'
+    regressionButton.textContent = 'show regression lines'
   }
-  else if (regressionButton.textContent === 'show regression line') {
+  else if (regressionButton.textContent === 'show regression lines') {
     showChart()
-    regressionButton.textContent = 'hide regression line'
+    regressionButton.textContent = 'hide regression lines'
   }
   
   console.log(regressionButton.textContent)

@@ -13,7 +13,7 @@ export function lineChart(xAxis, yAxis, ticker) {
       datasets: [{
         label: ticker,
         data: yAxis,
-        borderWidth: 1,
+        borderWidth: 3,
         pointRadius: 0,
       }]
     },
@@ -89,12 +89,14 @@ export function createGraph(index, token, startDate, endDate, ticker) {
 export function hideChart() {
   console.log(newDataChart.data.datasets[1].borderWidth)
   newDataChart.data.datasets[1].borderWidth = 0
+  newDataChart.data.datasets[2].borderWidth = 0
   newDataChart.update()
 }
 
 export function showChart() {
   console.log(newDataChart.data.datasets[1].borderWidth)
-  newDataChart.data.datasets[1].borderWidth = 2
+  newDataChart.data.datasets[1].borderWidth = 1
+  newDataChart.data.datasets[2].borderWidth = 1
   newDataChart.update()
 }
 
