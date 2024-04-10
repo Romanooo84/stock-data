@@ -72,7 +72,6 @@ export function parRegression1(yAxis) {
     const factorC = result2.equation[2];
     const factorD = result2.equation[3];
     const factorE = result2.equation[4];
-    console.log(result2)
     console.log(`y=${factorA}x^2+${factorB}x+${factorC}`)
     let parFunctionPattern=`y=${factorA}x^2+${factorB}x+${factorC}`
     let parRegYAxis = []
@@ -80,7 +79,7 @@ export function parRegression1(yAxis) {
         parRegYAxis.push(factorA * i**4 + factorB*i**3+factorC*i**2+factorD*i+factorE)
     }
     newDataChart.data.datasets.push({
-        label: 'quadratic2 regression',
+        label: 'quadratic22 regression',
         data: parRegYAxis,
         borderWidth: 1,
         pointRadius: 0,

@@ -44,7 +44,6 @@ historicalStockData(index, token, startDate, endDate)
   .then(data => {
     linearRegression(chartData.yAxis)
     parRegression(chartData.yAxis)
-    parRegression1(chartData.yAxis)
     newDataChart = data
   })
 
@@ -73,7 +72,6 @@ button.addEventListener('click', function (event,) {
     .then(data => {
       linearRegression(chartData.yAxis)
       parRegression(chartData.yAxis)
-      parRegression1(chartData.yAxis)
       if (regressionButton.textContent === 'show regression lines')
         {hideChart()}
       newDataChart = data
