@@ -118,6 +118,26 @@ export function interdayData(stockIndex, apiKey) {
     });
 }
 
+export function news(){
+  const url = `https://eodhd.com/api/news?s=AAPL.US&offset=0&limit=10&api_token=demo&fmt=json`
+  return fetch(url)
+  .then(response => {
+    // Sprawdzamy, czy odpowiedź jest poprawna
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    // Parsujemy odpowiedź jako JSON i zwracamy ją
+    return response.json();
+  })
+  .then(data => {
+    console.log(data)
+  })
+  .catch(error => {
+    // W przypadku błędu, np. problemu z siecią, wyświetlamy komunikat o błędzie
+    console.error('There was a problem with your fetch operation:', error);
+  });
+}
+
 export function createDate(date) {
   const year = date.getFullYear();
   const month = ('0' + (date.getMonth() + 1)).slice(-2); // Dodanie 1, bo getMonth() zwraca miesiące od 0 do 11, oraz formatowanie do dwóch cyfr
