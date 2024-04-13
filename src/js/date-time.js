@@ -9,7 +9,5 @@ flatpickr("#datepicker", {
     if (selectedDate != undefined) {
     button.disabled=false
     }
-    console.log(selectedDate)
-  
   }
 });

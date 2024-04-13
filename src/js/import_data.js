@@ -1,8 +1,7 @@
  //pobieranie danych historycznych
 export function historicalStockData(stockIndex,apiKey, startDate, endDate) {
   // url dla danych historycznych
-  const url = `https://eodhd.com/api/eod/${stockIndex}?from=${startDate}&to=${endDate}&period=d&api_token=${apiKey}&fmt=json`;
-  console.log(`https://eodhd.com/api/eod/${stockIndex}?from=${startDate}&to=${endDate}&period=d&api_token=${apiKey}&fmt=json`)
+  const url = `https://eodhd.com/api/eod/${stockIndex}?from=${startDate}&to=${endDate}&period=d&api_token=${apiKey}&fmt=json`;  
   // Wywołujemy fetch na podanym URL
   return fetch(url)
     .then(response => {

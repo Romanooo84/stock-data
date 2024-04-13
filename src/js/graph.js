@@ -53,11 +53,13 @@ export function createAxis(historicalData, dailyData) {
         xAxis: []
   };
       // Wstawienie danych do listy danych osi x i y
-      for (let i = 0; i < historicalData.length; i++) {
+  for (let i = 0; i < historicalData.length; i++) {
+        if (historicalData[i].close !=='NA')
             chartData.yAxis.push(historicalData[i].close);
             chartData.xAxis.push(historicalData[i].date);
   }
-  if (historicalData[historicalData.length-1].date != dailyData.realTimeDay) {
+  if (historicalData[historicalData.length - 1].date != dailyData.realTimeDay) {
+    if (dailyData.close !=='NA')
     chartData.yAxis.push(dailyData.close);
     chartData.xAxis.push(dailyData.realTimeDay);
   }
@@ -87,14 +89,12 @@ export function createGraph(index, token, startDate, endDate, ticker) {
 }
 
 export function hideChart() {
-  console.log(newDataChart.data.datasets[1].borderWidth)
   newDataChart.data.datasets[1].borderWidth = 0
   newDataChart.data.datasets[2].borderWidth = 0
   newDataChart.update()
 }
 
 export function showChart() {
-  console.log(newDataChart.data.datasets[1].borderWidth)
   newDataChart.data.datasets[1].borderWidth = 1
   newDataChart.data.datasets[2].borderWidth = 1
   newDataChart.update()

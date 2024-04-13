@@ -3,7 +3,7 @@ import { historicalStockData, dailyStockData, createDate } from "./js/import_dat
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
 import { selectEx, select2, selectTicker, exchangeSymbols } from "./js/select.js";
-import { linearRegression, parRegression, parRegression1 } from "./js/math.js";
+import { linearRegression, bottomPoints, upperPoints } from "./js/math.js";
 import './js/select.js'
 import './js/date-time'
 import { selectedDate } from "./js/date-time";
@@ -42,8 +42,9 @@ historicalStockData(index, token, startDate, endDate)
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
   })
   .then(data => {
-    linearRegression(chartData.yAxis)
-    parRegression(chartData.yAxis)
+     const { regYAxis }=linearRegression(chartData.yAxis)
+    upperPoints(regYAxis, chartData.yAxis)
+    bottomPoints (regYAxis, chartData.yAxis)
     newDataChart = data
   })
 
@@ -70,8 +71,9 @@ button.addEventListener('click', function (event,) {
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
   })
     .then(data => {
-      linearRegression(chartData.yAxis)
-      parRegression(chartData.yAxis)
+      const { regYAxis }=linearRegression(chartData.yAxis)
+      upperPoints(regYAxis, chartData.yAxis)
+      bottomPoints(regYAxis, chartData.yAxis)
       if (regressionButton.textContent === 'show regression lines')
         {hideChart()}
       newDataChart = data
@@ -89,8 +91,6 @@ regressionButton.addEventListener('click', function (event) {
     showChart()
     regressionButton.textContent = 'hide regression lines'
   }
-  
-  console.log(regressionButton.textContent)
 })
   
 
@@ -110,7 +110,6 @@ selectEx.addEventListener('change', function (event) {
               select2Options.push({ text: `${data[i].Name}` })
             }
             select2.setData(select2Options)
-            console.log(tickerList)
           })
       }
     }
@@ -122,7 +121,6 @@ selectEx.addEventListener('change', function (event) {
       }
     }
     tickerList = exchangeSymbols
-    console.log(tickerList)
     select2.setData(select2Options)
   }
   })
