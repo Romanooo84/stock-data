@@ -1,5 +1,5 @@
 import { lineChart, createAxis, hideChart, showChart} from "./js/graph.js";
-import { historicalStockData, dailyStockData, createDate } from "./js/import_data.js";
+import { historicalStockData, dailyStockData, createDate, news } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
 import { selectEx, select2, selectTicker, exchangeSymbols } from "./js/select.js";
@@ -47,6 +47,7 @@ historicalStockData(index, token, startDate, endDate)
     bottomPoints (regYAxis, chartData.yAxis)
     newDataChart = data
   })
+  .then(()=>{return news()})
 
 
 
