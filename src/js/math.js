@@ -61,7 +61,7 @@ export function parRegression(yAxis) {
 
 export function upperPoints(regYAxis, yAxis) {
     const selectedPoints = []
-    for (i = 0; i < yAxis.length; i++) {
+    for (let i = 0; i < yAxis.length; i++) {
         if (yAxis[i] - regYAxis[i] > 0) {
             selectedPoints.push([(i),yAxis[i]])
         }
@@ -89,7 +89,7 @@ export function upperPoints(regYAxis, yAxis) {
 
 export function bottomPoints(regYAxis, yAxis) {
     const selectedPoints = []
-    for (i = 0; i < yAxis.length; i++) {
+    for (let i = 0; i < yAxis.length; i++) {
         if (regYAxis[i] - yAxis[i] > 0) {
             selectedPoints.push([(i),yAxis[i]])
         }
