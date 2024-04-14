@@ -1,4 +1,3 @@
-import yahooFinance from "yahoo-finance2";
 import { newDataChart } from "./graph";
 
 export function linearRegression(yAxis) {
