@@ -53,7 +53,7 @@ historicalStockData(index, token, startDate, endDate)
     const markup=data.map((article)=>
       `<h2>${article.title}</h2><p>${article.content}</p>`)
     .join("");
-    console.log(markup)
+    paragraph.insertAdjacentHTML("beforeend", markup);
   })
 
 
