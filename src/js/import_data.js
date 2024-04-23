@@ -118,7 +118,7 @@ export function interdayData(stockIndex, apiKey) {
 }
 
 export function news(){
-  const url = `https://eodhd.com/api/news?${stockIndex}S&offset=0&limit=10&api_token=${apiKey}fmt=json`
+  const url = `https://eodhd.com/api/news?${stockIndex}S&offset=0&limit=10&api_token=${apiKey}&fmt=json`
   return fetch(url)
   .then(response => {
     // Sprawdzamy, czy odpowiedź jest poprawna
