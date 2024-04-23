@@ -52,7 +52,7 @@ historicalStockData(index, token, startDate, endDate)
     let paragraph = document.querySelector("#news")
     const markup=data
       .map((article)=>
-      '<h2>${data.title}</h2><p>${data.content}</p>')
+      '<h2>${article.title}</h2><p>${article.content}</p>')
     .join("");
     console.log(markup)
   })
