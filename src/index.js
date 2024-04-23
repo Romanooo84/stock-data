@@ -52,15 +52,10 @@ historicalStockData(index, token, startDate, endDate)
     let paragraph = document.querySelector("#news")
     const markup=data
       .map((article)=>
-      '<h2>${article.title}</h2><p>${article.content}</p>')
+      `<h2>${article.title}</h2><p>${article.content}</p>`)
     .join("");
     console.log(markup)
   })
-
-  const markup = newTechnologies
-  .map((technology) => `<li class="list-item new">${technology}</li>`)
-  .join("");
-
 
 
 export let button = document.querySelector('.button')
