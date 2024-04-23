@@ -129,7 +129,7 @@ export function news(stockIndex, apiKey) {
     return response.json();
   })
   .then(data => {
-    console.log(data)
+    return data
   })
   .catch(error => {
     // W przypadku błędu, np. problemu z siecią, wyświetlamy komunikat o błędzie
