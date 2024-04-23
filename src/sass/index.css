@@ -82,4 +82,9 @@ canvas{
         justify-content: center;
         flex-wrap: wrap;
     }
+
+    canvas{
+        height: 200px;
+        width: 320px;
+    }
 }
