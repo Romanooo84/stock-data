@@ -50,13 +50,16 @@ historicalStockData(index, token, startDate, endDate)
   .then(()=>{return news(index, token)})
   .then(data=>{
     let paragraph = document.querySelector("#news")
-    const markup=map.data(
-      '<h2>${data.title}</h2>
-      <p>${data.content}</p>'
-    )
+    const markup=data
+      .map((article)=>
+      '<h2>${data.title}</h2><p>${data.content}</p>')
+    .join("");
     console.log(markup)
   })
 
+  const markup = newTechnologies
+  .map((technology) => `<li class="list-item new">${technology}</li>`)
+  .join("");
 
 
 
