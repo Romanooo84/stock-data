@@ -4,10 +4,13 @@ header{
 }
 
 body{
-    max-width: 1200px;
-    display: flex;
     margin: 0 auto;
     
+}
+
+.main-div{
+    max-width: 1200px;
+    margin: auto 20px;
 }
 
 canvas{
