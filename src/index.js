@@ -80,6 +80,10 @@ button.addEventListener('click', function (event,) {
       newDataChart = data
   })
   .then(()=>{return news()})
+  .then(data=>{
+    let paragraph = document.querySelector("#news")
+    console.log(paragraph)
+  })
 })
 
 const regressionButton = document.querySelector('.regression-button');
