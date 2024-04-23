@@ -47,7 +47,11 @@ historicalStockData(index, token, startDate, endDate)
     bottomPoints (regYAxis, chartData.yAxis)
     newDataChart = data
   })
-  .then(()=>{return news()})
+  .then(()=>{return news(index, token)})
+  .then(data=>{
+    let paragraph = document.querySelector("#news")
+    console.log(paragraph)
+  })
 
 
 
@@ -79,7 +83,7 @@ button.addEventListener('click', function (event,) {
         {hideChart()}
       newDataChart = data
   })
-  .then(()=>{return news()})
+  .then(()=>{return news(index, token)})
   .then(data=>{
     let paragraph = document.querySelector("#news")
     console.log(paragraph)
