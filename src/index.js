@@ -87,7 +87,7 @@ button.addEventListener('click', function (event,) {
   .then(()=>{return news(index, token)})
   .then(data=>{
     let paragraph = document.querySelector("#news")
-    console.log(paragraph)
+    console.log(data)
   })
 })
 
