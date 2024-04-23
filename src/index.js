@@ -78,7 +78,8 @@ button.addEventListener('click', function (event,) {
       if (regressionButton.textContent === 'show regression lines')
         {hideChart()}
       newDataChart = data
-  })
+  }).
+  .then(()=>{return news()})
 })
 
 const regressionButton = document.querySelector('.regression-button');
