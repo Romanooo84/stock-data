@@ -73,7 +73,6 @@ historicalStockData(index, token, startDate, endDate)
           const { regYAxis } = linearRegression(chartData.yAxis);
           upperPoints(regYAxis, chartData.yAxis);
           bottomPoints(regYAxis, chartData.yAxis);
-          newDataChart = data;
         })
         .catch(error => {
           console.error('Błąd:', error);
@@ -81,7 +80,7 @@ historicalStockData(index, token, startDate, endDate)
     }, 5000);
   };
 
-  /*graphInterval()*/
+  graphInterval()
 
 
 export let button = document.querySelector('.button')
@@ -109,7 +108,6 @@ button.addEventListener('click', function (event,) {
       bottomPoints(regYAxis, chartData.yAxis)
       if (regressionButton.textContent === 'show regression lines')
         {hideChart()}
-      newDataChart = data
   })
   .then(()=>{return news(index, token)})
   .then(data=>{
