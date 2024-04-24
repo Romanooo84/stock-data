@@ -59,9 +59,8 @@ historicalStockData(index, token, startDate, endDate)
   const graphInterval = () => {
     setInterval(() => {
       console.log('działa')
-      /*dailyStockData(index, token)
+      dailyStockData(index, token)
         .then(data => {
-          console.log('działa');
           dailyData = data;
           return particularData("currentData", index, dailyData);
         })
@@ -78,8 +77,8 @@ historicalStockData(index, token, startDate, endDate)
         })
         .catch(error => {
           console.error('Błąd:', error);
-        });*/
-    }, 1000);
+        });
+    }, 5000);
   };
 
   graphInterval()
