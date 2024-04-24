@@ -56,7 +56,7 @@ historicalStockData(index, token, startDate, endDate)
   .then(data=>{
     let paragraph = document.querySelector("#news")
     const markup=data.map((article)=>
-      `<div><h2>${article.title}</h2><p>${article.date}</p><p>${article.content}</p></div>`)
+      `<div class='newsDiv'><h2>${article.title}</h2><p>${article.date}</p><div class='div-afterp'><p>${article.content}</p></div></div>`)
     .join("");
     paragraph.insertAdjacentHTML("beforeend", markup);
   })
@@ -65,7 +65,6 @@ export let button = document.querySelector('.button')
 button.disabled=true
 button.addEventListener('click', function (event,) {
   event.preventDefault()
-  newDataChart.destroy();
   historicalStockData(index, token, selectedDate, endDate)
   .then(data => {
     console.log('pobrał1')
@@ -80,6 +79,7 @@ button.addEventListener('click', function (event,) {
   .then(data => {
     console.log('pobrał2')
     chartData = data
+    newDataChart.destroy();
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
   })
     .then(data => {
