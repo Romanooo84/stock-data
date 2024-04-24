@@ -98,7 +98,6 @@ button.addEventListener('click', function (event,) {
   .then(() => { return createAxis(historicalData, dailyData) })
   .then(data => {
     chartData = data
-    newDataChart = data
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
   })
     .then(data => {
