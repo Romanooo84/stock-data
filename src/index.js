@@ -59,6 +59,7 @@ historicalStockData(index, token, startDate, endDate)
 const graphInterval=()=>setInterval(
   dailyStockData(index, token)
   .then(data => {
+    console.log('działa')
     dailyData = data;
     return particularData("currentData", index, dailyData)
   })
