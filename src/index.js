@@ -61,35 +61,11 @@ historicalStockData(index, token, startDate, endDate)
     paragraph.insertAdjacentHTML("beforeend", markup);
   })
 
-  const graphInterval = () => {
-    intervalId=setInterval(() => {
-      dailyStockData(index, token)
-        .then(data => {
-          dailyData = data;
-          return particularData("currentData", index, dailyData);
-        })
-        .then(() => createAxis(historicalData, dailyData))
-        .then(data => {
-          chartData = data;
-          newDataChart.data.datasets[0].data = chartData.yAxis;
-          newDataChart.update();
-          /*const { regYAxis } = linearRegression(chartData.yAxis);
-          upperPoints(regYAxis, chartData.yAxis);
-          bottomPoints(regYAxis, chartData.yAxis);*/
-        })
-        .catch(error => {
-          console.error('Błąd:', error);
-        });
-    }, 5000);
-  };
-
-  /*graphInterval()*/
-
-
 export let button = document.querySelector('.button')
 button.disabled=true
 button.addEventListener('click', function (event,) {
   event.preventDefault()
+  newDataChart.destroy();
   historicalStockData(index, token, selectedDate, endDate)
   .then(data => {
     console.log('pobrał1')
@@ -104,7 +80,6 @@ button.addEventListener('click', function (event,) {
   .then(data => {
     console.log('pobrał2')
     chartData = data
-    newDataChart.destroy();
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
   })
     .then(data => {
