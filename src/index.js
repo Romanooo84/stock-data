@@ -104,6 +104,7 @@ button.addEventListener('click', function (event,) {
   .then(data => {
     console.log('pobrał2')
     chartData = data
+    newDataChart.destroy();
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
   })
     .then(data => {
