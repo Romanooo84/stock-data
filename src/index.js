@@ -94,6 +94,7 @@ button.addEventListener('click', function (event,) {
 } else {
     console.log("Interwał nadal działa");
 }
+newDataChart.destroy()
   historicalStockData(index, token, selectedDate, endDate)
   .then(data => {
     historicalData = data;
@@ -106,7 +107,7 @@ button.addEventListener('click', function (event,) {
   .then(() => { return createAxis(historicalData, dailyData) })
   .then(data => {
     chartData = data
-    newDataChart.destroy()
+    
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
   })
     .then(data => {
