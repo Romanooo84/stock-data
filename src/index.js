@@ -82,6 +82,8 @@ historicalStockData(index, token, startDate, endDate)
     }, 1000);
   };
 
+  graphInterval()
+
 
 export let button = document.querySelector('.button')
 button.disabled=true
