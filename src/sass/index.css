@@ -5,6 +5,22 @@ header{
     height: 100px;
 }
 
+
+.ss-main{
+    border: 3px solid #1648ac75;
+    background-color: #263bce00;
+}
+
+button{
+    background-color: #1648ac00;
+        border: 3px solid #1648ac75;
+}
+
+input{
+    background-color: #1648ac00;
+    border: 3px solid #1648ac75;
+}
+
 body{
     margin: 0 auto;
 background: rgba(24, 138, 209, 0.11);

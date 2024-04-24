@@ -2,8 +2,8 @@ import { exchangeListJson } from "./exchange_list.js";
 import { exchangeSymbolList } from "./import_data.js";
 export let selectEx = document.getElementById('select1');
 export let selectTicker= document.getElementById('select2');
-export let select1Options = [{ 'placeholder': true, 'text': 'Select the stock exchange' }]
-export let select2Options = [{ 'placeholder': true, 'text': 'First select the stock exchange' }]
+export let select1Options = [{ 'placeholder': true, 'text': 'Select the stock exchange','class': 'custom-color' }]
+export let select2Options = [{ 'placeholder': true, 'text': 'First select the stock exchange' ,'class': 'custom-color'}]
 export let exchangeSymbols
 let select1
 
@@ -37,7 +37,10 @@ exchangeSymbolList('US', apiKey)
 
   select1=new SlimSelect({
     select: '#select1',
-    data: select1Options
+    data: select1Options,
+    options: [
+
+    ]
     })
 
 
