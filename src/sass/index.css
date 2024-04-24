@@ -65,7 +65,18 @@ canvas{
 }
 
 .tickers-div{
+    justify-content: center;
     display: flex;
+    padding-bottom: 10px;
+    gap: 10px;
+}
+
+.buttons-div{
+    justify-content: center;
+        display: flex;
+        padding-bottom: 10px;
+        gap: 10px;
+    
 }
 
 .mainNews{
