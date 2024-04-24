@@ -59,7 +59,6 @@ historicalStockData(index, token, startDate, endDate)
 
   const graphInterval = () => {
     intervalId=setInterval(() => {
-      console.log('działa')
       dailyStockData(index, token)
         .then(data => {
           dailyData = data;
@@ -68,7 +67,6 @@ historicalStockData(index, token, startDate, endDate)
         .then(() => createAxis(historicalData, dailyData))
         .then(data => {
           chartData = data;
-          console.log(chartData)
           newDataChart.data.datasets[0].data = chartData.yAxis;
           newDataChart.update();
           /*const { regYAxis } = linearRegression(chartData.yAxis);
@@ -81,20 +79,14 @@ historicalStockData(index, token, startDate, endDate)
     }, 5000);
   };
 
-  graphInterval()
+  /*graphInterval()*/
 
 
 export let button = document.querySelector('.button')
 button.disabled=true
 button.addEventListener('click', function (event,) {
   event.preventDefault()
-  clearInterval(intervalId);
-  if(intervalId === undefined) {
-    console.log("Interwał został wyłączony");
-} else {
-    console.log("Interwał nadal działa");
-}
-newDataChart.destroy()
+ 
   historicalStockData(index, token, selectedDate, endDate)
   .then(data => {
     historicalData = data;
@@ -120,7 +112,6 @@ newDataChart.destroy()
   .then(()=>{return news(index, token)})
   .then(data=>{
     let paragraph = document.querySelector("#news")
-    console.log(data)
   })
 })
 
