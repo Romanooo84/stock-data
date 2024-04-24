@@ -86,6 +86,7 @@ button.addEventListener('click', function (event,) {
       const { regYAxis }=linearRegression(chartData.yAxis)
       upperPoints(regYAxis, chartData.yAxis)
       bottomPoints(regYAxis, chartData.yAxis)
+      newDataChart = data
       console.log('pobrał3')
       if (regressionButton.textContent === 'show regression lines')
         {hideChart()}
