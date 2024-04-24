@@ -86,7 +86,6 @@ export let button = document.querySelector('.button')
 button.disabled=true
 button.addEventListener('click', function (event,) {
   event.preventDefault()
- 
   historicalStockData(index, token, selectedDate, endDate)
   .then(data => {
     historicalData = data;
@@ -99,7 +98,7 @@ button.addEventListener('click', function (event,) {
   .then(() => { return createAxis(historicalData, dailyData) })
   .then(data => {
     chartData = data
-    
+    newDataChart = data
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
   })
     .then(data => {
