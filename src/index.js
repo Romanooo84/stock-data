@@ -70,9 +70,9 @@ historicalStockData(index, token, startDate, endDate)
           console.log(chartData)
           newDataChart.data.datasets[0].data = chartData.yAxis;
           newDataChart.update();
-          const { regYAxis } = linearRegression(chartData.yAxis);
+          /*const { regYAxis } = linearRegression(chartData.yAxis);
           upperPoints(regYAxis, chartData.yAxis);
-          bottomPoints(regYAxis, chartData.yAxis);
+          bottomPoints(regYAxis, chartData.yAxis);*/
         })
         .catch(error => {
           console.error('Błąd:', error);
