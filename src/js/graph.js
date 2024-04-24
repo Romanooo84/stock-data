@@ -91,12 +91,14 @@ export function createGraph(index, token, startDate, endDate, ticker) {
 export function hideChart() {
   newDataChart.data.datasets[1].borderWidth = 0
   newDataChart.data.datasets[2].borderWidth = 0
+  newDataChart.data.datasets[3].borderWidth = 0
   newDataChart.update()
 }
 
 export function showChart() {
   newDataChart.data.datasets[1].borderWidth = 1
   newDataChart.data.datasets[2].borderWidth = 1
+  newDataChart.data.datasets[3].borderWidth = 1
   newDataChart.update()
 }
 
