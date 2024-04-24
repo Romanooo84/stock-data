@@ -56,7 +56,24 @@ historicalStockData(index, token, startDate, endDate)
     paragraph.insertAdjacentHTML("beforeend", markup);
   })
 
-const graphInterval=()=>setInterval(goOffEverySecond, 1000)
+const graphInterval=()=>setInterval(
+  dailyStockData(index, token)
+  .then(data => {
+    dailyData = data;
+    return particularData("currentData", index, dailyData)
+  })
+  .then(() => { return createAxis(historicalData, dailyData) })
+  .then(data => {
+    chartData = data
+    return lineChart(chartData.xAxis, chartData.yAxis, ticker)
+  })
+  .then(data => {
+     const { regYAxis }=linearRegression(chartData.yAxis)
+    upperPoints(regYAxis, chartData.yAxis)
+    bottomPoints (regYAxis, chartData.yAxis)
+    newDataChart = data
+  })
+  , 1000)
 
 
 export let button = document.querySelector('.button')
