@@ -128,7 +128,7 @@ regressionButton.addEventListener('click', function (event) {
 })
   
 
-selectEx.addEventListener('change', function (event) {
+selectEx.addEventListener('click', function (event) {
   event.preventDefault()
   let select2Options = []
   let selectedEx = selectEx.options[selectEx.selectedIndex].value
