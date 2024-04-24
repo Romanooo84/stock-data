@@ -14,6 +14,7 @@ let newDataChart
 let chartData
 let endDate
 let tickerList
+let intervalId
 
 const token = '65fd2d716aebf2.80647901';
 let exchange = 'WAR';
@@ -57,7 +58,7 @@ historicalStockData(index, token, startDate, endDate)
   })
 
   const graphInterval = () => {
-    setInterval(() => {
+    let intervalId;=setInterval(() => {
       console.log('działa')
       dailyStockData(index, token)
         .then(data => {
@@ -87,6 +88,7 @@ export let button = document.querySelector('.button')
 button.disabled=true
 button.addEventListener('click', function (event,) {
   event.preventDefault()
+  clearInterval(intervalId);
   historicalStockData(index, token, selectedDate, endDate)
   .then(data => {
     historicalData = data;
