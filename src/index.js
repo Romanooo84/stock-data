@@ -67,7 +67,7 @@ historicalStockData(index, token, startDate, endDate)
         .then(() => createAxis(historicalData, dailyData))
         .then(data => {
           chartData = data;
-          chartData.destroy()
+          console.log(chartData)
           return lineChart(chartData.xAxis, chartData.yAxis, ticker);
         })
         .then(data => {
