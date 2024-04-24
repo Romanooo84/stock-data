@@ -56,6 +56,8 @@ historicalStockData(index, token, startDate, endDate)
     paragraph.insertAdjacentHTML("beforeend", markup);
   })
 
+const graphInterval=()=>setInterval(goOffEverySecond, 1000)
+
 
 export let button = document.querySelector('.button')
 button.disabled=true
