@@ -68,9 +68,7 @@ historicalStockData(index, token, startDate, endDate)
         .then(data => {
           chartData = data;
           console.log(chartData)
-          return lineChart(chartData.xAxis, chartData.yAxis, ticker);
-        })
-        .then(data => {
+          newDataChart.data.labels = chartData;
           const { regYAxis } = linearRegression(chartData.yAxis);
           upperPoints(regYAxis, chartData.yAxis);
           bottomPoints(regYAxis, chartData.yAxis);
