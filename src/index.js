@@ -56,7 +56,7 @@ historicalStockData(index, token, startDate, endDate)
   .then(data=>{
     let paragraph = document.querySelector("#news")
     const markup=data.map((article)=>
-      `<h2>${article.title}</h2><p>${article.date}</p><p>${article.content}</p>`)
+      `<div><h2>${article.title}</h2><p>${article.date}</p><p>${article.content}</p></div>`)
     .join("");
     paragraph.insertAdjacentHTML("beforeend", markup);
   })
