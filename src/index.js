@@ -89,6 +89,11 @@ button.disabled=true
 button.addEventListener('click', function (event,) {
   event.preventDefault()
   clearInterval(intervalId);
+  if(intervalId === undefined) {
+    console.log("Interwał został wyłączony");
+} else {
+    console.log("Interwał nadal działa");
+}
   historicalStockData(index, token, selectedDate, endDate)
   .then(data => {
     historicalData = data;
