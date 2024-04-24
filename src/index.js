@@ -31,7 +31,7 @@ startDate = createDate(startDate)
 historicalStockData(index, token, startDate, endDate)
   .then(data => {
     historicalData = data;
-    console.log('pobrał1')
+    
     return dailyStockData(index, token);
   })
   .then(data => {
@@ -40,17 +40,17 @@ historicalStockData(index, token, startDate, endDate)
   })
   .then(() => { return createAxis(historicalData, dailyData) })
   .then(data => {
-    console.log('pobrał2')
+   
     chartData = data
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
   })
   .then(data => {
-    console.log('pobrał3')
+    
      const { regYAxis }=linearRegression(chartData.yAxis)
     upperPoints(regYAxis, chartData.yAxis)
     bottomPoints (regYAxis, chartData.yAxis)
     newDataChart = data
-    console.log('pobrał4')
+    
   })
   .then(()=>{return news(index, token)})
   .then(data=>{
@@ -92,6 +92,7 @@ button.addEventListener('click', function (event,) {
   event.preventDefault()
   historicalStockData(index, token, selectedDate, endDate)
   .then(data => {
+    console.log('pobrał1')
     historicalData = data;
     return dailyStockData(index, token);
   })
@@ -101,6 +102,7 @@ button.addEventListener('click', function (event,) {
   })
   .then(() => { return createAxis(historicalData, dailyData) })
   .then(data => {
+    console.log('pobrał2')
     chartData = data
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
   })
@@ -108,6 +110,7 @@ button.addEventListener('click', function (event,) {
       const { regYAxis }=linearRegression(chartData.yAxis)
       upperPoints(regYAxis, chartData.yAxis)
       bottomPoints(regYAxis, chartData.yAxis)
+      console.log('pobrał3')
       if (regressionButton.textContent === 'show regression lines')
         {hideChart()}
   })
