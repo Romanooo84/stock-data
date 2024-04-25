@@ -1,7 +1,7 @@
 header{
     background-color: rgba(0,120,200,0.7);
     background: rgb(9, 111, 121);
-        background: linear-gradient(4deg, rgba(9, 111, 121, 0.32825630252100846) 0%, rgba(24, 137, 209, 0.8240546218487395) 29%, rgba(0, 198, 255, 0.29744397759103647) 100%);
+    background: linear-gradient(4deg, rgba(9, 111, 121, 0.32825630252100846) 0%, rgba(24, 137, 209, 0.8240546218487395) 29%, rgba(0, 198, 255, 0.29744397759103647) 100%);
     height: 100px;
 }
 
@@ -9,16 +9,73 @@ header{
 .ss-main{
     border: 3px solid #1648ac75;
     background-color: #263bce00;
+    border-radius: 15px;
+    height: 30px;
+    transition: border-color 0.5s ease-in-out
+}
+
+.ss-list{
+    background-color: #e6f2fb
+}
+
+.ss-content{
+    background-color: #e6f2fb
+}
+
+.ss-list::-webkit-scrollbar {
+    width: 5px;
+    background-color: hsla(240, 78%, 55%, 0.437);
+    border-radius: 50%;
+}
+
+.ss-list::-webkit-scrollbar-thumb {
+    border-radius: 10%;
+    border-top: 20px  solid rgb(0, 26, 255)
+}
+
+.ss-main:hover{
+    border-color: #0d58eee1;
 }
 
 button{
-    background-color: #1648ac00;
-        border: 3px solid #1648ac75;
+    background-color: #263bce00;
+    border: 3px solid #1648ac75;
+    border-radius: 15px;
+    height: 30px;
+    cursor: pointer;
+    transition: border-color 0.5s ease-in-out
+}
+
+.button:hover{
+    border-color: #0d58eee1;
+}
+
+
+.regression-button{
+  transition: border-color 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+
+
+.regression-button:hover{
+    border-color: #0d58eee1;
 }
 
 input{
-    background-color: #1648ac00;
+    background-color: #263bce00;
     border: 3px solid #1648ac75;
+    border-radius: 100px;
+    height: 22px;
+    transition: border-color 0.5s ease-in-out
+}
+
+input:hover{
+    border-color: #0d58eee1;
+}
+
+input:focus{
+    border-color: #0d58eee1;
 }
 
 body{
@@ -39,8 +96,12 @@ canvas{
     width: 1200px;
 }
 
+.flatpickr-calendar.open{
+    border-color: #0d58eee1;
+}
+
 .flatpickr-days:not(.flatpickr-day){
-    background-color: #89b4f9;
+    background-color: #41b3cd33
 }
 
 .flatpickr-day{
