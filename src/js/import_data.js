@@ -49,6 +49,30 @@ export function dailyStockData(stockIndex,apiKey) {
     });
 }
 
+export function multipleDailyData (ticker1, ticker2, ticker3, ticker4, ticker5, API) {
+  url = `https://eodhd.com/api/real-time/${ticker1}?s=${ticker2},${ticker3},${ticker4},${ticker5}&api_token=${API}&fmt=json`
+  return fetch(url)
+    .then(response => {
+      // Sprawdzamy, czy odpowiedź jest poprawna
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      // Parsujemy odpowiedź jako JSON i zwracamy ją
+      return response.json();
+    })
+    .then(data => {
+      let realTimeDay= new Date(data.timestamp * 1000);
+      realTimeDay = createDate(realTimeDay)
+      close = data.close
+      let change_p = data.change_p
+      return { realTimeDay, data};
+    })
+    .catch(error => {
+      // W przypadku błędu, np. problemu z siecią, wyświetlamy komunikat o błędzie
+      console.error('There was a problem with your fetch operation:', error);
+    });
+}
+
 //pobieranie listy obsługiwanych giełd
 export function exchangeList(apiKey) {
   const url = `https://eodhd.com/api/exchanges-list/?api_token=${apiKey}&fmt=json`

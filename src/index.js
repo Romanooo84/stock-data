@@ -7,6 +7,7 @@ import { linearRegression, bottomPoints, upperPoints } from "./js/math.js";
 import './js/select.js'
 import './js/date-time'
 import { selectedDate } from "./js/date-time";
+import { multipleDailyData } from "./js/import_data.js";
 
 let dailyData
 let historicalData
@@ -23,9 +24,35 @@ let index = ticker.concat('.', exchange)
 let today = new Date();
 let days = 30 
 let startDate = new Date(today.getTime() - (days * 24 * 60 * 60 * 1000));
+let index2 = 'GSPC.indx'
+let index3 = 'APPL.US'
+let index4 = 'EURPLN.FOREX'
+let index5 = 'USDPLN.FOREX'
 
 endDate = createDate(today)
 startDate = createDate(startDate)
+
+let headerData=document.querySelector('.short-data')
+
+multipleDailyData(index, index2, index3, index4, index5, token)
+  .then(data => {
+    let newData = data.data
+    console.log(newData)
+    console.log(newData)
+    const markup = newData.map((ticker) =>
+      `<div class='single-data'><p class='header-paragraph'>Ticker: ${ticker.code}</p><p class='header-paragraph'>Close: ${ticker.close}</p><p class='header-paragraph'>Change: ${ticker.change_p
+    }%</p></div>`)
+    .join("");
+      
+      // Wstawianie wygenerowanego kodu HTML do elementu headerData
+      headerData.insertAdjacentHTML("beforeend", markup);
+  })
+  .catch(error => {
+    console.error("Wystąpił błąd podczas pobierania danych:", error);
+  });
+
+
+
 
 
 historicalStockData(index, token, startDate, endDate)
