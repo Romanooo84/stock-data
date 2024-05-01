@@ -1,7 +1,8 @@
 header{
     background-color: rgba(0,120,200,0.7);
     background: rgb(9, 111, 121);
-    background: linear-gradient(4deg, rgba(9, 111, 121, 0.32825630252100846) 0%, rgba(24, 137, 209, 0.8240546218487395) 29%, rgba(0, 198, 255, 0.29744397759103647) 100%);
+background: rgb(22, 40, 142);
+    background: linear-gradient(0deg, rgba(22, 40, 142, 1) 0%, rgba(29, 244, 253, 1) 54%, rgba(22, 40, 142, 0.7540266106442577) 100%);
     height: 100px;
 }
 
