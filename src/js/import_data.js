@@ -50,7 +50,7 @@ export function dailyStockData(stockIndex,apiKey) {
 }
 
 export function multipleDailyData (ticker1, ticker2, ticker3, ticker4, ticker5, API) {
-  url = `https://eodhd.com/api/real-time/${ticker1}?s=${ticker2},${ticker3},${ticker4},${ticker5}&api_token=${API}&fmt=json`
+  const url = `https://eodhd.com/api/real-time/${ticker1}?s=${ticker2},${ticker3},${ticker4},${ticker5}&api_token=${API}&fmt=json`
   return fetch(url)
     .then(response => {
       // Sprawdzamy, czy odpowiedź jest poprawna
