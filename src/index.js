@@ -51,7 +51,7 @@ multipleDailyData(index, index2, index3, index4, index5, token)
   .catch(error => {
     console.error("Wystąpił błąd podczas pobierania danych:", error);
   });
-},1000
+},2000
 );
 
 
