@@ -34,11 +34,12 @@ startDate = createDate(startDate)
 
 let headerData=document.querySelector('.short-data')
 
+setInterval(()=> {
 multipleDailyData(index, index2, index3, index4, index5, token)
   .then(data => {
     let newData = data.data
-    console.log(newData)
-    console.log(newData)
+    console.log('pobrane')
+    headerData.innerHTML = ''
     const markup = newData.map((ticker) =>
       `<div class='single-data'><p class='header-paragraph'>Ticker: ${ticker.code}</p><p class='header-paragraph'>Close: ${ticker.close}</p><p class='header-paragraph'>Change: ${ticker.change_p
     }%</p></div>`)
@@ -50,6 +51,8 @@ multipleDailyData(index, index2, index3, index4, index5, token)
   .catch(error => {
     console.error("Wystąpił błąd podczas pobierania danych:", error);
   });
+},1000
+);
 
 
 
