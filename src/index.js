@@ -32,18 +32,56 @@ let index5 = 'USDPLN.FOREX'
 endDate = createDate(today)
 startDate = createDate(startDate)
 
-let headerData=document.querySelector('.short-data')
+let headerTickersList=[index, index2, index3, index4, index5]
+let headerData = document.querySelector('.short-data')
+
+multipleDailyData(headerTickersList, token)
+  .then(data => {
+    let newData = data
+    headerData.innerHTML = ''
+    const markup = newData.map((ticker) => {
+    let changeColor = ''; // Initialize changeColor variable
+    if (ticker.change_p > 0) {
+        changeColor = 'value-plus';
+    } else if (ticker.change_p < 0) {
+        changeColor = 'value-minus';
+    }
+    return `<div class='single-data'>
+                <p class='header-paragraph'>${ticker.code}</p>
+                <p class='header-paragraph'>Close: ${ticker.close}</p>
+                <p class='header-paragraph'>Change: <span class='${changeColor}'>${ticker.change_p}%</span></p>
+            </div>`;
+  }).join("");
+      
+      // Wstawianie wygenerowanego kodu HTML do elementu headerData
+      headerData.insertAdjacentHTML("beforeend", markup);
+  })
+  .catch(error => {
+    console.error("Wystąpił błąd podczas pobierania danych:", error);
+  });
 
 setInterval(()=> {
-multipleDailyData(index, index2, index3, index4, index5, token)
+multipleDailyData(headerTickersList, token)
   .then(data => {
-    let newData = data.data
-    console.log('pobrane')
+    let newData = data
+    let changeColor
+    newData.forEach(element => {
+      element.change_p>0? changeColor='value-plus':changeColor='value-minus'
+    });
     headerData.innerHTML = ''
-    const markup = newData.map((ticker) =>
-      `<div class='single-data'><p class='header-paragraph'>Ticker: ${ticker.code}</p><p class='header-paragraph'>Close: ${ticker.close}</p><p class='header-paragraph'>Change: ${ticker.change_p
-    }%</p></div>`)
-    .join("");
+    const markup = newData.map((ticker) => {
+    let changeColor = ''; // Initialize changeColor variable
+    if (ticker.change_p > 0) {
+        changeColor = 'value-plus';
+    } else if (ticker.change_p < 0) {
+        changeColor = 'value-minus';
+      }
+    return `<div class='single-data'>
+                <p class='header-paragraph'>${ticker.code}</p>
+                <p class='header-paragraph'>Close: ${ticker.close}</p>
+                <p class='header-paragraph'>Change: <span class='${changeColor}'>${ticker.change_p}%</span></p>
+            </div>`;
+  }).join("");
       
       // Wstawianie wygenerowanego kodu HTML do elementu headerData
       headerData.insertAdjacentHTML("beforeend", markup);

@@ -49,8 +49,8 @@ export function dailyStockData(stockIndex,apiKey) {
     });
 }
 
-export function multipleDailyData (ticker1, ticker2, ticker3, ticker4, ticker5, API) {
-  const url = `https://eodhd.com/api/real-time/${ticker1}?s=${ticker2},${ticker3},${ticker4},${ticker5}&api_token=${API}&fmt=json`
+export function multipleDailyData(tickersList, API) {
+  const url = `https://eodhd.com/api/real-time/${tickersList[0]}?s=${tickersList[1]},${tickersList[2]},${tickersList[3]},${tickersList[4]}&api_token=${API}&fmt=json`
   return fetch(url)
     .then(response => {
       // Sprawdzamy, czy odpowiedź jest poprawna
@@ -61,11 +61,7 @@ export function multipleDailyData (ticker1, ticker2, ticker3, ticker4, ticker5, 
       return response.json();
     })
     .then(data => {
-      let realTimeDay= new Date(data.timestamp * 1000);
-      realTimeDay = createDate(realTimeDay)
-      close = data.close
-      let change_p = data.change_p
-      return { realTimeDay, data};
+      return data;
     })
     .catch(error => {
       // W przypadku błędu, np. problemu z siecią, wyświetlamy komunikat o błędzie

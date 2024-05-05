@@ -240,6 +240,14 @@ canvas{
         color: rgb(237, 237, 245);
 }
 
+.value-plus{
+    color: rgb(38, 105, 38);
+}
+
+.value-minus {
+    color: rgb(228, 51, 51);
+}
+
 @media screen and (max-width: 420px) {
     .main-div{
         max-width: 350px;
