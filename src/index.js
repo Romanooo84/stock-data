@@ -36,7 +36,7 @@ let headerTickersList=[index, index2, index3, index4, index5]
 let headerData = document.querySelector('.short-data')
 
 const mulipleInterval=()=> setInterval{
-multipleDailyData(index, index2, index3, index4, index5, token)
+multipleDailyData(headerTickersList, token)
 
 multipleDailyData(headerTickersList, token)
   .then(data => {
