@@ -26,7 +26,7 @@ let days = 30
 let startDate = new Date(today.getTime() - (days * 24 * 60 * 60 * 1000));
 let index2 = 'GSPC.indx'
 let index3 = 'AAPL.US'
-let index4 = 'EURPLN.FOREX'
+let index4 = 'USDEUR.FOREX'
 let index5 = 'USDPLN.FOREX'
 
 endDate = createDate(today)
