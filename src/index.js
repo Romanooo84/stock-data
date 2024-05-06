@@ -35,9 +35,6 @@ startDate = createDate(startDate)
 let headerTickersList=[index, index2, index3, index4, index5]
 let headerData = document.querySelector('.short-data')
 
-const mulipleInterval=()=> setInterval{
-multipleDailyData(headerTickersList, token)
-
 multipleDailyData(headerTickersList, token)
   .then(data => {
     let newData = data
@@ -62,7 +59,7 @@ multipleDailyData(headerTickersList, token)
   .catch(error => {
     console.error("Wystąpił błąd podczas pobierania danych:", error);
   });
-},
+
 
 setInterval(()=> {
 multipleDailyData(headerTickersList, token)
