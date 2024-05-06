@@ -237,15 +237,16 @@ canvas{
         font-weight: 700;
         font-style: normal;
         font-size: 20px;
-        color: rgb(237, 237, 245);
+        color: rgb(230, 230, 240);
 }
 
 .value-plus{
-    color: rgb(38, 105, 38);
+    color: rgb(135, 196, 135);
 }
 
 .value-minus {
-    color: rgb(228, 51, 51);
+    color: rgb(236, 124, 124);
+
 }
 
 @media screen and (max-width: 420px) {
