@@ -691,7 +691,7 @@ export const exchangeListJson= [
     "Currency": "Unknown",
     "CountryISO2": "",
     "CountryISO3": ""
-  }
+  },
    {
     "Name": "Virtual Exchange Holding",
     "Code": "INDX",
