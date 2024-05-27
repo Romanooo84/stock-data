@@ -692,5 +692,9 @@ export const exchangeListJson= [
     "CountryISO2": "",
     "CountryISO3": ""
   }
+   {
+    "Name": "Virtual Exchange Holding",
+    "Code": "INDX",
+  },
 ]
 
