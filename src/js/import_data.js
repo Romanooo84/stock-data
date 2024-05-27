@@ -57,6 +57,7 @@ export function multipleDailyData(tickersList, API) {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
+      console.log (response)
       // Parsujemy odpowiedź jako JSON i zwracamy ją
       return response.json();
     })
