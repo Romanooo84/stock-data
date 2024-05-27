@@ -200,7 +200,7 @@ selectEx.addEventListener('change', function (event) {
       }
     }
   }
-  else {
+  else if (selectedEx.includes('Usa Stock:')) {
     for (let i = 0; i < exchangeSymbols.length; i++) {
       if (selectedEx.includes(exchangeSymbols[i].Exchange)) {
             select2Options.push({ text: `${exchangeSymbols[i].Name}` })
@@ -215,18 +215,21 @@ selectEx.addEventListener('change', function (event) {
   event.preventDefault();
     if (selectTicker.options[selectTicker.selectedIndex] != undefined) {
       let selectedTicker = selectTicker.options[selectTicker.selectedIndex].value;
+      console.log(tickerList)
       for (let i = 0; i < tickerList.length;  i++){
         if (selectedTicker != tickerList[i].Name) {
         }
         else {
           ticker = tickerList[i].Code
-          if (tickerList[i].Country === 'USA') {
+          if (tickerList[i].Country === 'USA' && tickerList[i].Exchange!=='INDX') {
             exchange = 'US'
           }
           else {
             exchange = tickerList[i].Exchange
           }
+          
           index = ticker.concat('.', exchange)
+    
 
         }
       }
