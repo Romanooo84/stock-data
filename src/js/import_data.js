@@ -51,7 +51,7 @@ export function dailyStockData(stockIndex,apiKey) {
 
 export function multipleDailyData(tickersList, API) {
   let UrlTickerData = ''
-  for (i=0; i<tickersList.length; i++){
+  for (let i=0; i<tickersList.length; i++){
     if (i === 0){
       UrlTickerData = tickersList[i]+'?s='
     }
