@@ -29,12 +29,23 @@ let index2 = 'GSPC.INDX'
 let index3 = 'AAPL.US'
 let index4 = 'EURPLN.FOREX'
 let index5 = 'USDPLN.FOREX'
+let delButton 
 
 endDate = createDate(today)
 startDate = createDate(startDate)
 
+
+
 let headerTickersList=[index1, index2, index3, index4, index5]
 let headerData = document.querySelector('.short-data')
+const favButton = document.querySelector('.add-fav-button')
+
+
+console.log(headerTickersList.length)
+if (headerTickersList.length >4){
+  favButton.disabled=true
+}
+
 
 multipleDailyData(headerTickersList, token)
   .then(data => {
@@ -48,22 +59,25 @@ multipleDailyData(headerTickersList, token)
         changeColor = 'value-minus';
     }
     return `<div class='short-data-div'>
+                <button class = 'delete-button'  type="button" id="${ticker.code}" >
+                <svg id = '${ticker.code}' version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill = '#ec7c7c'>
+                  <path name = '${ticker.code}' d="M4 10v20c0 1.1 0.9 2 2 2h18c1.1 0 2-0.9 2-2v-20h-22zM10 28h-2v-14h2v14zM14 28h-2v-14h2v14zM18 28h-2v-14h2v14zM22 28h-2v-14h2v14z"></path>
+                  <path name = '${ticker.code}' d="M26.5 4h-6.5v-2.5c0-0.825-0.675-1.5-1.5-1.5h-7c-0.825 0-1.5 0.675-1.5 1.5v2.5h-6.5c-0.825 0-1.5 0.675-1.5 1.5v2.5h26v-2.5c0-0.825-0.675-1.5-1.5-1.5zM18 4h-6v-1.975h6v1.975z"></path>
+                </svg>
+              </button>
               <div class='single-data' name = '${ticker.code}'>
                 <p class='header-paragraph'>${ticker.code}</p>
                 <p class='header-paragraph'>Close: ${ticker.close}</p>
                 <p class='header-paragraph'>Change: <span class='${changeColor}'>${ticker.change_p}%</span></p>
               </div>
-              <button class = 'delete-button'  type="button" id="${ticker.code}" >
-                <svg id = '${ticker.code}' version="1.1" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 32 32" fill = '#ec7c7c'>
-                  <path name = '${ticker.code}' d="M4 10v20c0 1.1 0.9 2 2 2h18c1.1 0 2-0.9 2-2v-20h-22zM10 28h-2v-14h2v14zM14 28h-2v-14h2v14zM18 28h-2v-14h2v14zM22 28h-2v-14h2v14z"></path>
-                  <path name = '${ticker.code}' d="M26.5 4h-6.5v-2.5c0-0.825-0.675-1.5-1.5-1.5h-7c-0.825 0-1.5 0.675-1.5 1.5v2.5h-6.5c-0.825 0-1.5 0.675-1.5 1.5v2.5h26v-2.5c0-0.825-0.675-1.5-1.5-1.5zM18 4h-6v-1.975h6v1.975z"></path>
-                </svg>
-              </button>
+             
             </div>`;
   }).join("");
       
       // Wstawianie wygenerowanego kodu HTML do elementu headerData
       headerData.insertAdjacentHTML("beforeend", markup);
+      delButton = document.getElementsByClassName('.delete-button')
+      console.log(delButton)
   })
   .catch(error => {
     console.error("Wystąpił błąd podczas pobierania danych:", error);
@@ -87,18 +101,19 @@ multipleDailyData(headerTickersList, token)
         changeColor = 'value-minus';
       }
       return `<div class='short-data-div'>
-            <div class='single-data' name = '${ticker.code}'>
-              <p class='header-paragraph'>${ticker.code}</p>
-              <p class='header-paragraph'>Close: ${ticker.close}</p>
-              <p class='header-paragraph'>Change: <span class='${changeColor}'>${ticker.change_p}%</span></p>
-            </div>
-            <button class = 'delete-button'  type="button" id="${ticker.code}" >
-              <svg id = '${ticker.code}' version="1.1" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 32 32" fill = '#ec7c7c'>
-                <path name = '${ticker.code}' d="M4 10v20c0 1.1 0.9 2 2 2h18c1.1 0 2-0.9 2-2v-20h-22zM10 28h-2v-14h2v14zM14 28h-2v-14h2v14zM18 28h-2v-14h2v14zM22 28h-2v-14h2v14z"></path>
-                <path name = '${ticker.code}' d="M26.5 4h-6.5v-2.5c0-0.825-0.675-1.5-1.5-1.5h-7c-0.825 0-1.5 0.675-1.5 1.5v2.5h-6.5c-0.825 0-1.5 0.675-1.5 1.5v2.5h26v-2.5c0-0.825-0.675-1.5-1.5-1.5zM18 4h-6v-1.975h6v1.975z"></path>
-              </svg>
-            </button>
-          </div>`;
+                <button class = 'delete-button'  type="button" id="${ticker.code}" >
+                <svg id = '${ticker.code}' version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill = '#ec7c7c'>
+                  <path name = '${ticker.code}' d="M4 10v20c0 1.1 0.9 2 2 2h18c1.1 0 2-0.9 2-2v-20h-22zM10 28h-2v-14h2v14zM14 28h-2v-14h2v14zM18 28h-2v-14h2v14zM22 28h-2v-14h2v14z"></path>
+                  <path name = '${ticker.code}' d="M26.5 4h-6.5v-2.5c0-0.825-0.675-1.5-1.5-1.5h-7c-0.825 0-1.5 0.675-1.5 1.5v2.5h-6.5c-0.825 0-1.5 0.675-1.5 1.5v2.5h26v-2.5c0-0.825-0.675-1.5-1.5-1.5zM18 4h-6v-1.975h6v1.975z"></path>
+                </svg>
+              </button>
+              <div class='single-data' name = '${ticker.code}'>
+                <p class='header-paragraph'>${ticker.code}</p>
+                <p class='header-paragraph'>Close: ${ticker.close}</p>
+                <p class='header-paragraph'>Change: <span class='${changeColor}'>${ticker.change_p}%</span></p>
+              </div>
+             
+            </div>`;
   }).join("");
       
       // Wstawianie wygenerowanego kodu HTML do elementu headerData
@@ -107,13 +122,11 @@ multipleDailyData(headerTickersList, token)
   .catch(error => {
     console.error("Wystąpił błąd podczas pobierania danych:", error);
   });
-},200000
+},2000000000
 );
 
-headerData.addEventListener('click',function (event){
+  headerData.addEventListener('click',function (event){
   event.preventDefault()
-  console.log(event.target.parentNode.id)
-  console.log(event.target.parentNode)
   let tickerToDelete=event.target.parentNode.id
   headerTickersList = headerTickersList .filter(ticker => ticker !== tickerToDelete);
   multipleDailyData(headerTickersList, token)
@@ -127,32 +140,35 @@ headerData.addEventListener('click',function (event){
         changeColor = 'value-minus';
     }
     return `<div class='short-data-div'>
+                <button class = 'delete-button'  type="button" id="${ticker.code}" >
+                <svg id = '${ticker.code}' version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill = '#ec7c7c'>
+                  <path name = '${ticker.code}' d="M4 10v20c0 1.1 0.9 2 2 2h18c1.1 0 2-0.9 2-2v-20h-22zM10 28h-2v-14h2v14zM14 28h-2v-14h2v14zM18 28h-2v-14h2v14zM22 28h-2v-14h2v14z"></path>
+                  <path name = '${ticker.code}' d="M26.5 4h-6.5v-2.5c0-0.825-0.675-1.5-1.5-1.5h-7c-0.825 0-1.5 0.675-1.5 1.5v2.5h-6.5c-0.825 0-1.5 0.675-1.5 1.5v2.5h26v-2.5c0-0.825-0.675-1.5-1.5-1.5zM18 4h-6v-1.975h6v1.975z"></path>
+                </svg>
+              </button>
               <div class='single-data' name = '${ticker.code}'>
                 <p class='header-paragraph'>${ticker.code}</p>
                 <p class='header-paragraph'>Close: ${ticker.close}</p>
                 <p class='header-paragraph'>Change: <span class='${changeColor}'>${ticker.change_p}%</span></p>
               </div>
-              <button class = 'delete-button'  type="button" id="${ticker.code}" >
-                <svg id = '${ticker.code}' version="1.1" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 32 32" fill = '#ec7c7c'>
-                  <path name = '${ticker.code}' d="M4 10v20c0 1.1 0.9 2 2 2h18c1.1 0 2-0.9 2-2v-20h-22zM10 28h-2v-14h2v14zM14 28h-2v-14h2v14zM18 28h-2v-14h2v14zM22 28h-2v-14h2v14z"></path>
-                  <path name = '${ticker.code}' d="M26.5 4h-6.5v-2.5c0-0.825-0.675-1.5-1.5-1.5h-7c-0.825 0-1.5 0.675-1.5 1.5v2.5h-6.5c-0.825 0-1.5 0.675-1.5 1.5v2.5h26v-2.5c0-0.825-0.675-1.5-1.5-1.5zM18 4h-6v-1.975h6v1.975z"></path>
-                </svg>
-              </button>
+             
             </div>`;
-  }).join("");
+    }).join("");
       
       // Wstawianie wygenerowanego kodu HTML do elementu headerData
       headerData.innerHTML = ''
       headerData.insertAdjacentHTML("beforeend", markup);
-  })
+      delButton = document.getElementsByClassName('.delete-button')
+      console.log(delButton)
+      for (var i = 0; i < delButton.length; i++) {
+        delButton[i].disabled = true;
+    }
+    })
+
   .catch(error => {
     console.error("Wystąpił błąd podczas pobierania danych:", error);
   });
 })
-
-
-
-
 
 
 historicalStockData(index, token, startDate, endDate)
@@ -236,7 +252,45 @@ regressionButton.addEventListener('click', function (event) {
     regressionButton.textContent = 'hide regression lines'
   }
 })
-  
+
+favButton.addEventListener('click',()=> {
+  headerTickersList.push(index)
+  multipleDailyData(headerTickersList, token)
+  .then(data => {
+    let newData = data
+    headerData.innerHTML = ''
+    const markup = newData.map((ticker) => {
+    let changeColor = ''; // Initialize changeColor variable
+    if (ticker.change_p > 0) {
+        changeColor = 'value-plus';
+    } else if (ticker.change_p < 0) {
+        changeColor = 'value-minus';
+    }
+    return `<div class='short-data-div'>
+                <button class = 'delete-button'  type="button" id="${ticker.code}" >
+                <svg id = '${ticker.code}' version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill = '#ec7c7c'>
+                  <path name = '${ticker.code}' d="M4 10v20c0 1.1 0.9 2 2 2h18c1.1 0 2-0.9 2-2v-20h-22zM10 28h-2v-14h2v14zM14 28h-2v-14h2v14zM18 28h-2v-14h2v14zM22 28h-2v-14h2v14z"></path>
+                  <path name = '${ticker.code}' d="M26.5 4h-6.5v-2.5c0-0.825-0.675-1.5-1.5-1.5h-7c-0.825 0-1.5 0.675-1.5 1.5v2.5h-6.5c-0.825 0-1.5 0.675-1.5 1.5v2.5h26v-2.5c0-0.825-0.675-1.5-1.5-1.5zM18 4h-6v-1.975h6v1.975z"></path>
+                </svg>
+              </button>
+              <div class='single-data' name = '${ticker.code}'>
+                <p class='header-paragraph'>${ticker.code}</p>
+                <p class='header-paragraph'>Close: ${ticker.close}</p>
+                <p class='header-paragraph'>Change: <span class='${changeColor}'>${ticker.change_p}%</span></p>
+              </div>
+             
+            </div>`;
+  }).join("");
+      
+      // Wstawianie wygenerowanego kodu HTML do elementu headerData
+      headerData.innerHTML = ''
+      headerData.insertAdjacentHTML("beforeend", markup);
+      if (headerTickersList.length >4){
+        favButton.disabled=true
+      }
+      })
+  })
+
 
 selectEx.addEventListener('change', function (event) {
   event.preventDefault()

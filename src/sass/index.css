@@ -80,6 +80,11 @@ button{
     border-color: #0d58eee1;
 }
 
+.add-fav-button:hover{
+    border-color: #0d58eee1;
+}
+
+
 input{
     background-color: #263bce00;
     border: 3px solid #1648ac75;
