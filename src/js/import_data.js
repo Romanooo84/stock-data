@@ -50,14 +50,26 @@ export function dailyStockData(stockIndex,apiKey) {
 }
 
 export function multipleDailyData(tickersList, API) {
-  const url = `https://eodhd.com/api/real-time/${tickersList[0]}?s=${tickersList[1]},${tickersList[2]},${tickersList[3]},${tickersList[4]}&api_token=${API}&fmt=json`
+  let UrlTickerData = ''
+  for (i=0; i<tickersList.length; i++){
+    if (i === 0){
+      UrlTickerData = tickersList[i]+'?s='
+    }
+    else if (i === 1){
+      UrlTickerData = UrlTickerData + `${tickersList[i]}`
+    }
+    else {
+      UrlTickerData = UrlTickerData + `,${tickersList[i]}`
+    }
+  }
+  const url = `https://eodhd.com/api/real-time/${UrlTickerData}&api_token=${API}&fmt=json`
+  
   return fetch(url)
     .then(response => {
       // Sprawdzamy, czy odpowiedź jest poprawna
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      console.log (response)
       // Parsujemy odpowiedź jako JSON i zwracamy ją
       return response.json();
     })

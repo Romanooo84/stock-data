@@ -24,7 +24,8 @@ let index = ticker.concat('.', exchange)
 let today = new Date();
 let days = 30 
 let startDate = new Date(today.getTime() - (days * 24 * 60 * 60 * 1000));
-let index2 = 'GSPC.indx'
+let index1 = 'ALE.WAR'
+let index2 = 'GSPC.INDX'
 let index3 = 'AAPL.US'
 let index4 = 'EURPLN.FOREX'
 let index5 = 'USDPLN.FOREX'
@@ -32,7 +33,7 @@ let index5 = 'USDPLN.FOREX'
 endDate = createDate(today)
 startDate = createDate(startDate)
 
-let headerTickersList=[index, index2, index3, index4, index5]
+let headerTickersList=[index1, index2, index3, index4, index5]
 let headerData = document.querySelector('.short-data')
 
 multipleDailyData(headerTickersList, token)
@@ -46,10 +47,13 @@ multipleDailyData(headerTickersList, token)
     } else if (ticker.change_p < 0) {
         changeColor = 'value-minus';
     }
-    return `<div class='single-data'>
+    return `<div>
+              <div class='single-data' name = '${ticker.code}'>
                 <p class='header-paragraph'>${ticker.code}</p>
                 <p class='header-paragraph'>Close: ${ticker.close}</p>
                 <p class='header-paragraph'>Change: <span class='${changeColor}'>${ticker.change_p}%</span></p>
+              </div>
+              <button type="button" name="${ticker.code}">X</button>
             </div>`;
   }).join("");
       
@@ -77,11 +81,14 @@ multipleDailyData(headerTickersList, token)
     } else if (ticker.change_p < 0) {
         changeColor = 'value-minus';
       }
-    return `<div class='single-data'>
-                <p class='header-paragraph'>${ticker.code}</p>
-                <p class='header-paragraph'>Close: ${ticker.close}</p>
-                <p class='header-paragraph'>Change: <span class='${changeColor}'>${ticker.change_p}%</span></p>
-            </div>`;
+    return `<div>
+    <div class='single-data' name = '${ticker.code}'>
+      <p class='header-paragraph'>${ticker.code}</p>
+      <p class='header-paragraph'>Close: ${ticker.close}</p>
+      <p class='header-paragraph'>Change: <span class='${changeColor}'>${ticker.change_p}%</span></p>
+    </div>
+    <button type="button" name="${ticker.code}">X</button>
+  </div>`;
   }).join("");
       
       // Wstawianie wygenerowanego kodu HTML do elementu headerData
@@ -92,6 +99,40 @@ multipleDailyData(headerTickersList, token)
   });
 },2000
 );
+
+headerData.addEventListener('click',function (event){
+  event.preventDefault()
+  let tickerToDelete=event.target.name
+  headerTickersList = headerTickersList .filter(ticker => ticker !== tickerToDelete);
+  multipleDailyData(headerTickersList, token)
+  .then(data => {
+    let newData = data
+    const markup = newData.map((ticker) => {
+    let changeColor = ''; // Initialize changeColor variable
+    if (ticker.change_p > 0) {
+        changeColor = 'value-plus';
+    } else if (ticker.change_p < 0) {
+        changeColor = 'value-minus';
+    }
+    return `<div>
+              <div class='single-data' name = '${ticker.code}'>
+                <p class='header-paragraph'>${ticker.code}</p>
+                <p class='header-paragraph'>Close: ${ticker.close}</p>
+                <p class='header-paragraph'>Change: <span class='${changeColor}'>${ticker.change_p}%</span></p>
+              </div>
+              <button type="button" name="${ticker.code}">X</button>
+            </div>`;
+  }).join("");
+      
+      // Wstawianie wygenerowanego kodu HTML do elementu headerData
+      headerData.innerHTML = ''
+      headerData.insertAdjacentHTML("beforeend", markup);
+  })
+  .catch(error => {
+    console.error("Wystąpił błąd podczas pobierania danych:", error);
+  });
+})
+
 
 
 

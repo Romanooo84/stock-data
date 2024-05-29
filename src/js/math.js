@@ -6,11 +6,9 @@ export function linearRegression(yAxis) {
         let regressionPoints = [i + 1, yAxis[i]]
         regressionData.push(regressionPoints)
     }
-    console.log(regressionData)
     const result = regression.linear(regressionData);
     const factorA = result.equation[0];
     const factorB = result.equation[1];
-    console.log(`y=${factorA}x+${factorB}`)
     let functionPattern=`y=${factorA}x+${factorB}`
     let regYAxis = []
     for (let i = 0; i < yAxis.length; i++){
@@ -39,7 +37,6 @@ export function parRegression(yAxis) {
     const factorA = result2.equation[0];
     const factorB = result2.equation[1];
     const factorC = result2.equation[2];
-    console.log(`y=${factorA}x^2+${factorB}x+${factorC}`)
     let parFunctionPattern=`y=${factorA}x^2+${factorB}x+${factorC}`
     let parRegYAxis = []
     for (let i = 0; i < yAxis.length; i++){
@@ -67,10 +64,8 @@ export function upperPoints(regYAxis, yAxis) {
         }
     }
     const result = regression.linear(selectedPoints)
-    console.log(result)
     const factorA = result.equation[0];
     const factorB = result.equation[1];
-    console.log(`y=${factorA}x+${factorB}`)
     let topYAxis = []
     for (let i = 0; i < yAxis.length; i++) {
         topYAxis.push(factorA * i + factorB)
@@ -95,10 +90,8 @@ export function bottomPoints(regYAxis, yAxis) {
         }
     }
     const result = regression.linear(selectedPoints)
-    console.log(result)
     const factorA = result.equation[0];
     const factorB = result.equation[1];
-    console.log(`y=${factorA}x+${factorB}`)
     let topYAxis = []
     for (let i = 0; i < yAxis.length; i++) {
         topYAxis.push(factorA * i + factorB)
