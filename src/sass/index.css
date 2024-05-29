@@ -150,6 +150,7 @@ canvas{
     
 }
 
+
 .buttons-div{
     justify-content: center;
         display: flex;
@@ -222,6 +223,20 @@ canvas{
     display: flex;
     justify-content: space-evenly;
    
+}
+
+.short-data-div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.delete-button{
+    border-style: none;
+    box-shadow: none;
+    color: #c30000;
+    font-size: 25px;
 }
 
 .single-data{
