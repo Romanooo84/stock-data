@@ -6,7 +6,6 @@ import { selectEx, select2, selectTicker, exchangeSymbols } from "./js/select.js
 import { linearRegression, bottomPoints, upperPoints } from "./js/math.js";
 import './js/select.js'
 import './js/date-time'
-import { selectedDate } from "./js/date-time";
 import { multipleDailyData } from "./js/import_data.js";
 
 let dailyData
