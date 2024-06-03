@@ -269,6 +269,10 @@ canvas{
 
 }
 
+.chart-div{
+    width: 1000px;
+}
+
 @media screen and (max-width: 420px) {
     .main-div{
         max-width: 350px;

@@ -15,7 +15,6 @@ let newDataChart
 let chartData
 let endDate
 let tickerList
-let intervalId
 
 const token = '65fd2d716aebf2.80647901';
 let exchange = 'WAR';
@@ -34,18 +33,13 @@ let delButton
 endDate = createDate(today)
 startDate = createDate(startDate)
 
-
-
 let headerTickersList=[index1, index2, index3, index4, index5]
 let headerData = document.querySelector('.short-data')
 const favButton = document.querySelector('.add-fav-button')
 
-
-console.log(headerTickersList.length)
 if (headerTickersList.length >4){
   favButton.disabled=true
 }
-
 
 multipleDailyData(headerTickersList, token)
   .then(data => {
@@ -69,25 +63,22 @@ multipleDailyData(headerTickersList, token)
                 <p class='header-paragraph'>${ticker.code}</p>
                 <p class='header-paragraph'>Close: ${ticker.close}</p>
                 <p class='header-paragraph'>Change: <span class='${changeColor}'>${ticker.change_p}%</span></p>
-              </div>
-             
+              </div>          
             </div>`;
   }).join("");
-      
       // Wstawianie wygenerowanego kodu HTML do elementu headerData
       headerData.insertAdjacentHTML("beforeend", markup);
       delButton = document.querySelectorAll('.delete-button')
-      console.log(delButton)
   })
   .catch(error => {
     console.error("Wystąpił błąd podczas pobierania danych:", error);
   });
 
-
 setInterval(()=> {
 multipleDailyData(headerTickersList, token)
   .then(data => {
     let newData = data
+    console.log(data)
     let changeColor
     newData.forEach(element => {
       element.change_p>0? changeColor='value-plus':changeColor='value-minus'
@@ -111,18 +102,16 @@ multipleDailyData(headerTickersList, token)
                 <p class='header-paragraph'>${ticker.code}</p>
                 <p class='header-paragraph'>Close: ${ticker.close}</p>
                 <p class='header-paragraph'>Change: <span class='${changeColor}'>${ticker.change_p}%</span></p>
-              </div>
-             
+              </div>          
             </div>`;
-  }).join("");
-      
+  }).join(""); 
       // Wstawianie wygenerowanego kodu HTML do elementu headerData
       headerData.insertAdjacentHTML("beforeend", markup);
   })
   .catch(error => {
     console.error("Wystąpił błąd podczas pobierania danych:", error);
   });
-},2000000000
+},2000
 );
 
 headerData.addEventListener('click',function (event){
@@ -151,15 +140,12 @@ headerData.addEventListener('click',function (event){
                   <p class='header-paragraph'>Close: ${ticker.close}</p>
                   <p class='header-paragraph'>Change: <span class='${changeColor}'>${ticker.change_p}%</span></p>
                 </div>
-              
               </div>`;
       }).join("");
-        
         // Wstawianie wygenerowanego kodu HTML do elementu headerData
         headerData.innerHTML = ''
         headerData.insertAdjacentHTML("beforeend", markup);
-        delButton = document.querySelectorAll('.delete-button')
-        console.log(delButton)
+        delButton = document.querySelectorAll('.delete-button')    
         if (delButton.length<3){
         for (var i = 0; i < delButton.length; i++) {
           delButton[i].disabled = true;
@@ -168,17 +154,14 @@ headerData.addEventListener('click',function (event){
         favButton.disabled=false
       }
       })
-
     .catch(error => {
       console.error("Wystąpił błąd podczas pobierania danych:", error);
     });
 })
 
-
 historicalStockData(index, token, startDate, endDate)
   .then(data => {
     historicalData = data;
-    
     return dailyStockData(index, token);
   })
   .then(data => {
@@ -187,17 +170,14 @@ historicalStockData(index, token, startDate, endDate)
   })
   .then(() => { return createAxis(historicalData, dailyData) })
   .then(data => {
-   
     chartData = data
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
   })
   .then(data => {
-    
-     const { regYAxis }=linearRegression(chartData.yAxis)
+    const { regYAxis }=linearRegression(chartData.yAxis)
     upperPoints(regYAxis, chartData.yAxis)
     bottomPoints (regYAxis, chartData.yAxis)
     newDataChart = data
-    
   })
   .then(()=>{return news(index, token)})
   .then(data=>{
@@ -214,7 +194,6 @@ button.addEventListener('click', function (event,) {
   event.preventDefault()
   historicalStockData(index, token, selectedDate, endDate)
   .then(data => {
-    console.log('pobrał1')
     historicalData = data;
     return dailyStockData(index, token);
   })
@@ -224,7 +203,6 @@ button.addEventListener('click', function (event,) {
   })
   .then(() => { return createAxis(historicalData, dailyData) })
   .then(data => {
-    console.log('pobrał2')
     chartData = data
     newDataChart.destroy();
     return lineChart(chartData.xAxis, chartData.yAxis, ticker)
@@ -234,13 +212,8 @@ button.addEventListener('click', function (event,) {
       upperPoints(regYAxis, chartData.yAxis)
       bottomPoints(regYAxis, chartData.yAxis)
       newDataChart = data
-      console.log('pobrał3')
       if (regressionButton.textContent === 'show regression lines')
         {hideChart()}
-  })
-  .then(()=>{return news(index, token)})
-  .then(data=>{
-    let paragraph = document.querySelector("#news")
   })
 })
 
@@ -285,7 +258,6 @@ favButton.addEventListener('click',()=> {
              
             </div>`;
   }).join("");
-      
       // Wstawianie wygenerowanego kodu HTML do elementu headerData
       headerData.innerHTML = ''
       headerData.insertAdjacentHTML("beforeend", markup);
@@ -294,7 +266,6 @@ favButton.addEventListener('click',()=> {
       }
       })
   })
-
 
 selectEx.addEventListener('change', function (event) {
   event.preventDefault()
@@ -331,7 +302,7 @@ selectEx.addEventListener('change', function (event) {
   event.preventDefault();
     if (selectTicker.options[selectTicker.selectedIndex] != undefined) {
       let selectedTicker = selectTicker.options[selectTicker.selectedIndex].value;
-      console.log(tickerList)
+      
       for (let i = 0; i < tickerList.length;  i++){
         if (selectedTicker != tickerList[i].Name) {
         }
