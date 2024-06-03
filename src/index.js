@@ -188,17 +188,16 @@ historicalStockData(index, token, startDate, endDate)
   })
 
 export let button = document.querySelector('.button')
-button.disabled=true
 button.addEventListener('click', function (event,) {
   event.preventDefault()
-  historicalStockData(index, token, selectedDate, endDate)
+  historicalStockData(index, token, selectedDate=startDate, endDate)
   .then(data => {
     historicalData = data;
     return dailyStockData(index, token);
   })
   .then(data => {
     dailyData = data;
-    return particularData("currentData", index, dailyData)
+    return particularData("currentData", index, dailyData, historicalData)
   })
   .then(() => { return createAxis(historicalData, dailyData) })
   .then(data => {
