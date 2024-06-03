@@ -78,8 +78,6 @@ setInterval(()=> {
 multipleDailyData(headerTickersList, token)
   .then(data => {
     let newData = data
-    console.log(data)
-    let changeColor
     newData.forEach(element => {
       element.change_p>0? changeColor='value-plus':changeColor='value-minus'
     });
@@ -166,7 +164,8 @@ historicalStockData(index, token, startDate, endDate)
   })
   .then(data => {
     dailyData = data;
-    return particularData("currentData", index, dailyData)
+    console.log(dailyData)
+    return particularData("currentData", index, dailyData, historicalData)
   })
   .then(() => { return createAxis(historicalData, dailyData) })
   .then(data => {
