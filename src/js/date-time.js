@@ -1,5 +1,4 @@
 import { button } from "../index.js";
-export let selectedDate
 
 flatpickr("#datepicker", {
     dateFormat: "Y-m-d", // Format daty
@@ -11,3 +10,5 @@ flatpickr("#datepicker", {
     }
   }
 });
+
+export let selectedDate
