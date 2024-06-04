@@ -38,13 +38,13 @@ export let button = document.querySelector('.button')
 
 flatpickr("#datepicker", {
   dateFormat: "Y-m-d", // Format daty
-maxDate: new Date().fp_incr(0), // Maksymalna dozwolona data (30 dni od dzisiaj)
-onClose: function (selectedDates, dateStr) {
-  selectedDate = dateStr;
-  console.log('sel'+startDate)
-  if (selectedDate != undefined) {
-  button.disabled=false
-  }
+  maxDate: new Date().fp_incr(0), // Maksymalna dozwolona data (30 dni od dzisiaj)
+  onClose: function (selectedDates, dateStr) {
+    let selectedDate = dateStr;
+    console.log('sel'+startDate)
+    if (selectedDate != undefined) {
+    button.disabled=false
+    }
 }
 });
 
