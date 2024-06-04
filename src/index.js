@@ -189,9 +189,8 @@ historicalStockData(index, token, startDate, endDate)
 export let button = document.querySelector('.button')
 button.addEventListener('click', function (event,) {
   event.preventDefault()
-  selectedDate
   console.log(selectedDate)
-  historicalStockData(index, token, selectedDate=startDate, endDate)
+  historicalStockData(index, token, selectedDate, endDate)
   .then(data => {
     historicalData = data;
     return dailyStockData(index, token);
@@ -221,6 +220,7 @@ flatpickr("#datepicker", {
 maxDate: new Date().fp_incr(0), // Maksymalna dozwolona data (30 dni od dzisiaj)
 onClose: function (selectedDates, dateStr) {
   selectedDate = dateStr;
+  console.log('sel'+startDate)
   if (selectedDate != undefined) {
   button.disabled=false
   }
