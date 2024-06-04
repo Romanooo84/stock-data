@@ -4,7 +4,6 @@ import { particularData } from "./js/particular_data.js";
 import { exchangeListJson } from "./js/exchange_list.js";
 import { selectEx, select2, selectTicker, exchangeSymbols } from "./js/select.js";
 import { linearRegression, bottomPoints, upperPoints } from "./js/math.js";
-import './js/select.js'
 import { multipleDailyData } from "./js/import_data.js";
 import { selectedDate } from "./js/date-time";
 
