@@ -5,6 +5,7 @@ import { exchangeListJson } from "./js/exchange_list.js";
 import { selectEx, select2, selectTicker, exchangeSymbols } from "./js/select.js";
 import { linearRegression, bottomPoints, upperPoints } from "./js/math.js";
 import { multipleDailyData } from "./js/import_data.js";
+import "./js/date-time.js"
 
 
 let dailyData
