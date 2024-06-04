@@ -285,7 +285,7 @@ canvas{
 }
 
 .chart-div{
-    max-width: 700px;
+    min-width: 700px;
 }
 
 .historical-data{
