@@ -190,6 +190,7 @@ historicalStockData(index, token, startDate, endDate)
 export let button = document.querySelector('.button')
 button.addEventListener('click', function (event,) {
   event.preventDefault()
+  let selectedDate
   historicalStockData(index, token, selectedDate=startDate, endDate)
   .then(data => {
     historicalData = data;
