@@ -7,6 +7,7 @@ import { linearRegression, bottomPoints, upperPoints } from "./js/math.js";
 import './js/select.js'
 import './js/date-time'
 import { multipleDailyData } from "./js/import_data.js";
+import { selectedDate } from "./js/date-time";
 
 let dailyData
 let historicalData
@@ -190,7 +191,7 @@ historicalStockData(index, token, startDate, endDate)
 export let button = document.querySelector('.button')
 button.addEventListener('click', function (event,) {
   event.preventDefault()
-  let selectedDate
+  console.log(selectedDate)
   historicalStockData(index, token, selectedDate=startDate, endDate)
   .then(data => {
     historicalData = data;
