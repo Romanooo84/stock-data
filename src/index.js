@@ -34,6 +34,19 @@ startDate = createDate(startDate)
 let headerTickersList=[index1, index2, index3, index4, index5]
 let headerData = document.querySelector('.short-data')
 const favButton = document.querySelector('.add-fav-button')
+export let button = document.querySelector('.button')
+
+flatpickr("#datepicker", {
+  dateFormat: "Y-m-d", // Format daty
+maxDate: new Date().fp_incr(0), // Maksymalna dozwolona data (30 dni od dzisiaj)
+onClose: function (selectedDates, dateStr) {
+  selectedDate = dateStr;
+  console.log('sel'+startDate)
+  if (selectedDate != undefined) {
+  button.disabled=false
+  }
+}
+});
 
 if (headerTickersList.length >4){
   favButton.disabled=true
@@ -186,7 +199,7 @@ historicalStockData(index, token, startDate, endDate)
     paragraph.insertAdjacentHTML("beforeend", markup);
   })
 
-export let button = document.querySelector('.button')
+
 button.addEventListener('click', function (event,) {
   event.preventDefault()
   console.log(selectedDate)
@@ -215,17 +228,7 @@ button.addEventListener('click', function (event,) {
   })
 })
 
-flatpickr("#datepicker", {
-  dateFormat: "Y-m-d", // Format daty
-maxDate: new Date().fp_incr(0), // Maksymalna dozwolona data (30 dni od dzisiaj)
-onClose: function (selectedDates, dateStr) {
-  selectedDate = dateStr;
-  console.log('sel'+startDate)
-  if (selectedDate != undefined) {
-  button.disabled=false
-  }
-}
-});
+
 
 const regressionButton = document.querySelector('.regression-button');
 regressionButton.addEventListener('click', function (event) {
