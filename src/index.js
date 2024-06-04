@@ -27,6 +27,7 @@ let index3 = 'AAPL.US'
 let index4 = 'EURPLN.FOREX'
 let index5 = 'USDPLN.FOREX'
 let delButton 
+let selectedDate
 
 endDate = createDate(today)
 startDate = createDate(startDate)
@@ -40,7 +41,7 @@ flatpickr("#datepicker", {
   dateFormat: "Y-m-d", // Format daty
   maxDate: new Date().fp_incr(0), // Maksymalna dozwolona data (30 dni od dzisiaj)
   onClose: function (selectedDates, dateStr) {
-    let selectedDate = dateStr;
+    selectedDate = dateStr;
     console.log('sel'+startDate)
     if (selectedDate != undefined) {
     button.disabled=false
