@@ -5,7 +5,6 @@ import { exchangeListJson } from "./js/exchange_list.js";
 import { selectEx, select2, selectTicker, exchangeSymbols } from "./js/select.js";
 import { linearRegression, bottomPoints, upperPoints } from "./js/math.js";
 import { multipleDailyData } from "./js/import_data.js";
-import { selectedDate } from "./js/date-time.js";
 
 
 let dailyData
@@ -216,6 +215,17 @@ button.addEventListener('click', function (event,) {
         {hideChart()}
   })
 })
+
+flatpickr("#datepicker", {
+  dateFormat: "Y-m-d", // Format daty
+maxDate: new Date().fp_incr(0), // Maksymalna dozwolona data (30 dni od dzisiaj)
+onClose: function (selectedDates, dateStr) {
+  selectedDate = dateStr;
+  if (selectedDate != undefined) {
+  button.disabled=false
+  }
+}
+});
 
 const regressionButton = document.querySelector('.regression-button');
 regressionButton.addEventListener('click', function (event) {
