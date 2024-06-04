@@ -279,8 +279,6 @@ canvas{
     min-width: 300px ;
 }
 
-
-
 .historical-data{
     display: flex;
     flex-direction: column;

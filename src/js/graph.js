@@ -18,7 +18,8 @@ export function lineChart(xAxis, yAxis, ticker) {
       }]
     },
     options: {
-      responsive: true
+      responsive: true,
+      maintainAspectRatio: false,
     }
   });
   return newDataChart
