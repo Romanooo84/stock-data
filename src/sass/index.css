@@ -21,6 +21,10 @@ h2{
         font-size: 30px;
 }
 
+.canvas{
+    max-width: 750px;
+}
+
 .ss-main{
     border: 3px solid #1648ac75;
     background-color: #263bce00;

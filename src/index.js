@@ -77,6 +77,7 @@ setInterval(()=> {
 multipleDailyData(headerTickersList, token)
   .then(data => {
     let newData = data
+    let changeColor = '';
     newData.forEach(element => {
       element.change_p>0? changeColor='value-plus':changeColor='value-minus'
     });
