@@ -1,10 +1,13 @@
+:root{
+    --bgcolour: #dce8f194}
+
 header{
-    background-color: rgba(0,120,200,0.7);
+    background-color: rgba(108, 163, 199, 0.7);
     background: rgb(9, 111, 121);
     background: rgb(59, 72, 144);
-    background: linear-gradient(0deg, rgba(59, 72, 144, 0.8) 0%, rgba(29, 124, 253, 1) 54%, rgba(59, 72, 144, 0.8) 100%);
+    background: linear-gradient(0deg, rgba(59, 72, 144, 1) 0%, rgba(29, 124, 253, 1) 54%, rgba(59, 72, 144, 0.3) 100%);
     height: 100px;
-    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.658);
 }
 
 p{
@@ -28,6 +31,7 @@ h2{
     height: 30px;
     transition: border-color 0.5s ease-in-out;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); 
+    background-color: var(--bgcolour);
 }
 
 .ss-list{
@@ -62,6 +66,7 @@ button{
     cursor: pointer;
     transition: border-color 0.5s ease-in-out;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);  
+    background-color: var(--bgcolour);
 }
 
 .button:hover{
@@ -92,6 +97,7 @@ input{
     height: 22px;
     transition: border-color 0.5s ease-in-out;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); 
+    background-color: var(--bgcolour);
 }
 
 input:hover{
@@ -105,7 +111,7 @@ input:focus{
 body{
     margin: 0 auto;
 background: rgba(24, 138, 209, 0.11);
-background-image: url('../Img/UO13.jpg');
+background-image: url('../Img/vecteezy_elegant-blue-gradient-wavy-background-smooth-gradient_18792880.jpg');
 background-size: auto;
 
 
@@ -113,11 +119,14 @@ background-size: auto;
 
 .main-div{
     max-width: 1000px;
-    margin:  20px auto;
+    margin:  40px auto;
 }
 
 canvas{
+    background-color: (--bgcolour);
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    
 }
 
 .flatpickr-calendar.open{
@@ -164,14 +173,18 @@ canvas{
         display: flex;
         padding-bottom: 10px;
         gap: 10px;
+        
 }
 
 .mainNews{
+    padding: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     position: relative;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    background-color: var(--bgcolour);
+    border-radius: 15px;
     
     
 }
@@ -185,6 +198,8 @@ canvas{
     margin-bottom: 20px;
     position: relative;
     box-shadow: 3px -1px 14px 0px #0000001a, 0 1px 3px #00000014;
+    background-color: var(--bgcolour);
+    border-radius: 30px;
 }
 
 .newsDiv:nth-child(odd)::before {
@@ -222,6 +237,7 @@ canvas{
 
 .div-afterp{
     min-height: 10px;
+    
 }
 
 .short-data{
@@ -230,6 +246,7 @@ canvas{
     max-width: 1200px;
     display: flex;
     justify-content: space-evenly;
+    
    
 }
 
@@ -245,6 +262,7 @@ canvas{
     box-shadow: none;
     color: #c30000;
     font-size: 25px;
+    background-color: var(--bgcolour);
 }
 
 .single-data{
@@ -272,12 +290,20 @@ canvas{
 
 }
 
+.chart-div{
+    background-color: var(--bgcolour);
+    border-radius: 20px;
+}
+
 .data-and-chart{
     display: flex;
     justify-content: center;
     max-width: 1000px;
     margin-top:40px;
-    gap: 35px
+    gap: 35px;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: var(--bgcolour);
 }
 
 #currentData{
@@ -285,6 +311,8 @@ canvas{
     width: 300px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     padding: 20px;
+    border-radius: 15px;
+    background-color: var(--bgcolour)
 }
 
 .pChange{
@@ -328,11 +356,13 @@ historical-paragraph-date{
         width: 320px;
         font-size: 20px;
         margin-bottom: 15px;
+        background-color: var(--bgcolour);
     }
 
      .select2{
         width: 320px;
         font-size: 20px;  
+        background-color: var(--bgcolour);
     }
 
     .buttons-div{
