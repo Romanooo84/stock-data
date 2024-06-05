@@ -173,7 +173,6 @@ historicalStockData(index, token, startDate, endDate)
   })
   .then(data => {
     dailyData = data;
-    console.log(dailyData)
     return particularData("currentData", index, dailyData, historicalData)
   })
   .then(() => { return createAxis(historicalData, dailyData) })
@@ -199,8 +198,8 @@ historicalStockData(index, token, startDate, endDate)
 
 button.addEventListener('click', function (event,) {
   event.preventDefault()
-  selectedDate==="undefinied"? selectedDate: selectedDate=startDate
-  console.log(selectedDate)
+  if (selectedDate===undefined){
+    selectedDate=startDate}
   historicalStockData(index, token, selectedDate, endDate)
   .then(data => {
     historicalData = data;
