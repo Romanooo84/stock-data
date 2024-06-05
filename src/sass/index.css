@@ -105,6 +105,10 @@ input:focus{
 body{
     margin: 0 auto;
 background: rgba(24, 138, 209, 0.11);
+background-image: url('../Img/UO13.jpg');
+background-size: auto;
+
+
 } 
 
 .main-div{
