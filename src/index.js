@@ -42,10 +42,6 @@ flatpickr("#datepicker", {
   maxDate: new Date().fp_incr(0), // Maksymalna dozwolona data (30 dni od dzisiaj)
   onClose: function (selectedDates, dateStr) {
     selectedDate = dateStr;
-    console.log('sel'+startDate)
-    if (selectedDate != undefined) {
-    button.disabled=false
-    }
 }
 });
 
@@ -203,6 +199,7 @@ historicalStockData(index, token, startDate, endDate)
 
 button.addEventListener('click', function (event,) {
   event.preventDefault()
+  selectedDate==="undefinied"? selectedDate: selectedDate=startDate
   console.log(selectedDate)
   historicalStockData(index, token, selectedDate, endDate)
   .then(data => {

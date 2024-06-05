@@ -2,7 +2,7 @@ export function particularData(id, stockIndex, currentlyData, historicalData) {
     let container = document.getElementById(`${id}`);
     container.innerHTML=''
     let map = `<div>
-    <p>${stockIndex} <span>${currentlyData.change_p}%</span></p>
+    <p class='pChange'>${stockIndex} <span>${currentlyData.change_p}%</span></p>
         <div class='ticker-data'>
             <div class='historical-data'>
                 <p class='historical-paragraph-date'>${historicalData[0].date}</p>
