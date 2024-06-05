@@ -177,7 +177,7 @@ canvas{
 }
 
 .mainNews{
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -194,6 +194,7 @@ canvas{
     height: 70vh;
     overflow-y: scroll;
     overflow-x: hidden;
+    padding-top: 10px;
     padding-left:14px;
     margin-bottom: 20px;
     position: relative;
@@ -300,9 +301,8 @@ canvas{
     display: flex;
     justify-content: center;
     max-width: 1000px;
-    margin-top:40px;
+    margin-top:10px;
     gap: 35px;
-    padding: 30px;
     border-radius: 15px;
     background-color: var(--bgcolour);
 }
