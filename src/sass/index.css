@@ -2,6 +2,11 @@
     --bgcolour: #dce8f1f2}
 
 header{
+    position: fixed; /* Ustawienie pozycji na fixed */
+    top: 0; /* Ustawienie pozycji od góry */
+    left: 0; /* Ustawienie pozycji od lewej */
+    width: 100%; /* Szerokość nagłówka na 100% */
+    z-index: 1000;
     background-color: rgba(108, 163, 199, 0.7);
     background: rgb(9, 111, 121);
     background: rgb(59, 72, 144);
@@ -118,6 +123,7 @@ background-size: cover;
 } 
 
 .main-div{
+    padding-top: 100px;
     max-width: 1000px;
     margin:  40px auto;
 }
