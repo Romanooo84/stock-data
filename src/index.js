@@ -35,7 +35,7 @@ let selectedDate
 endDate = createDate(today)
 startDate = createDate(startDate)
 
-export const headerTickersList=[index1, index2, index3, index4, index5]
+export let headerTickersList=[index1, index2, index3, index4, index5]
 export const headerData = document.querySelector('.short-data')
 export const favButton = document.querySelector('.add-fav-button')
 export let button = document.querySelector('.button')
@@ -61,7 +61,7 @@ multipleDailyData(headerTickersList, token)
     console.error("Wystąpił błąd podczas pobierania danych:", error);
   });
 
-setInterval(()=> {
+setInterval(() => {
   multipleDailyData(headerTickersList, token)
   .then(data => {
     setHeaderData(data, headerData)
