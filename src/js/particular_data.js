@@ -1,7 +1,7 @@
 export function particularData(id, stockIndex, currentlyData, historicalData) {
     let container = document.getElementById(`${id}`);
     container.innerHTML=''
-    let map = `<div>
+    let map = `<div class='current-Data-Div'>
     <p class='pChange'>${stockIndex} <span>${currentlyData.change_p}%</span></p>
         <div class='ticker-data'>
             <div class='historical-data'>
