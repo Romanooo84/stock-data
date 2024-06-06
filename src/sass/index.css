@@ -1,5 +1,5 @@
 :root{
-    --bgcolour: #dce8f194}
+    --bgcolour: #dce8f1f2}
 
 header{
     background-color: rgba(108, 163, 199, 0.7);
@@ -111,8 +111,8 @@ input:focus{
 body{
     margin: 0 auto;
 background: rgba(24, 138, 209, 0.11);
-background-image: url('../Img/vecteezy_elegant-blue-gradient-wavy-background-smooth-gradient_18792880.jpg');
-background-size: auto;
+background-image: url('../Img/144025-blue-and-white-square-lines-background-vector-art.jpg');
+background-size: cover;
 
 
 } 
@@ -183,7 +183,6 @@ canvas{
     justify-content: center;
     position: relative;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-    background-color: var(--bgcolour);
     border-radius: 15px;
     
     
@@ -304,7 +303,8 @@ canvas{
     margin-top:10px;
     gap: 35px;
     border-radius: 15px;
-    background-color: var(--bgcolour);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    padding: 10px;
 }
 
 #currentData{
