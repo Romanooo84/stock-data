@@ -1,4 +1,4 @@
-import { button } from "../index.js";
+
 
 export let selectedDate = ''
 
@@ -8,7 +8,7 @@ flatpickr("#datepicker", {
   onClose: function (selectedDates, dateStr) {
     selectedDate = dateStr;
     if (selectedDate != undefined) {
-    button.disabled=false
+    
     }
   }
 });
