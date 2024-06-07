@@ -147,6 +147,7 @@ headerData.addEventListener('click',function (event){
 })
 
 favButton.addEventListener('click', () => {
+  console.log(index)
   headerTickersList.push(index)
   multipleDailyData(headerTickersList, token)
   .then(data => {
@@ -158,9 +159,10 @@ favButton.addEventListener('click', () => {
   })
 
   selectEx.addEventListener('change', function (event) {
-    slectTwo(event, tickerList)
+    slectTwo(event)
   })
 
   selectTicker.addEventListener('change', (event) => {
-    selectOne(event, tickerList)
+    index=selectOne(event, tickerList)
+    
   })

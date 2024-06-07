@@ -51,7 +51,7 @@ export let select2=new SlimSelect({
 
 
 
-export const slectTwo=(event, tickerList)=>{
+export const slectTwo=(event)=>{
   event.preventDefault()
   let select2Options = []
   let selectedEx = selectEx.options[selectEx.selectedIndex].value
@@ -62,7 +62,7 @@ export const slectTwo=(event, tickerList)=>{
         fetch(`https://eodhd.com/api/exchange-symbol-list/${exchange}?api_token=65fd2d716aebf2.80647901&fmt=json`)
           .then(data => data.json())
           .then(data => {
-            tickerList.splice(0, tickerList.length,...data)
+            tickerList.push(data)
             for (let i = 0; i < data.length; i++) {
               select2Options.push({ text: `${data[i].Name}` })
             }
@@ -78,7 +78,7 @@ export const slectTwo=(event, tickerList)=>{
             select2Options.push({ text: `${exchangeSymbols[i].Name}` })
       }
     }
-    tickerList=exchangeSymbols
+    tickerList.push(exchangeSymbols)
     select2.setData(select2Options)
     return tickerList
   }
@@ -88,6 +88,7 @@ export const slectTwo=(event, tickerList)=>{
     event.preventDefault();
     if (selectTicker.options[selectTicker.selectedIndex] != undefined) {
       let selectedTicker = selectTicker.options[selectTicker.selectedIndex].value;
+      tickerList=tickerList[0]
       for (let i = 0; i < tickerList.length;  i++){
         if (selectedTicker != tickerList[i].Name) {
         }
@@ -98,9 +99,11 @@ export const slectTwo=(event, tickerList)=>{
           }
           else {
             exchange = tickerList[i].Exchange
-          }   
+          }  
           index = ticker.concat('.', exchange)
+          return index
         }
+        
       }
     }
   }
