@@ -1,7 +1,7 @@
 import { lineChart, createAxis, hideChart, showChart} from "./js/graph.js";
 import { historicalStockData, dailyStockData, createDate, news } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
-import { selectEx, selectTicker, slectTwo} from "./js/select.js";
+import { selectEx, selectTicker, selectOne, slectTwo} from "./js/select.js";
 import { linearRegression, bottomPoints, upperPoints } from "./js/math.js";
 import { multipleDailyData } from "./js/import_data.js";
 import { setHeaderData } from "./js/headerData.js";
@@ -159,22 +159,5 @@ favButton.addEventListener('click', () => {
   })
 
   selectTicker.addEventListener('change', (event) => {
-  event.preventDefault();
-    if (selectTicker.options[selectTicker.selectedIndex] != undefined) {
-      let selectedTicker = selectTicker.options[selectTicker.selectedIndex].value;
-      for (let i = 0; i < tickerList.length;  i++){
-        if (selectedTicker != tickerList[i].Name) {
-        }
-        else {
-          ticker = tickerList[i].Code
-          if (tickerList[i].Country === 'USA' && tickerList[i].Exchange!=='INDX') {
-            exchange = 'US'
-          }
-          else {
-            exchange = tickerList[i].Exchange
-          }   
-          index = ticker.concat('.', exchange)
-        }
-      }
-    }
+    selectOne(event, tickerList)
   })

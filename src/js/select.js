@@ -84,6 +84,27 @@ export const slectTwo=(event, tickerList)=>{
   }
   }
 
+  export const selectOne=(event, tickerList)=>{
+    event.preventDefault();
+    if (selectTicker.options[selectTicker.selectedIndex] != undefined) {
+      let selectedTicker = selectTicker.options[selectTicker.selectedIndex].value;
+      for (let i = 0; i < tickerList.length;  i++){
+        if (selectedTicker != tickerList[i].Name) {
+        }
+        else {
+          ticker = tickerList[i].Code
+          if (tickerList[i].Country === 'USA' && tickerList[i].Exchange!=='INDX') {
+            exchange = 'US'
+          }
+          else {
+            exchange = tickerList[i].Exchange
+          }   
+          index = ticker.concat('.', exchange)
+        }
+      }
+    }
+  }
+
 
 
 
