@@ -43,12 +43,44 @@ exchangeSymbolList('US', apiKey)
     ]
     })
 
-
-
 export let select2=new SlimSelect({
   select: '#select2',
   data: select2Options
 })
+
+export const slectTwo=(event)=>{
+  event.preventDefault()
+  let select2Options = []
+  let selectedEx = selectEx.options[selectEx.selectedIndex].value
+  if (!selectedEx.includes('Usa Stock:')) {
+    for (let i = 0; i < exchangeListJson.length; i++) {
+      if (exchangeListJson[i].Name === selectedEx) {
+        let exchange = exchangeListJson[i].Code
+        fetch(`https://eodhd.com/api/exchange-symbol-list/${exchange}?api_token=65fd2d716aebf2.80647901&fmt=json`)
+          .then(data => data.json())
+          .then(data => {
+            tickerList = data
+            for (let i = 0; i < data.length; i++) {
+              select2Options.push({ text: `${data[i].Name}` })
+            }
+            select2.setData(select2Options)
+            return tickerList
+          })
+      }
+    }
+  }
+  else if (selectedEx.includes('Usa Stock:')) {
+    for (let i = 0; i < exchangeSymbols.length; i++) {
+      if (selectedEx.includes(exchangeSymbols[i].Exchange)) {
+            select2Options.push({ text: `${exchangeSymbols[i].Name}` })
+      }
+    }
+    tickerList = exchangeSymbols
+    select2.setData(select2Options)
+    return tickerList
+  }
+  }
+
 
 
 

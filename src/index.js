@@ -1,20 +1,18 @@
 import { lineChart, createAxis, hideChart, showChart} from "./js/graph.js";
 import { historicalStockData, dailyStockData, createDate, news } from "./js/import_data.js";
 import { particularData } from "./js/particular_data.js";
-import { exchangeListJson } from "./js/exchange_list.js";
-import { selectEx, select2, selectTicker, exchangeSymbols } from "./js/select.js";
+import { selectEx, selectTicker, slectTwo} from "./js/select.js";
 import { linearRegression, bottomPoints, upperPoints } from "./js/math.js";
 import { multipleDailyData } from "./js/import_data.js";
 import { setHeaderData } from "./js/headerData.js";
 import { onClickHeaderButton } from "./js/onClickHeaderButton.js";
+import { newParagraph } from "./js/newsParagraph.js";
 
 let dailyData
 let historicalData
 let newDataChart
 let chartData
 let endDate
-let tickerList
-let delButton 
 let selectedDate
 
 let exchange = 'WAR';
@@ -33,6 +31,7 @@ let index5 = 'USDPLN.FOREX'
 endDate = createDate(today)
 startDate = createDate(startDate)
 
+export let tickerList
 export const token = '65fd2d716aebf2.80647901';
 export let headerTickersList=[index1, index2, index3, index4, index5]
 export const headerData = document.querySelector('.short-data')
@@ -62,7 +61,6 @@ multipleDailyData(headerTickersList, token)
   });
 
 setInterval(() => {
-  
   multipleDailyData(headerTickersList, token)
   .then(data => {
     setHeaderData(data, headerData)
@@ -100,21 +98,8 @@ historicalStockData(index, token, startDate, endDate)
   })
   .then(()=>{return news(index, token)})
   .then(data=>{
-    let paragraph = document.querySelector("#news")
-    const markup=data.map((article)=>
-      `<div class='newsCotainer'>  
-        <div class='newsDiv'>
-          <h2>${article.title}</h2>
-          <p>${article.date}</p>
-          <div class='div-afterp'>
-            <p>${article.content}</p>
-          </div>
-        </div>
-      </div>`)
-    .join("");
-    paragraph.insertAdjacentHTML("beforeend", markup);
+    newParagraph(data)
   })
-
 
 button.addEventListener('click', function (event,) {
   event.preventDefault()
@@ -145,8 +130,6 @@ button.addEventListener('click', function (event,) {
   })
 })
 
-
-
 const regressionButton = document.querySelector('.regression-button');
 regressionButton.addEventListener('click', function (event) {
   event.preventDefault()
@@ -172,34 +155,7 @@ favButton.addEventListener('click', () => {
   })
 
 selectEx.addEventListener('change', function (event) {
-  event.preventDefault()
-  let select2Options = []
-  let selectedEx = selectEx.options[selectEx.selectedIndex].value
-  if (!selectedEx.includes('Usa Stock:')) {
-    for (let i = 0; i < exchangeListJson.length; i++) {
-      if (exchangeListJson[i].Name === selectedEx) {
-        let exchange = exchangeListJson[i].Code
-        fetch(`https://eodhd.com/api/exchange-symbol-list/${exchange}?api_token=65fd2d716aebf2.80647901&fmt=json`)
-          .then(data => data.json())
-          .then(data => {
-            tickerList = data
-            for (let i = 0; i < data.length; i++) {
-              select2Options.push({ text: `${data[i].Name}` })
-            }
-            select2.setData(select2Options)
-          })
-      }
-    }
-  }
-  else if (selectedEx.includes('Usa Stock:')) {
-    for (let i = 0; i < exchangeSymbols.length; i++) {
-      if (selectedEx.includes(exchangeSymbols[i].Exchange)) {
-            select2Options.push({ text: `${exchangeSymbols[i].Name}` })
-      }
-    }
-    tickerList = exchangeSymbols
-    select2.setData(select2Options)
-  }
+  tickerList=slectTwo(event)
   })
 
   selectTicker.addEventListener('change', (event) => {
