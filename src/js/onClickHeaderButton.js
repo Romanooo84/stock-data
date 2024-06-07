@@ -1,5 +1,5 @@
 import { multipleDailyData } from "./import_data";
-import { token, headerData, favButton, headerTickersList} from "../index.js";
+import { token, headerData, favButton, headerTickersList, inProgres} from "../index.js";
 import { setHeaderData } from "./headerData.js";
 
 export const onClickHeaderButton = (event) => {
@@ -22,8 +22,6 @@ export const onClickHeaderButton = (event) => {
                 favButton.disabled = false
             }  
             headerTickersList.splice(0, headerTickersList.length, ...newList);
-            console.log(newList)
-            console.log(headerTickersList)
             inProgres = false
             })
         .catch(error => {

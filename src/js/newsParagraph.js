@@ -2,7 +2,7 @@ export const newParagraph=(data)=>{
     let paragraph = document.querySelector("#news")
     const markup=data.map((article)=>
       `<div class='newsCotainer'>  
-        <div class='newsDiv'>
+        <div class='newsDiv gallery-cell'>
           <h2>${article.title}</h2>
           <p>${article.date}</p>
           <div class='div-afterp'>
