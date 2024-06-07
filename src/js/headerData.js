@@ -13,7 +13,6 @@ export const setHeaderData = (data, headerData) =>{
     } else if (ticker.change_p < 0) {
         changeColor = 'value-minus';
       }
-      if(inProgres === true){return}
       return `<div class='short-data-div'>
                 <button class = 'delete-button'  type="button" id="${ticker.code}" >
                 <svg id = '${ticker.code}' version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill = '#ec7c7c'>
@@ -30,5 +29,6 @@ export const setHeaderData = (data, headerData) =>{
   }).join(""); 
     // Wstawianie wygenerowanego kodu HTML do elementu headerData
     headerData.innerHTML = ''
+    console.log('insert')
     headerData.insertAdjacentHTML("beforeend", markup);
   }

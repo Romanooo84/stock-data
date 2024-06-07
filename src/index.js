@@ -68,8 +68,10 @@ multipleDailyData(headerTickersList, token)
   });
 
 setInterval(() => {
+  if (inProgres===true){return}
   multipleDailyData(headerTickersList, token)
   .then(data => {
+    if (inProgres===true){return}
     setHeaderData(data, headerData)
     delButton = document.querySelectorAll('.delete-button')
   })

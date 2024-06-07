@@ -4,6 +4,7 @@ import { setHeaderData } from "./headerData.js";
 
 export const onClickHeaderButton = (event) => {
     event.preventDefault();
+    
     setInProgres(true);
     let tickerToDelete = event.target.parentNode.id;
     let newList = headerTickersList.filter(ticker => ticker !== tickerToDelete);
