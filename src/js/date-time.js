@@ -1,4 +1,5 @@
 import { button } from "../index.js";
+
 export let selectedDate
 
 flatpickr("#datepicker", {
