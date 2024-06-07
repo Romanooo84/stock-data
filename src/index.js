@@ -7,6 +7,7 @@ import { multipleDailyData } from "./js/import_data.js";
 import { setHeaderData } from "./js/headerData.js";
 import { onClickHeaderButton } from "./js/onClickHeaderButton.js";
 import { newParagraph } from "./js/newsParagraph.js";
+import {selectedDate} from './js/date-time.js'
 
 let dailyData
 let historicalData
@@ -40,13 +41,6 @@ export const favButton = document.querySelector('.add-fav-button')
 export let button = document.querySelector('.button')
 export let inProgres = false
 
-flatpickr("#datepicker", {
-  dateFormat: "Y-m-d", // Format daty
-  maxDate: new Date().fp_incr(0), // Maksymalna dozwolona data (30 dni od dzisiaj)
-  onClose: function (selectedDates, dateStr) {
-    selectedDate = dateStr;
-}
-});
 
 if (headerTickersList.length >4){
   favButton.disabled=true
