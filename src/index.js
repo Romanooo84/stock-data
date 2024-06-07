@@ -13,7 +13,6 @@ let dailyData
 let historicalData
 let newDataChart
 let chartData
-let endDate
 let delButton
 
 let exchange = 'WAR';
@@ -22,16 +21,13 @@ let index = ticker.concat('.', exchange)
 let today = new Date();
 let days = 30 
 let startDate = new Date(today.getTime() - (days * 24 * 60 * 60 * 1000));
+let endDate = createDate(today)
 let index1 = 'ALE.WAR'
 let index2 = 'GSPC.INDX'
 let index3 = 'AAPL.US'
 let index4 = 'EURPLN.FOREX'
 let index5 = 'USDPLN.FOREX'
 const regressionButton = document.querySelector('.regression-button');
-
-
-endDate = createDate(today)
-startDate = createDate(startDate)
 
 export let tickerList = []
 export const token = '65fd2d716aebf2.80647901';
@@ -41,6 +37,7 @@ export const favButton = document.querySelector('.add-fav-button')
 export let button = document.querySelector('.button')
 export let inProgres = false
 
+startDate = createDate(startDate)
 
 if (headerTickersList.length >4){
   favButton.disabled=true
