@@ -98,7 +98,7 @@ export const slectTwo=(event)=>{
             exchange = 'US'
           }
           else {
-            exchange = tickerList[i].Exchange
+            let exchange = tickerList[i].Exchange
           }  
           index = ticker.concat('.', exchange)
           return index
