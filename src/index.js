@@ -27,6 +27,7 @@ let index2 = 'GSPC.INDX'
 let index3 = 'AAPL.US'
 let index4 = 'EURPLN.FOREX'
 let index5 = 'USDPLN.FOREX'
+const regressionButton = document.querySelector('.regression-button');
 
 
 endDate = createDate(today)
@@ -66,10 +67,6 @@ setInterval(() => {
 },5000
 );
 
-headerData.addEventListener('click',function (event){
-  onClickHeaderButton(event)
-})
-
 historicalStockData(index, token, startDate, endDate)
   .then(data => {
     historicalData = data;
@@ -94,6 +91,19 @@ historicalStockData(index, token, startDate, endDate)
   .then(data=>{
     newParagraph(data)
   })
+
+
+regressionButton.addEventListener('click', function (event) {
+  event.preventDefault()
+  if (regressionButton.textContent === 'hide regression lines') {
+    hideChart()
+    regressionButton.textContent = 'show regression lines'
+  }
+  else if (regressionButton.textContent === 'show regression lines') {
+    showChart()
+    regressionButton.textContent = 'hide regression lines'
+  }
+})
 
 button.addEventListener('click', function (event,) {
   event.preventDefault()
@@ -124,17 +134,8 @@ button.addEventListener('click', function (event,) {
   })
 })
 
-const regressionButton = document.querySelector('.regression-button');
-regressionButton.addEventListener('click', function (event) {
-  event.preventDefault()
-  if (regressionButton.textContent === 'hide regression lines') {
-    hideChart()
-    regressionButton.textContent = 'show regression lines'
-  }
-  else if (regressionButton.textContent === 'show regression lines') {
-    showChart()
-    regressionButton.textContent = 'hide regression lines'
-  }
+headerData.addEventListener('click',function (event){
+  onClickHeaderButton(event)
 })
 
 favButton.addEventListener('click', () => {
