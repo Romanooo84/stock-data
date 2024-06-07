@@ -12,7 +12,7 @@ let dailyData
 let historicalData
 let newDataChart
 let chartData
-export let delButton
+
 let selectedDate
 
 let exchange = 'WAR';
@@ -36,6 +36,7 @@ export const headerData = document.querySelector('.short-data')
 export const favButton = document.querySelector('.add-fav-button')
 export let button = document.querySelector('.button')
 export let inProgres = false
+export let delButton
 
 flatpickr("#datepicker", {
   dateFormat: "Y-m-d", // Format daty
@@ -51,6 +52,10 @@ onClose: function (selectedDates, dateStr) {
 export const setInProgres = (value) => {
   inProgres = value;
 };
+
+export const setDelButton = (value) => {
+  delButton = value;
+}
 
 startDate = createDate(startDate)
 

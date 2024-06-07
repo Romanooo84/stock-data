@@ -1,5 +1,5 @@
 import { multipleDailyData } from "./import_data.js";
-import { token, headerData, favButton, headerTickersList, setInProgres, delButton} from "../index.js";
+import { token, headerData, favButton, headerTickersList, setInProgres, setDelButton, delButton} from "../index.js";
 import { setHeaderData } from "./headerData.js";
 
 export const onClickHeaderButton = (event) => {
@@ -13,7 +13,7 @@ export const onClickHeaderButton = (event) => {
             setHeaderData(data, headerData);
         })
         .then(() => {
-            delButton = document.querySelectorAll('.delete-button');
+            setDelButton(document.querySelectorAll('.delete-button'));
             if (delButton.length < 3) {
                 for (let i = 0; i < delButton.length; i++) {
                     delButton[i].disabled = true;
