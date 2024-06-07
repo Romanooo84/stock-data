@@ -7,14 +7,13 @@ import { multipleDailyData } from "./js/import_data.js";
 import { setHeaderData } from "./js/headerData.js";
 import { onClickHeaderButton } from "./js/onClickHeaderButton.js";
 import { newParagraph } from "./js/newsParagraph.js";
-import {selectedDate} from './js/date-time.js'
+import { selectedDate } from './js/date-time.js'
 
 let dailyData
 let historicalData
 let newDataChart
 let chartData
 let endDate
-let selectedDate
 let delButton
 
 let exchange = 'WAR';
