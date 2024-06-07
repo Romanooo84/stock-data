@@ -48,6 +48,10 @@ onClose: function (selectedDates, dateStr) {
 }
 });
 
+export const setInProgres = (value) => {
+  inProgres = value;
+};
+
 startDate = createDate(startDate)
 
 if (headerTickersList.length >4){
