@@ -1,9 +1,10 @@
 import { multipleDailyData } from "./import_data";
-import { token, headerData, favButton} from "../index.js";
+import { token, headerData, favButton, headerTickersList, inProgres} from "../index.js";
 import { setHeaderData } from "./headerData.js";
 
-export const onClickHeaderButton = (event, headerTickersList) => {
+export const onClickHeaderButton = (event) => {
     event.preventDefault()
+    inProgres = true
     let tickerToDelete = event.target.parentNode.id
     let newList = headerTickersList.filter(ticker => ticker !== tickerToDelete);
     multipleDailyData(newList, token)
@@ -20,7 +21,10 @@ export const onClickHeaderButton = (event, headerTickersList) => {
             if (newList.length < 5) {
                 favButton.disabled = false
             }  
-            headerTickersList = newList
+            headerTickersList.splice(0, headerTickersList.length, ...newList);
+            console.log(newList)
+            console.log(headerTickersList)
+            inProgres = false
             })
         .catch(error => {
             console.error("Wystąpił błąd podczas pobierania danych:", error);

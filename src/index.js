@@ -8,16 +8,15 @@ import { multipleDailyData } from "./js/import_data.js";
 import { setHeaderData } from "./js/headerData.js";
 import { onClickHeaderButton } from "./js/onClickHeaderButton.js";
 
-
-
 let dailyData
 let historicalData
 let newDataChart
 let chartData
 let endDate
 let tickerList
+let delButton 
+let selectedDate
 
-export const token = '65fd2d716aebf2.80647901';
 let exchange = 'WAR';
 let ticker = 'ALE';
 let index = ticker.concat('.', exchange)
@@ -29,16 +28,17 @@ let index2 = 'GSPC.INDX'
 let index3 = 'AAPL.US'
 let index4 = 'EURPLN.FOREX'
 let index5 = 'USDPLN.FOREX'
-let delButton 
-let selectedDate
+
 
 endDate = createDate(today)
 startDate = createDate(startDate)
 
+export const token = '65fd2d716aebf2.80647901';
 export let headerTickersList=[index1, index2, index3, index4, index5]
 export const headerData = document.querySelector('.short-data')
 export const favButton = document.querySelector('.add-fav-button')
 export let button = document.querySelector('.button')
+export let inProgres = false
 
 flatpickr("#datepicker", {
   dateFormat: "Y-m-d", // Format daty
@@ -62,6 +62,7 @@ multipleDailyData(headerTickersList, token)
   });
 
 setInterval(() => {
+  
   multipleDailyData(headerTickersList, token)
   .then(data => {
     setHeaderData(data, headerData)
@@ -70,11 +71,11 @@ setInterval(() => {
   .catch(error => {
     console.error("Wystąpił błąd podczas pobierania danych:", error);
   });
-},2000
+},5000
 );
 
 headerData.addEventListener('click',function (event){
-  onClickHeaderButton(event, headerTickersList)
+  onClickHeaderButton(event)
 })
 
 historicalStockData(index, token, startDate, endDate)
