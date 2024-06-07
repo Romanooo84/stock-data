@@ -14,6 +14,7 @@ let newDataChart
 let chartData
 let endDate
 let selectedDate
+let delButton
 
 let exchange = 'WAR';
 let ticker = 'ALE';
