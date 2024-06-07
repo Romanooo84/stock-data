@@ -12,7 +12,7 @@ let dailyData
 let historicalData
 let newDataChart
 let chartData
-let delButton
+export let delButton
 let selectedDate
 
 let exchange = 'WAR';
