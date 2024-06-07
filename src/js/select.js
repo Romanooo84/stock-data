@@ -1,3 +1,4 @@
+import { tickerList } from "../index.js";
 import { exchangeListJson } from "./exchange_list.js";
 import { exchangeSymbolList } from "./import_data.js";
 export let selectEx = document.getElementById('select1');
@@ -48,7 +49,9 @@ export let select2=new SlimSelect({
   data: select2Options
 })
 
-export const slectTwo=(event)=>{
+
+
+export const slectTwo=(event, tickerList)=>{
   event.preventDefault()
   let select2Options = []
   let selectedEx = selectEx.options[selectEx.selectedIndex].value
@@ -59,7 +62,7 @@ export const slectTwo=(event)=>{
         fetch(`https://eodhd.com/api/exchange-symbol-list/${exchange}?api_token=65fd2d716aebf2.80647901&fmt=json`)
           .then(data => data.json())
           .then(data => {
-            tickerList = data
+            tickerList.splice(0, tickerList.length,...data)
             for (let i = 0; i < data.length; i++) {
               select2Options.push({ text: `${data[i].Name}` })
             }
@@ -75,7 +78,7 @@ export const slectTwo=(event)=>{
             select2Options.push({ text: `${exchangeSymbols[i].Name}` })
       }
     }
-    tickerList = exchangeSymbols
+    tickerList=exchangeSymbols
     select2.setData(select2Options)
     return tickerList
   }

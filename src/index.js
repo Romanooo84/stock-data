@@ -31,7 +31,7 @@ let index5 = 'USDPLN.FOREX'
 endDate = createDate(today)
 startDate = createDate(startDate)
 
-export let tickerList
+export let tickerList = []
 export const token = '65fd2d716aebf2.80647901';
 export let headerTickersList=[index1, index2, index3, index4, index5]
 export const headerData = document.querySelector('.short-data')
@@ -154,15 +154,14 @@ favButton.addEventListener('click', () => {
       })
   })
 
-selectEx.addEventListener('change', function (event) {
-  tickerList=slectTwo(event)
+  selectEx.addEventListener('change', function (event) {
+    slectTwo(event, tickerList)
   })
 
   selectTicker.addEventListener('change', (event) => {
   event.preventDefault();
     if (selectTicker.options[selectTicker.selectedIndex] != undefined) {
       let selectedTicker = selectTicker.options[selectTicker.selectedIndex].value;
-      
       for (let i = 0; i < tickerList.length;  i++){
         if (selectedTicker != tickerList[i].Name) {
         }
@@ -173,11 +172,8 @@ selectEx.addEventListener('change', function (event) {
           }
           else {
             exchange = tickerList[i].Exchange
-          }
-          
+          }   
           index = ticker.concat('.', exchange)
-    
-
         }
       }
     }
