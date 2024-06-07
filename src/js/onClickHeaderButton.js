@@ -1,5 +1,5 @@
 import { multipleDailyData } from "./import_data";
-import { token, headerData, favButton, headerTickersList, inProgres} from "../index.js";
+import { token, headerData, favButton, headerTickersList} from "../index.js";
 import { setHeaderData } from "./headerData.js";
 
 export const onClickHeaderButton = (event) => {
