@@ -7,13 +7,14 @@ import { multipleDailyData } from "./js/import_data.js";
 import { setHeaderData } from "./js/headerData.js";
 import { onClickHeaderButton } from "./js/onClickHeaderButton.js";
 import { newParagraph } from "./js/newsParagraph.js";
-import {selectedDate} from './js/date-time.js'
 
 let dailyData
 let historicalData
 let newDataChart
 let chartData
 let delButton
+let selectedDate
+
 let exchange = 'WAR';
 let ticker = 'ALE';
 let index = ticker.concat('.', exchange)
@@ -35,6 +36,17 @@ export const headerData = document.querySelector('.short-data')
 export const favButton = document.querySelector('.add-fav-button')
 export let button = document.querySelector('.button')
 export let inProgres = false
+
+flatpickr("#datepicker", {
+  dateFormat: "Y-m-d", // Format daty
+maxDate: new Date().fp_incr(0), // Maksymalna dozwolona data (30 dni od dzisiaj)
+onClose: function (selectedDates, dateStr) {
+  selectedDate = dateStr;
+  if (selectedDate != undefined) {
+  button.disabled=false
+  }
+}
+});
 
 startDate = createDate(startDate)
 
