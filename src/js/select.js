@@ -93,7 +93,7 @@ export const slectTwo=(event)=>{
         if (selectedTicker != tickerList[i].Name) {
         }
         else {
-          ticker = tickerList[i].Code
+          let ticker = tickerList[i].Code
           if (tickerList[i].Country === 'USA' && tickerList[i].Exchange!=='INDX') {
             exchange = 'US'
           }
