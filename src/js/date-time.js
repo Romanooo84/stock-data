@@ -1,6 +1,6 @@
 import { button } from "../index.js";
 
-export let selectedDate
+export let selectedDate = ''
 
 flatpickr("#datepicker", {
     dateFormat: "Y-m-d", // Format daty

@@ -14,7 +14,6 @@ let historicalData
 let newDataChart
 let chartData
 let delButton
-
 let exchange = 'WAR';
 let ticker = 'ALE';
 let index = ticker.concat('.', exchange)
