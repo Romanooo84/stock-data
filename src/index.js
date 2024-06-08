@@ -7,7 +7,7 @@ import { multipleDailyData } from "./js/import_data.js";
 import { setHeaderData } from "./js/headerData.js";
 import { onClickHeaderButton } from "./js/onClickHeaderButton.js";
 import { newParagraph } from "./js/newsParagraph.js";
-import { slide, prevSlide, nextSlide } from "./js/exchange_tickers/carousel.js";
+import { prevSlide, nextSlide } from "./js/exchange_tickers/carousel.js";
 
 let dailyData
 let historicalData
