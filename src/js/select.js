@@ -1,6 +1,7 @@
 import { tickerList } from "../index.js";
 import { exchangeListJson } from "./exchange_list.js";
 import { exchangeSymbolList } from "./import_data.js";
+import {setIndex} from '../index'
 export let selectEx = document.getElementById('select1');
 export let selectTicker= document.getElementById('select2');
 export let select1Options = [{ 'placeholder': true, 'text': 'Select the stock exchange','class': 'custom-color' }]
@@ -101,7 +102,7 @@ export const slectTwo=(event)=>{
           else {
              exchange = tickerList[i].Exchange
           }  
-          index = ticker.concat('.', exchange)
+          setIndex(ticker.concat('.', exchange))
           return index
         }
         

@@ -57,6 +57,10 @@ export const setDelButton = (value) => {
   delButton = value;
 }
 
+export const setIndex = (value) => {
+  index=value
+}
+
 startDate = createDate(startDate)
 
 if (headerTickersList.length >4){
