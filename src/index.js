@@ -158,7 +158,6 @@ headerData.addEventListener('click',function (event){
 })
 
 favButton.addEventListener('click', () => {
-  console.log(index)
   headerTickersList.push(index)
   multipleDailyData(headerTickersList, token)
   .then(data => {

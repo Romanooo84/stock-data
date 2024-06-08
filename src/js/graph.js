@@ -64,7 +64,7 @@ export function createAxis(historicalData, dailyData) {
     chartData.yAxis.push(dailyData.close);
     chartData.xAxis.push(dailyData.realTimeDay);
   }
-  else{console.log('brak aktualnych danych')}
+  else{return chartData;}
       return chartData;
     }
 

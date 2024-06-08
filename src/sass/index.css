@@ -64,7 +64,6 @@ h2{
 }
 
 button{
-    background-color: #263bce00;
     border: 3px solid #1648ac75;
     border-radius: 15px;
     height: 30px;
@@ -72,10 +71,18 @@ button{
     transition: border-color 0.5s ease-in-out;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);  
     background-color: var(--bgcolour);
+    
+   
 }
 
 .button:hover{
     border-color: #0d58eee1;
+    
+}
+
+.button:active{
+    background-color: #0d58eee1;
+    color: white;
 }
 
 
@@ -90,8 +97,18 @@ button{
     border-color: #0d58eee1;
 }
 
+.regression-button:active{
+    background-color: #0d58eee1;
+        color: white;
+}
+
 .add-fav-button:hover{
     border-color: #0d58eee1;
+}
+
+.add-fav-button:active{
+    background-color: #0d58eee1;
+        color: white;
 }
 
 
