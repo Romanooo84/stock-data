@@ -86,6 +86,7 @@ export const slectTwo=(event)=>{
 
   export const selectOne=(event, tickerList)=>{
     event.preventDefault();
+    let exchange
     if (selectTicker.options[selectTicker.selectedIndex] != undefined) {
       let selectedTicker = selectTicker.options[selectTicker.selectedIndex].value;
       tickerList=tickerList[0]
@@ -98,7 +99,7 @@ export const slectTwo=(event)=>{
             exchange = 'US'
           }
           else {
-            let exchange = tickerList[i].Exchange
+             exchange = tickerList[i].Exchange
           }  
           index = ticker.concat('.', exchange)
           return index
