@@ -7,6 +7,7 @@ import { multipleDailyData } from "./js/import_data.js";
 import { setHeaderData } from "./js/headerData.js";
 import { onClickHeaderButton } from "./js/onClickHeaderButton.js";
 import { newParagraph } from "./js/newsParagraph.js";
+import { slide, prevSlide, nextSlide } from "./js/exchange_tickers/carousel.js";
 
 let dailyData
 let historicalData
@@ -27,6 +28,8 @@ let index3 = 'AAPL.US'
 let index4 = 'EURPLN.FOREX'
 let index5 = 'USDPLN.FOREX'
 const regressionButton = document.querySelector('.regression-button');
+const leftButton = document.querySelector('.button-left');
+const rightButton = document.querySelector('.button-right');
 
 export let tickerList = []
 export const token = '65fd2d716aebf2.80647901';
@@ -106,7 +109,8 @@ historicalStockData(index, token, startDate, endDate)
     newDataChart = data
   })
   .then(()=>{return news(index, token)})
-  .then(data=>{
+  .then(data => {
+    
     newParagraph(data)
   })
 
@@ -176,3 +180,6 @@ favButton.addEventListener('click', () => {
     index=selectOne(event, tickerList)
     
   })
+
+leftButton.addEventListener('click', prevSlide)
+rightButton.addEventListener('click',nextSlide)
