@@ -29,6 +29,5 @@ export const setHeaderData = (data, headerData) =>{
   }).join(""); 
     // Wstawianie wygenerowanego kodu HTML do elementu headerData
     headerData.innerHTML = ''
-    console.log('insert')
     headerData.insertAdjacentHTML("beforeend", markup);
   }

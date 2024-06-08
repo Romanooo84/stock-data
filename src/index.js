@@ -14,7 +14,6 @@ let newDataChart
 let chartData
 
 let selectedDate
-
 let exchange = 'WAR';
 let ticker = 'ALE';
 let index = ticker.concat('.', exchange)
@@ -57,10 +56,6 @@ export const setDelButton = (value) => {
   delButton = value;
 }
 
-export const setIndex = (value) => {
-  index=value
-}
-
 startDate = createDate(startDate)
 
 if (headerTickersList.length >4){
@@ -77,7 +72,7 @@ multipleDailyData(headerTickersList, token)
   });
 
 setInterval(() => {
-  if (inProgres===true){return}
+  if (inProgres === true) { return }
   multipleDailyData(headerTickersList, token)
   .then(data => {
     if (inProgres===true){return}
@@ -128,8 +123,9 @@ regressionButton.addEventListener('click', function (event) {
   }
 })
 
-button.addEventListener('click', function (event,) {
+button.addEventListener('click', function (event) {
   event.preventDefault()
+  index = selectOne(event, tickerList)
   if (selectedDate===undefined){
     selectedDate=startDate}
   historicalStockData(index, token, selectedDate, endDate)
